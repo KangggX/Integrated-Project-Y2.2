@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "338320651115",
+    "firebase_url": "https://y2s2-ip-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "y2s2-ip",
+    "storage_bucket": "y2s2-ip.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338320651115:android:d23c4afd77e751a767522e",
+        "android_client_info": {
+          "package_name": "com.y2s2.ip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338320651115-8u81q1f1574jrnnu0mu4dj3ok5l3lj0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXE3qHcOzIIg83BT06ldjjGyxJpDmnZGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338320651115-8u81q1f1574jrnnu0mu4dj3ok5l3lj0q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
