@@ -7,9 +7,15 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Controller Settings")]
     [SerializeField] private float _movementSpeed = 10;
-    [SerializeField] private float _rotationSensitivity = 40;
+    [SerializeField] private float _rotationSpeed = 40;
+
+    [Header("Camera Settings")]
+    [SerializeField] private Transform _weaponRoot;
+    [SerializeField] private float _minAngle = -60;
+    [SerializeField] private float _maxAngle = 60;
     private Camera _camera;
 
+    private float rotationY;
     private Rigidbody rb;
 
     private void Awake()
@@ -25,6 +31,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerRotation();
+        CameraRotation();
     }
 
     private void FixedUpdate()
@@ -41,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerRotation()
     {
-        float mouseX = Input.GetAxis("Mouse X") * _rotationSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * _rotationSpeed * Time.deltaTime;
 
         Vector3 playerRotation = transform.rotation.eulerAngles;
         playerRotation.y += mouseX;
@@ -52,6 +59,11 @@ public class PlayerController : MonoBehaviour
 
     private void CameraRotation()
     {
+        rotationY -= Input.GetAxis("Mouse Y") * _rotationSpeed * Time.deltaTime;
 
+        rotationY = Mathf.Clamp(rotationY, _minAngle, _maxAngle);
+
+        _camera.transform.rotation = _camera.transform.rotation * Quaternion.Euler(rotationY, 0, 0);
+        _weaponRoot.rotation = _camera.transform.rotation;
     }
 }
