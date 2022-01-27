@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _camera = GetComponent<CameraRoot>().playerCamera;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
