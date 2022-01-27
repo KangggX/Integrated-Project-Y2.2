@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Sign In</title>
+
+        <!--====== Tab Logo Icon ======-->
+        <link rel="shortcut icon" href="assets/images/tablogo.png" type="image/png">
+
+        <!--====== Bootstrap css ======-->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+        <!-- <link rel="stylesheet" href="/assets/css/style.css"> -->
+        <link rel="stylesheet" href="/assets/css/substyle.css">
+
+        <!--====== Jquery ======-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+
+    <body style="background-color: #2A2A2A; overflow-y: hidden;">
+        <div>
+            <div class="form form-container">
+                <div class="form__wrapper" id="recovery-form">
+                    <div class="form__box in">
+                        <a href="signin.html" class="form__back">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20.958" height="18.241" viewBox="0 0 20.958 18.241">
+                                <g id="Group_13" data-name="Group 13" transform="translate(1.5 2.12)">
+                                    <path id="Path_12" data-name="Path 12" d="M490.136,190.689l-6.6,7.041,6.6,6.959" transform="translate(-483.518 -190.689)" fill="none" stroke="#EB3656" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                                    <path id="Path_13" data-name="Path 13" d="M482.518,197.739h17.958" transform="translate(-482.518 -190.689)" fill="none" stroke="#EB3656" stroke-linecap="round" stroke-width="3"/>
+                                </g>
+                            </svg>                              
+                        </a>
+
+                        <div class="form__title" style="margin-bottom: 45px;">
+                            <h2>Password Recovery</h2>
+                        </div>
+
+                        <div class="form__error">
+                            <span></span>
+                        </div>
+
+                        <form autocomplete="off" class="field form__fields">
+                            <div class="field__input" style="margin-bottom: 10px;">
+                                <input type="email" autocomplete="off" name="email" class="field__input--email" id="recovery__email" value="">
+                                <label class="field__label">Email</label>
+                            </div>
+
+                            <div class="submission field__submit">
+                                <button class="submission__button red" id="recovery__submit" disabled>SUBMIT</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="form__wrapper" id="recovery-success" style="display: none;">
+                    <div class="form__box in">
+                        <div class="form__title" style="margin-bottom: 45px;">
+                            <h2>Email Sent Successfully</h2>
+                        </div>
+
+                        <form autocomplete="off" class="field form__fields">
+                            <div class="submission field__submit">
+                                <a class="submission__button red" href="index.html">BACK</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="/assets/js/config.js"></script>
+        <script type="module" src="assets/js/auth.js"></script>
+    </body>
+</html>

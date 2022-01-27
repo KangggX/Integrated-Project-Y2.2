@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--====== Title ======-->
+    <title>Leaderboard</title>
+
+    <!--====== Tab Logo Icon ======-->
+    <link rel="shortcut icon" href="assets/images/tablogo.png" type="image/png">
+
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!--====== Fontawesome css ======-->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+    <!--====== Line Icons css ======-->
+    <link rel="stylesheet" href="assets/css/LineIcons.css">
+
+    <!--====== Animate css ======-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+
+    <!--====== Aos css ======-->
+    <link rel="stylesheet" href="assets/css/aos.css">
+
+    <!--====== Slick css ======-->
+    <link rel="stylesheet" href="assets/css/slick.css">
+
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="assets/css/default.css">
+
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/substyle.css">       
+
+    <!--====== Jquery ======-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <!--====== HEADER PART START ======-->
+
+    <header id="home" class="header-area pt-100">
+      <div class="shape header-shape-one">
+        <img src="assets/images/banner/shape/shape-1.png" alt="shape">
+      </div> <!-- header shape one -->
+
+      <div class="shape header-shape-tow animation-one">
+        <img src="assets/images/banner/shape/shape-2.png" alt="shape">
+      </div> <!-- header shape tow -->
+
+      <div class="shape header-shape-three animation-one">
+        <img src="assets/images/banner/shape/shape-3.png" alt="shape">
+      </div> <!-- header shape three -->
+
+      <div class="shape header-shape-fore">
+        <img src="assets/images/banner/shape/shape-4.png" alt="shape">
+      </div> <!-- header shape three -->
+
+      <div class="navigation-bar">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="#">
+                  <img src="assets/images/logo.png" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul id="nav" class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      <a class="page-scroll" href="index.html#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="page-scroll" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="education.html">Learn</a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="page-scroll">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="page-scroll" href="index.html#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="page-scroll" href="index.html#contact">Contact</a>
+                    </li>
+                  </ul> <!-- navbar nav -->
+                </div>
+
+                <div class="navbar-btn ml-20 d-none d-sm-block">
+                  <a class="main-btn" id="in" href="signin.html"> Sign in </a>
+                  <!-- <button class="main-btn" id="out" style="display: none;">SIGN OUT</button> -->
+                  <div class="dropdown-user" id="userbar">
+                    <div id="username"></div>
+                    <div class="dropdown-user__menu">
+                      <div>
+                        <a href="profile.html">
+                          <p>View Profile</p>
+                        </a>
+                      </div>
+                      <div>
+                        <a id="out">
+                          <p>Sign Out</p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav> <!-- navbar -->
+            </div>
+          </div> <!-- row -->
+        </div> <!-- container -->
+      </div> <!-- navigation bar -->
+    </header> 
+
+    <div class="body-margin" style="margin-top: 150px;">
+      <div class="leaderboard">
+        <ul class="leaderboard__list">
+          <li>
+            <div class="leaderboard__list--content leaderboard__title--ranking">Ranking</div>
+            <div class="leaderboard__list--content leaderboard__title--score">Time (MM:SS)</div>
+            <div class="leaderboard__list--content leaderboard__title--username">Username</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <script type="module" src="/assets/js/config.js"></script>
+    <script type="module" src="/assets/js/script.js"></script>
+    <script type="module" src="/assets/js/auth.js"></script>
+  </body>
+</html>

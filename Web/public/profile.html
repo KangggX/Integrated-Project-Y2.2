@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Profile</title>
+
+        <!--====== Tab Logo Icon ======-->
+        <link rel="shortcut icon" href="assets/images/tablogo.png" type="image/png">
+
+        <!--====== Bootstrap css ======-->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+        <!-- <link rel="stylesheet" href="/assets/css/style.css"> -->
+        <link rel="stylesheet" href="/assets/css/substyle.css">
+
+        <!--====== Jquery ======-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+
+    <body style="background-color: #ffffff; overflow-y: hidden;">
+        <div>
+            <div class="container">
+                <br>
+                <div class="s2-bgimg2">
+                    <img src="assets/images/banner/shape/shape-2.png">
+                </div>
+                <div class="s3-bgimg2">
+                    <img src="assets/images/banner/shape/shape-3.png">
+                </div>
+                <div class="s4-bgimg2">
+                    <img src="assets/images/banner/shape/shape-4.png">
+                </div>
+                <div class="form__title2">
+                    <h2>Profile Page</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 left-side">
+                        <div class="profile-box account-detail">
+                            <h2>Account Detail</h2>
+                            <div class="profile-box__body">
+                                <div class="account-detail__username">
+                                    <h4><b>Username</b></h4>
+                                    <span id="usernameDetail"></span>
+                                </div>
+
+                                <div class="account-detail__email">
+                                    <h4><b>Email</b></h4>
+                                    <span id="emailDetail"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height: 30px;"></div>
+                        <div class="profile-box account-settings-menu">
+                            <h2>Settings</h2>
+                            <div class="profile-box__body" style="align-items: center;">
+                                <a href="passwordchange.html" class="setting-button red " id="">Change Password</a>
+                                <div style="height: 10px"></div>
+                                <a class="setting-button red" id="out">Sign Out</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 right-side">
+                        <div class="profile-box user-statistics">
+                            <h2>User Statistics</h2>
+                            <div class="profile-box__body">
+                                <div class="row" style="margin: 0;">
+                                    <div class="col">
+                                        <b>Leaderboard Position</b>
+                                        <p id="leaderboardPositionDetail"></p>
+                                    </div>
+
+                                    <div class="col">
+                                        <b>Fastest Time</b>
+                                        <p id="fastestTimeDetail"></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="row" style="margin-top: 25px">
+                                    <div class="col">
+                                        <b>Total Time Played</b>
+                                        <p id="totalTimeDetail"></p>
+                                    </div>
+
+                                    <div class="col">
+                                        <b>Total Game(s) Played</b>
+                                        <p id="totalGameDetail"></p>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 25px">
+                                    <a href="index.html" class="setting-button red">Back to Home</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="/assets/js/config.js"></script>
+        <script type="module" src="assets/js/script.js"></script>
+        <script type="module" src="assets/js/auth.js"></script>
+    </body>
+</html>
