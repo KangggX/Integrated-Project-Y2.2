@@ -5,6 +5,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private Transform _gunBarrel;
+    [SerializeField] private GameObject _bulletHole;
+
     private RaycastHit hit;
     private GameObject _mainCamera;
 
@@ -30,7 +32,10 @@ public class Weapon : MonoBehaviour
     {
         if ((hit.collider.gameObject.layer == 6) && (Input.GetButtonDown("Fire1")))
         {
-            Debug.Log("Hit!");
+            GameObject bulletHoleInstance = Instantiate(_bulletHole, hit.point, Quaternion.identity, hit.collider.transform);
+            bulletHoleInstance.transform.position -= bulletHoleInstance.transform.forward / 1000;
+
+            Destroy(bulletHoleInstance, 2);
         }
     }
 }

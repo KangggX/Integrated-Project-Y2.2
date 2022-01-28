@@ -559,13 +559,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692049332}
-  m_LocalRotation: {x: 0.040895123, y: -0, z: -0, w: 0.99916345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.6700001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 4.688, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &961356991
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +677,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gunBarrel: {fileID: 1260960280}
+  _bulletHole: {fileID: 2244718864569891921, guid: 0fe9b93ff5be32443a67f751e5539d84,
+    type: 3}
 --- !u!1 &1235750728
 GameObject:
   m_ObjectHideFlags: 0
