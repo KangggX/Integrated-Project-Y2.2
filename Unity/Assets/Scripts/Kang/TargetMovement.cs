@@ -8,8 +8,13 @@ public class TargetMovement : MonoBehaviour
     [SerializeField] private Transform _inPosition;
     [SerializeField] private Transform _outPosition;
 
-    public bool canMove;
     [SerializeField] private bool _isOut;
+    private bool _canMove;
+    public bool CanMove
+    {
+        get { return _canMove; }
+        set { _canMove = value; }
+    }
 
     private Vector3 _basePosition;
     private float _elapsedTime;
@@ -21,7 +26,7 @@ public class TargetMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_isOut && canMove)
+        if (_isOut && _canMove)
         {
             _elapsedTime += Time.deltaTime;
             float percentageCompletion = _elapsedTime / _transitionSpeed;
@@ -31,13 +36,13 @@ public class TargetMovement : MonoBehaviour
             if (gameObject.transform.position == _inPosition.position)
             {
                 _isOut = false;
-                canMove = false;
+                _canMove = false;
                 _elapsedTime = 0;
 
                 _basePosition = gameObject.transform.position;
             }
         }
-        else if (!_isOut && canMove)
+        else if (!_isOut && _canMove)
         {
             _elapsedTime += Time.deltaTime;
             float percentageCompletion = _elapsedTime / _transitionSpeed;
@@ -47,7 +52,7 @@ public class TargetMovement : MonoBehaviour
             if (gameObject.transform.position == _outPosition.position)
             {
                 _isOut = true;
-                canMove = false;
+                _canMove = false;
                 _elapsedTime = 0;
 
                 _basePosition = gameObject.transform.position;

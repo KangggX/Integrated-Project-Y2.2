@@ -19,23 +19,30 @@ public class Weapon : MonoBehaviour
     {
         if (gameObject.transform.parent != null)
         {
-            Debug.DrawRay(_mainCamera.transform.position, _mainCamera.transform.forward * 1000, Color.green);
-
-            if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit))
+            //Debug.DrawRay(_mainCamera.transform.position, _mainCamera.transform.forward * 1000, Color.green);
+            
+            if (Input.GetButtonDown("Fire1"))
             {
-                Shoot();
+                if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit))
+                {
+                    Shoot();
+                }
             }
         }
     }
 
     private void Shoot()
     {
-        if ((hit.collider.gameObject.layer == 6) && (Input.GetButtonDown("Fire1")))
+        Target hitTarget = hit.collider.GetComponent<Target>(); // The Target itself
+
+        if (hitTarget != null)
         {
-            GameObject bulletHoleInstance = Instantiate(_bulletHole, hit.point, Quaternion.identity, hit.collider.transform);
+            hitTarget.GainPoint();
+
+            GameObject bulletHoleInstance = Instantiate(_bulletHole, hit.point, Quaternion.identity, hitTarget.transform);
             bulletHoleInstance.transform.position -= bulletHoleInstance.transform.forward / 1000;
 
-            Destroy(bulletHoleInstance, 2);
+            /*Destroy(bulletHoleInstance, 2);*/ // Delete the bullet hole instance after 2s
         }
     }
 }
