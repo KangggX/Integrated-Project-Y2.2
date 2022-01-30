@@ -22,13 +22,13 @@ public class PlayerInteraction : MonoBehaviour
     {
         Debug.DrawRay(_mainCamera.transform.position, _mainCamera.transform.forward * _raycastLength, Color.green);
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward * _raycastLength, out hit))
         {
-            if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward * _raycastLength, out hit))
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+                
+            if (interactable != null)
             {
-                IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-
-                if (interactable != null)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     interactable.TriggerInteraction();
                 }
