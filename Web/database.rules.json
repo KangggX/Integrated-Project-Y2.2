@@ -1,6 +1,15 @@
 {
   "rules": {
-    ".read": true,  // 2022-2-18
-    ".write": true,  // 2022-2-18
+    ".read": true, 
+    ".write": true, 
+      "playerStats": {
+        ".indexOn": ["fastestTime", "highestPoints"]
+      },
+      "leaderboard": {
+      	".indexOn": ["fastestTime"]
+      },
+      "shootingLeaderboard": {
+        ".indexOn": ["highestPoints"]
+      }
   }
 }
