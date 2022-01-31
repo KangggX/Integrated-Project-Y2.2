@@ -10,6 +10,7 @@ public class Weapon : WeaponPositioning
     [SerializeField] protected GameObject _bulletHole;
     [SerializeField] protected int _ammo;
     private int _initialAmmo;
+    private bool _isEquipped;
 
     [Header("Weapon Scope Settings")]
     [SerializeField] protected float _scopeFOV;
@@ -40,7 +41,7 @@ public class Weapon : WeaponPositioning
     {
         base.Update();
 
-        if (gameObject.transform.parent != null)
+        if (IsEquipped)
         {
             Debug.DrawRay(_mainCamera.transform.position, _mainCamera.transform.forward * 1000, Color.green);
             
@@ -139,8 +140,16 @@ public class Weapon : WeaponPositioning
         yield return null;
     }
 
-    private void Reload()
+    public bool IsEquipped
     {
-        _ammo = _initialAmmo;
-    }
+        get
+        {
+            return _isEquipped;
+        }
+
+        set
+        {
+            _isEquipped = value;
+        }
+    } 
 }
