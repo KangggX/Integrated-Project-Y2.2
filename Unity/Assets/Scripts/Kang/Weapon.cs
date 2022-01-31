@@ -42,7 +42,7 @@ public class Weapon : WeaponPositioning
 
         if (gameObject.transform.parent != null)
         {
-            //Debug.DrawRay(_mainCamera.transform.position, _mainCamera.transform.forward * 1000, Color.green);
+            Debug.DrawRay(_mainCamera.transform.position, _mainCamera.transform.forward * 1000, Color.green);
             
             _mainCamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(_mainCamera.GetComponent<Camera>().fieldOfView, _currFOV, Time.deltaTime * _lerpSpeed);
 
