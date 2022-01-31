@@ -12,6 +12,7 @@ TagManager:
   - Water
   - UI
   - Target
+  - Ground
   - 
   - 
   - 
@@ -35,8 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Spatial Awareness
   m_SortingLayers:
   - name: Default
     uniqueID: 0
