@@ -65,6 +65,6 @@ public class PlayerController : MonoBehaviour
         rotationY = Mathf.Clamp(rotationY, _minAngle, _maxAngle);
 
         _camera.transform.rotation = _camera.transform.rotation * Quaternion.Euler(rotationY, 0, 0);
-        _weaponRoot.rotation = _camera.transform.rotation;
+        //_weaponRoot.rotation = _camera.transform.rotation;
     }
 }
