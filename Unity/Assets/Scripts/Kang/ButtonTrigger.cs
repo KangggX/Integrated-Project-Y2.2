@@ -22,9 +22,9 @@ public class ButtonTrigger : MonoBehaviour, IInteractable
                 break;
 
             case ButtonType.ClearHoleInstance:
-                Target target = _targetObject.GetComponent<Target>();
+                TargetManager targetManager = _targetObject.GetComponent<TargetManager>();
 
-                target.ClearBulletHoleInstances();
+                targetManager.ClearBulletHoleInstances();
 
                 break;
         }

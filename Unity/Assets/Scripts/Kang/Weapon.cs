@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : WeaponPositioning
+public class Weapon : MonoBehaviour
 {
     [Header("Weapon Settings")]
     [SerializeField] protected GameObject _scopeOverlay;
@@ -37,29 +37,36 @@ public class Weapon : WeaponPositioning
         _currFOV = _initialScopeFOV;
     }
 
-    public override void Update()
+    public virtual void Update()
     {
-        base.Update();
-
         if (IsEquipped)
         {
             Debug.DrawRay(_mainCamera.transform.position, _mainCamera.transform.forward * 1000, Color.green);
             
             _mainCamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(_mainCamera.GetComponent<Camera>().fieldOfView, _currFOV, Time.deltaTime * _lerpSpeed);
 
-            if (Input.GetButtonDown("Fire1"))
-            {
-                Shoot();
-            }
-
-            if (Input.GetButtonDown("Fire2"))
-            {
-                Scope();
-            }
+            LeftClick();
+            RightClick();
         }
     }
 
-    private void Shoot()
+    public virtual void LeftClick()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+    }
+
+    public virtual void RightClick()
+    {
+        if (Input.GetButtonDown("Fire2"))
+        {
+            Scope();
+        }
+    }
+
+    protected void Shoot()
     {
         if (_ammo > 0)
         {
@@ -71,7 +78,7 @@ public class Weapon : WeaponPositioning
                 
                 if (hitTarget != null)
                 {
-                    hitTarget.GainPoint();
+                    hitTarget.Hit();
 
                     GameObject bulletHoleInstance = Instantiate(_bulletHole, hit.point, Quaternion.identity, hitTarget.transform);
                     bulletHoleInstance.transform.position -= bulletHoleInstance.transform.forward / 1000;
@@ -92,23 +99,23 @@ public class Weapon : WeaponPositioning
 
         if (_isScoped)
         {
-            _animator.SetBool("isScoped", _isScoped); // Activate the gun's scoped animation
             StartCoroutine(OnScope());
         }
         else
         {
-            _animator.SetBool("isScoped", _isScoped); // Deactivate the gun's scope animation
             StartCoroutine(OnDescope());
         }
     }
 
     private IEnumerator OnScope()
     {
-        yield return new WaitForSeconds(0.25f);
-        _currFOV = _scopeFOV; // Zoom the camera in when scoped
-        
         if (_scopeOverlay != null)
         {
+            _animator.SetBool("isScoped", _isScoped); // Activate the gun's scoped animation
+
+            yield return new WaitForSeconds(0.25f);
+            _currFOV = _scopeFOV; // Zoom the camera in when scoped
+
             if (transform.childCount > 0)
             {
                 foreach (Transform parts in transform)
@@ -117,7 +124,12 @@ public class Weapon : WeaponPositioning
                 }
             }
 
-            _scopeOverlay.SetActive(_isScoped); // Turn on/off the zoom overlay
+            _scopeOverlay.SetActive(_isScoped); // Turn on the zoom overlay
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.25f);
+            _currFOV = _scopeFOV; // Zoom the camera in when scoped
         }
     }
 
@@ -125,6 +137,8 @@ public class Weapon : WeaponPositioning
     {
         if (_scopeOverlay != null)
         {
+            _animator.SetBool("isScoped", _isScoped); // Deactivate the gun's scope animation
+
             if (transform.childCount > 0)
             {
                 foreach (Transform parts in transform)
@@ -133,11 +147,17 @@ public class Weapon : WeaponPositioning
                 }
             }
 
-            _scopeOverlay.SetActive(_isScoped); // Turn on/off the zoom overlay
-        }
-        _currFOV = _initialScopeFOV; // Reset camera zoom to OG
+            _scopeOverlay.SetActive(_isScoped); // Turn off the zoom overlay
+            _currFOV = _initialScopeFOV; // Reset camera zoom to OG
 
-        yield return null;
+            yield return null;
+        }
+        else
+        {
+            _currFOV = _initialScopeFOV; // Reset camera zoom to OG
+
+            yield return null;
+        }
     }
 
     public bool IsEquipped

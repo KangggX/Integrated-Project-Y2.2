@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    private int _currPoint = 0;
+    [SerializeField] private int _pointValue;
+    private TargetManager _targetManager;
 
-    public void GainPoint()
+    private void Start()
     {
-        _currPoint++;
-        Debug.Log(_currPoint);
+        _targetManager = GetComponentInParent<TargetManager>();
     }
 
-    public void ClearBulletHoleInstances()
+    public void Hit()
     {
-        if (transform.childCount > 0)
-        {
-            foreach (Transform hole in transform)
-            {
-                Destroy(hole.gameObject);
-            }
-        }
+        _targetManager.TotalPoints += _pointValue;
     }
 }

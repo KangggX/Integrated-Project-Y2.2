@@ -9,12 +9,7 @@ public class TargetMovement : MonoBehaviour
     [SerializeField] private Transform _outPosition;
 
     [SerializeField] private bool _isOut;
-    private bool _canMove;
-    public bool CanMove
-    {
-        get { return _canMove; }
-        set { _canMove = value; }
-    }
+    [SerializeField] private bool _canMove;
 
     private Vector3 _basePosition;
     private float _elapsedTime;
@@ -58,5 +53,11 @@ public class TargetMovement : MonoBehaviour
                 _basePosition = gameObject.transform.position;
             }
         }
+    }
+
+    public bool CanMove
+    {
+        get { return _canMove; }
+        set { _canMove = value; }
     }
 }
