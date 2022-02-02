@@ -21,7 +21,7 @@ public class TargetManager : MonoBehaviour
             {
                 foreach (Transform holeInstance in parts)
                 {
-                    Destroy(holeInstance);
+                    Destroy(holeInstance.gameObject);
                 }
             }
         }

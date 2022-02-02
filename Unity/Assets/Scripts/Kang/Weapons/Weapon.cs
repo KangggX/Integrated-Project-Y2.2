@@ -49,6 +49,18 @@ public class Weapon : MonoBehaviour
             RightClick();
         }
     }
+    public bool IsEquipped
+    {
+        get
+        {
+            return _isEquipped;
+        }
+
+        set
+        {
+            _isEquipped = value;
+        }
+    } 
 
     public virtual void LeftClick()
     {
@@ -89,7 +101,7 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            UIManager.DisplayMagazineError();
+            RanOutOfEmmo();
         }
     }
 
@@ -160,16 +172,8 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public bool IsEquipped
+    private void RanOutOfEmmo() 
     {
-        get
-        {
-            return _isEquipped;
-        }
-
-        set
-        {
-            _isEquipped = value;
-        }
-    } 
+        UIManager.DisplayMagazineError();
+    }
 }
