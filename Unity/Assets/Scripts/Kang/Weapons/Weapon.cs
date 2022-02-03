@@ -5,14 +5,15 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Header("Weapon Settings")]
-    [SerializeField] protected GameObject _scopeOverlay;
-    [SerializeField] protected Transform _gunBarrel;
-    [SerializeField] protected GameObject _bulletHole;
+    //[SerializeField] protected GameObject _bulletHole;
+    [SerializeField] protected float _fireRate;
     [SerializeField] protected int _ammo;
     private int _initialAmmo;
     private bool _isEquipped;
+    protected bool _canShoot = true;
 
     [Header("Weapon Scope Settings")]
+    [SerializeField] protected GameObject _scopeOverlay;
     [SerializeField] protected float _scopeFOV;
     [SerializeField] protected float _lerpSpeed;
     private float _initialScopeFOV;
@@ -64,8 +65,10 @@ public class Weapon : MonoBehaviour
 
     public virtual void LeftClick()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && _canShoot)
         {
+            _canShoot = false;
+            StartCoroutine(FireRoutine());
             Shoot();
         }
     }
@@ -92,7 +95,7 @@ public class Weapon : MonoBehaviour
                 {
                     hitTarget.Hit();
 
-                    GameObject bulletHoleInstance = Instantiate(_bulletHole, hit.point, Quaternion.identity, hitTarget.transform);
+                    GameObject bulletHoleInstance = Instantiate(Resources.Load<GameObject>("Bullet Hole"), hit.point, Quaternion.identity, hitTarget.transform);
                     bulletHoleInstance.transform.position -= bulletHoleInstance.transform.forward / 1000;
 
                     /*Destroy(bulletHoleInstance, 2);*/ // Delete the bullet hole instance after 2s
@@ -170,6 +173,12 @@ public class Weapon : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    protected IEnumerator FireRoutine()
+    {
+        yield return new WaitForSeconds(1 / _fireRate);
+        _canShoot = true;
     }
 
     private void RanOutOfEmmo() 

@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonTrigger : MonoBehaviour, IInteractable
+public class TargetButton : MonoBehaviour, IInteractable
 {
+    public static event Action<bool> OnClearClick;
+
     [SerializeField] private ButtonType _buttonType;
     [SerializeField] private GameObject _targetObject;
 
@@ -22,9 +25,7 @@ public class ButtonTrigger : MonoBehaviour, IInteractable
                 break;
 
             case ButtonType.ClearHoleInstance:
-                TargetManager targetManager = _targetObject.GetComponent<TargetManager>();
-
-                targetManager.ClearBulletHoleInstances();
+                OnClearClick?.Invoke( true );
 
                 break;
         }
