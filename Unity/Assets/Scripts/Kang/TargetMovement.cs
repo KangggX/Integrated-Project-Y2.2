@@ -9,12 +9,7 @@ public class TargetMovement : MonoBehaviour
     [SerializeField] private Transform _outPosition;
 
     [SerializeField] private bool _isOut;
-    private bool _canMove;
-    public bool CanMove
-    {
-        get { return _canMove; }
-        set { _canMove = value; }
-    }
+    [SerializeField] private bool _canMove;
 
     private Vector3 _basePosition;
     private float _elapsedTime;
@@ -31,9 +26,11 @@ public class TargetMovement : MonoBehaviour
             _elapsedTime += Time.deltaTime;
             float percentageCompletion = _elapsedTime / _transitionSpeed;
 
-            gameObject.transform.position = Vector3.Lerp(_basePosition, _inPosition.position, percentageCompletion);
+            Vector3 desiredPosition = new Vector3(_inPosition.position.x, _basePosition.y, _inPosition.position.z);
 
-            if (gameObject.transform.position == _inPosition.position)
+            gameObject.transform.position = Vector3.Lerp(_basePosition, desiredPosition, percentageCompletion);
+
+            if (gameObject.transform.position == desiredPosition)
             {
                 _isOut = false;
                 _canMove = false;
@@ -47,9 +44,11 @@ public class TargetMovement : MonoBehaviour
             _elapsedTime += Time.deltaTime;
             float percentageCompletion = _elapsedTime / _transitionSpeed;
 
-            gameObject.transform.position = Vector3.Lerp(_basePosition, _outPosition.position, percentageCompletion);
+            Vector3 desiredPosition = new Vector3(_outPosition.position.x, _basePosition.y, _outPosition.position.z);
 
-            if (gameObject.transform.position == _outPosition.position)
+            gameObject.transform.position = Vector3.Lerp(_basePosition, desiredPosition, percentageCompletion);
+
+            if (gameObject.transform.position == desiredPosition)
             {
                 _isOut = true;
                 _canMove = false;
@@ -58,5 +57,11 @@ public class TargetMovement : MonoBehaviour
                 _basePosition = gameObject.transform.position;
             }
         }
+    }
+
+    public bool CanMove
+    {
+        get { return _canMove; }
+        set { _canMove = value; }
     }
 }
