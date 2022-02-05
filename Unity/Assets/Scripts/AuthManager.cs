@@ -34,10 +34,15 @@ public class AuthManager: MonoBehaviour
         InitializeDatabase();
     }
 
-    void InitializeDatabase()
+    private void InitializeDatabase()
     {
         auth = FirebaseAuth.DefaultInstance;
         dbReference = FirebaseDatabase.DefaultInstance.RootReference;
+    }
+
+    private void Start()
+    {
+        Debug.Log(auth.CurrentUser.UserId);
     }
 
     public async void Register()

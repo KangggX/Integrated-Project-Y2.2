@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     private int _initialAmmo;
     private bool _isEquipped;
     protected bool _canShoot = true;
+    private WaitForSeconds _fireCountdown;
 
     [Header("Weapon Scope Settings")]
     [SerializeField] protected GameObject _scopeOverlay;
@@ -29,6 +30,7 @@ public class Weapon : MonoBehaviour
     private void Awake()
     {
         _initialAmmo = _ammo;
+        _fireCountdown = new WaitForSeconds(1 / _fireRate);
     }
 
     private void Start()
@@ -177,8 +179,13 @@ public class Weapon : MonoBehaviour
 
     protected IEnumerator FireRoutine()
     {
-        yield return new WaitForSeconds(1 / _fireRate);
+        yield return _fireCountdown;
         _canShoot = true;
+    }
+
+    public void ResetAmmo()
+    {
+        _ammo = _initialAmmo;
     }
 
     private void RanOutOfEmmo() 
