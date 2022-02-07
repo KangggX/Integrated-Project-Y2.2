@@ -99,7 +99,7 @@ function setLeaderboardData() {
                     position = index + "th"
                 }
 
-                update(ref(db), {["/playerStats/" + childSnapshot.key + "/leaderboardPosition"]: position});
+                update(ref(db), {["/playerStats/" + childSnapshot.key + "/skiingPos"]: position});
 
                 leaderboardData.displayname = childSnapshot.child("displayname").val();
                 leaderboardData.fastestTime = childSnapshot.child("fastestTime").val();
@@ -163,7 +163,7 @@ function updateProfilePage(username) {
     setTimeout(() => {
         get(ref(db, "playerStats/" + key)).then((snapshot) => {
             if (snapshot.exists()) {
-                $("#leaderboardPositionDetail").text(`${snapshot.child("leaderboardPosition").val()}`);
+                $("#leaderboardPositionDetail").text(`${snapshot.child("skiingPos").val()}`);
                 $("#fastestTimeDetail").text(`${convertHMS(snapshot.child("fastestTime").val())}`);
                 $("#totalTimeDetail").text(`${snapshot.child("totalTime").val()}`);
                 $("#totalGameDetail").text(`${snapshot.child("totalGame").val()}`);

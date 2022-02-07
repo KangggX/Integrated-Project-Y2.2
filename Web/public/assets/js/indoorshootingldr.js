@@ -99,7 +99,7 @@ function setLeaderboardData() {
                     position = index + "th"
                 }
 
-                update(ref(db), {["/playerStats/" + childSnapshot.key + "/leaderboardPosition"]: position});
+                update(ref(db), {["/playerStats/" + childSnapshot.key + "/indoorPos"]: position});
 
                 leaderboardData2.displayname = childSnapshot.child("displayname").val();
                 leaderboardData2.indoorPoints = childSnapshot.child("indoorPoints").val();
