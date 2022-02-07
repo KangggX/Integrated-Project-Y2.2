@@ -21,7 +21,9 @@ import {
     orderByChild, 
     orderByKey, 
     query,
-    remove
+    remove,
+    limitToLast
+
 } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
 
 const db = getDatabase();
@@ -73,8 +75,8 @@ function leaderboardUpdater() {
 }
 
 function setLeaderboardData() {
-    let que = query(playerStatsRef, orderByChild("indoorPoints"));
-
+    let que = query(playerStatsRef, orderByChild("indoorPoints"), limitToLast(1));
+    
     get(que).then((snapshot) => {
         if (snapshot.exists()) {
             // console.log(snapshot.size)
