@@ -7,12 +7,12 @@ public class GameManager : MonoBehaviour
     private Weapon[] _weaponList;
     private TargetManager _targetManager;
     private AuthManager _authManager;
-    private SimpleFirebaseManager _simpleFirebaseManager;
+    private SimpleFirebaseManager _firebaseManager;
 
     private void Awake()
     {
         _authManager = GetComponent<AuthManager>();
-        _simpleFirebaseManager = GetComponent<SimpleFirebaseManager>();
+        _firebaseManager = GetComponent<SimpleFirebaseManager>();
     }
 
     private void Start()
@@ -40,6 +40,6 @@ public class GameManager : MonoBehaviour
         string displayName = _authManager.auth.CurrentUser.DisplayName;
         int points = _targetManager.TotalPoints;
 
-        _simpleFirebaseManager.UpdatePlayerIndoorStats(uuid, displayName, points);
+        _firebaseManager.UpdatePlayerIndoorStats(uuid, displayName, points);
     }
 }
