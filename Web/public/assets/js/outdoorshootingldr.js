@@ -27,15 +27,15 @@ import {
 const db = getDatabase();
 const playerRef = ref(db, "players");
 const playerStatsRef = ref(db, "playerStats");
-const leaderboardRef = ref(db, "shootingLeaderboard");
+const leaderboardRef = ref(db, "outdoorLeaderboard");
 
 //Working with Auth
 const auth = getAuth();
 const user = auth.currentUser;
 
-var leaderboardData2 = {
+var leaderboardData3 = {
     displayname: "",
-    highestPoints: 0,
+    outdoorPoints: 0,
     updatedOn: Date.now()
 }
 
@@ -73,7 +73,7 @@ function leaderboardUpdater() {
 }
 
 function setLeaderboardData() {
-    let que = query(playerStatsRef, orderByChild("highestPoints"));
+    let que = query(playerStatsRef, orderByChild("outdoorPoints"));
 
     get(que).then((snapshot) => {
         if (snapshot.exists()) {
@@ -99,14 +99,14 @@ function setLeaderboardData() {
                     position = index + "th"
                 }
 
-                update(ref(db), {["/playerStats/" + childSnapshot.key + "/leaderboardPosition"]: position});
+                update(ref(db), {["/playerStats/" + childSnapshot.key + "/outdoorPos"]: position});
 
-                leaderboardData2.displayname = childSnapshot.child("displayname").val();
-                leaderboardData2.highestPoints = childSnapshot.child("highestPoints").val();
-                console.log(leaderboardData2);
+                leaderboardData3.displayname = childSnapshot.child("displayname").val();
+                leaderboardData3.outdoorPoints = childSnapshot.child("outdoorPoints").val();
+                console.log(leaderboardData3);
 
                 
-                set(ref(db, "shootingLeaderboard/" + childSnapshot.key), leaderboardData2); // Pushing new data into Database
+                set(ref(db, "outdoorLeaderboard/" + childSnapshot.key), leaderboardData3); // Pushing new data into Database
                 
                 index++;
                 
@@ -131,7 +131,7 @@ function updateLeaderboard(){
                 <div class="leaderboard__list--content leaderboard__title--username">Username</div>
             </li>
         `);
-        let que = query(leaderboardRef, orderByChild("highestPoints"));
+        let que = query(leaderboardRef, orderByChild("outdoorPoints"));
 
         // Appending leaderboard data
         get(que).then((snapshot) => {
@@ -143,7 +143,7 @@ function updateLeaderboard(){
                     
                     $(".leaderboard__list").append(`<li>
                         <div class="leaderboard__list--content leaderboard--ranking">${index}</div>
-                        <div class="leaderboard__list--content leaderboard--score">${childSnapshot.child("highestPoints").val()}</div>
+                        <div class="leaderboard__list--content leaderboard--score">${childSnapshot.child("outdoorPoints").val()}</div>
                         <div class="leaderboard__list--content leaderboard--username">${childSnapshot.child("displayname").val()}</div>
                     </li>`)
 

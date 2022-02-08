@@ -3,13 +3,16 @@
     ".read": true, 
     ".write": true, 
       "playerStats": {
-        ".indexOn": ["fastestTime", "highestPoints"]
+        ".indexOn": ["fastestTime", "indoorPoints", "outdoorPoints"]
       },
       "leaderboard": {
       	".indexOn": ["fastestTime"]
       },
-      "shootingLeaderboard": {
-        ".indexOn": ["highestPoints"]
+      "indoorLeaderboard": {
+        ".indexOn": ["indoorPoints"]
+      },
+      "outdoorLeaderboard": {
+        ".indexOn": ["outdoorPoints"]
       }
   }
 }

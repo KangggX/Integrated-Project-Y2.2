@@ -21,21 +21,23 @@ import {
     orderByChild, 
     orderByKey, 
     query,
-    remove
+    remove,
+    limitToLast
+
 } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
 
 const db = getDatabase();
 const playerRef = ref(db, "players");
 const playerStatsRef = ref(db, "playerStats");
-const leaderboardRef = ref(db, "leaderboard");
+const leaderboardRef = ref(db, "indoorLeaderboard");
 
 //Working with Auth
 const auth = getAuth();
 const user = auth.currentUser;
 
-var leaderboardData = {
+var leaderboardData2 = {
     displayname: "",
-    fastestTime: 0,
+    indoorPoints: 0,
     updatedOn: Date.now()
 }
 
@@ -73,8 +75,8 @@ function leaderboardUpdater() {
 }
 
 function setLeaderboardData() {
-    let que = query(playerStatsRef, orderByChild("fastestTime"));
-
+    let que = query(playerStatsRef, orderByChild("indoorPoints"), limitToLast(1));
+    
     get(que).then((snapshot) => {
         if (snapshot.exists()) {
             // console.log(snapshot.size)
@@ -99,17 +101,18 @@ function setLeaderboardData() {
                     position = index + "th"
                 }
 
-                update(ref(db), {["/playerStats/" + childSnapshot.key + "/skiingPos"]: position});
+                update(ref(db), {["/playerStats/" + childSnapshot.key + "/indoorPos"]: position});
 
-                leaderboardData.displayname = childSnapshot.child("displayname").val();
-                leaderboardData.fastestTime = childSnapshot.child("fastestTime").val();
+                leaderboardData2.displayname = childSnapshot.child("displayname").val();
+                leaderboardData2.indoorPoints = childSnapshot.child("indoorPoints").val();
+                console.log(leaderboardData2);
 
                 
-                set(ref(db, "leaderboard/" + childSnapshot.key), leaderboardData); // Pushing new data into Database
+                set(ref(db, "indoorLeaderboard/" + childSnapshot.key), leaderboardData2); // Pushing new data into Database
                 
                 index++;
                 
-                // tempLeaderboardArray.push({key: childSnapshot.key, username: childSnapshot.child("displayname").val(), fastestTime: childSnapshot.child("fastestTime").val()});
+                // tempLeaderboardArray.push({key: childSnapshot.key, username: childSnapshot.child("displayname").val(), indoorPoints: childSnapshot.child("indoorPoints").val()});
             });
         }
     });
@@ -126,11 +129,11 @@ function updateLeaderboard(){
         $(".leaderboard__list").append(`
             <li>
                 <div class="leaderboard__list--content leaderboard__title--ranking">Ranking</div>
-                <div class="leaderboard__list--content leaderboard__title--score">Time (MM:SS)</div>
+                <div class="leaderboard__list--content leaderboard__title--score">Points</div>
                 <div class="leaderboard__list--content leaderboard__title--username">Username</div>
             </li>
         `);
-        let que = query(leaderboardRef, orderByChild("fastestTime"));
+        let que = query(leaderboardRef, orderByChild("indoorPoints"));
 
         // Appending leaderboard data
         get(que).then((snapshot) => {
@@ -142,7 +145,7 @@ function updateLeaderboard(){
                     
                     $(".leaderboard__list").append(`<li>
                         <div class="leaderboard__list--content leaderboard--ranking">${index}</div>
-                        <div class="leaderboard__list--content leaderboard--score">${convertHMS(childSnapshot.child("fastestTime").val())}</div>
+                        <div class="leaderboard__list--content leaderboard--score">${childSnapshot.child("indoorPoints").val()}</div>
                         <div class="leaderboard__list--content leaderboard--username">${childSnapshot.child("displayname").val()}</div>
                     </li>`)
 
@@ -163,7 +166,7 @@ function updateProfilePage(username) {
     setTimeout(() => {
         get(ref(db, "playerStats/" + key)).then((snapshot) => {
             if (snapshot.exists()) {
-                $("#leaderboardPositionDetail").text(`${snapshot.child("skiingPos").val()}`);
+                $("#leaderboardPositionDetail").text(`${snapshot.child("leaderboardPosition").val()}`);
                 $("#fastestTimeDetail").text(`${convertHMS(snapshot.child("fastestTime").val())}`);
                 $("#totalTimeDetail").text(`${snapshot.child("totalTime").val()}`);
                 $("#totalGameDetail").text(`${snapshot.child("totalGame").val()}`);
