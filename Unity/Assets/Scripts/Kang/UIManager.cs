@@ -16,14 +16,12 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Target.OnPointsChanged += UpdatePointsText;
-        TargetButton.OnClearClick += PromptClearTarget;
+        TargetManager.OnPointsChanged += UpdatePointsText;
     }
 
     private void OnDisable()
     {
-        Target.OnPointsChanged -= UpdatePointsText;
-        TargetButton.OnClearClick -= PromptClearTarget;
+        TargetManager.OnPointsChanged -= UpdatePointsText;
     }
 
     public void UpdatePointsText(int points)

@@ -43,6 +43,7 @@ public class AuthManager: MonoBehaviour
     private void Start()
     {
         Debug.Log(auth.CurrentUser.UserId);
+        Debug.Log(auth.CurrentUser.DisplayName);
     }
 
     public async void Register()

@@ -9,32 +9,41 @@ using System.Threading.Tasks;
 
 public class SimpleFirebaseManager : MonoBehaviour
 {
-
     DatabaseReference dbPlayerStatsReference;
-    DatabaseReference dbPlayerLeaderboardReference;
 
-    AuthManager authMgr;
+    DatabaseReference dbPlayerLeaderboardReference;
+    DatabaseReference dbSkiingLeaderboardReference;
+    DatabaseReference dbIndoorLeaderboardReference;
+    DatabaseReference dbOutdoorLeaderboardReference;
+
+    AuthManager authManager;
 
     private void Awake()
     {
         InitializeFirebase();
-        
+    }
+
+    private void Start()
+    {
+        authManager = FindObjectOfType<AuthManager>();
     }
 
     public void InitializeFirebase()
     {
         dbPlayerStatsReference = FirebaseDatabase.DefaultInstance.GetReference("playerStats");
         dbPlayerLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("leaderboard");
+
+        dbSkiingLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("leaderboard");
+        dbIndoorLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("indoorLeaderboard");
+        dbOutdoorLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("outdoorLeaderboard");
     }
 
-    public void UpdatePlayerStats(string uuid, string displayname, int time)
+    // Updates the player's fastestTime, totalgame, and totalTime
+    public void UpdatePlayerSkiiStats(string uuid, string displayname, int time)
     {
         Debug.Log("Entering.. update player stats" + uuid);
         Query playerQuery = dbPlayerStatsReference.Child(uuid);
-        //Query playerQuery = dbPlayerLeaderboardReference.Child(uuid);
 
-        //Read data first too check if there has been an entry using UUID
-        //FirebaseDatabase.DefaultInstance.GoOnline();
         dbPlayerStatsReference.Child(uuid).GetValueAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted || task.IsCanceled)
@@ -44,12 +53,11 @@ public class SimpleFirebaseManager : MonoBehaviour
             else if (task.IsCompleted)
             {
                 DataSnapshot playerStats = task.Result;
-                //if there has been an entry created 
-                 if (playerStats.Exists)
-                 {
+            
+                if (playerStats.Exists) //if there has been an entry created 
+                    {
                     //Update player stats
                     //Compare existing highscore and set new highscore
-                    //Add xp per game
                     //Create temp obj sp to store info from player stats
 
                     foreach(DataSnapshot d in playerStats.Children)
@@ -58,56 +66,200 @@ public class SimpleFirebaseManager : MonoBehaviour
                     }
                     SimplePlayerStats sp = JsonUtility.FromJson<SimplePlayerStats>(playerStats.GetRawJsonValue());
                     Debug.Log("sp data in update" + sp.SimplePlayerStatsToJson());
-                    sp.totalGame = sp.totalGame + 1;
-                    //sp.totalTime = sp.totalTime + (int)timer.currentTime;
+
+                    sp.totalGame += 1;
+                    sp.totalTime += time;
                     sp.updatedOn = sp.GetTimeUnix();
-                    //Check if there is a new highscore
-                    //Update leaderboard if there is a new highscore\
+
+                    // Check if there is a new highscore
+                    // Update leaderboard if there is a new highscore
                     if (time > sp.fastestTime)
                     {
                         sp.fastestTime = time;
-                        UpdatePlayerLeaderboardEntry(uuid, sp.fastestTime, sp.updatedOn);
-                        Debug.Log("highscore updated!");
+                        UpdatePlayerLeaderboardEntry(uuid, time, sp.updatedOn, Stats.Skiing);
 
+                        Debug.Log("highscore updated!");
                     }
-                
 
                     //Update with entire temp sp obj
                     //playerstats/$uuid/
                     dbPlayerStatsReference.Child(uuid).SetRawJsonValueAsync(sp.SimplePlayerStatsToJson());
                 }
-               else
+                else
                 {
-                    //Create player stats
-                    //If no existing data, first time player
-                    SimplePlayerStats sp = new SimplePlayerStats(displayname, time);
-
-                    SimpleLeaderboard lb = new SimpleLeaderboard(displayname, time);
                     Debug.Log("Let's write new entry" + uuid);
 
+                    //Create player stats if no existing data, first time player
+                    SimplePlayerStats sp = new SimplePlayerStats(displayname, time, Stats.Skiing);
+                    SkiingLeaderboard lb = new SkiingLeaderboard(displayname, time);
+
+
                     dbPlayerStatsReference.Child(uuid).SetRawJsonValueAsync(sp.SimplePlayerStatsToJson());
-                    dbPlayerLeaderboardReference.Child(uuid).SetRawJsonValueAsync(lb.SimpleLeaderboardToJson());
+                    dbSkiingLeaderboardReference.Child(uuid).SetRawJsonValueAsync(lb.LeaderboardToJson());
                 }
 
             }
         });
-       // FirebaseDatabase.DefaultInstance.GoOffline();
     }
 
-    public void UpdatePlayerLeaderboardEntry(string uuid, int fastestTime, long updatedOn)
+    // Updates the player's outdoorPoints, outdoorTotalGame, and outdoorTotalPoints
+    public void UpdatePlayerOutdoorStats(string uuid, string displayname, int points)
     {
-        //Update specific single entries
+        Debug.Log("Entering.. update player stats" + uuid);
+        Query playerQuery = dbPlayerStatsReference.Child(uuid);
 
-        //leaderboards/$uuid/highscore
-        //leaderboards/$uuid/updatedOn
-        dbPlayerLeaderboardReference.Child(uuid).Child("fastestTime").SetValueAsync(fastestTime);
-        dbPlayerLeaderboardReference.Child(uuid).Child("updatedOn").SetValueAsync(updatedOn);
+        dbPlayerStatsReference.Child(uuid).GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                Debug.LogError("Sorry, there was an error creating your entries, ERROR: " + task.Exception);
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot playerStats = task.Result;
+
+                if (playerStats.Exists) //if there has been an entry created 
+                {
+                    //Update player stats
+                    //Compare existing highscore and set new highscore
+                    //Add xp per game
+                    //Create temp obj sp to store info from player stats
+
+                    foreach (DataSnapshot d in playerStats.Children)
+                    {
+                        Debug.Log("snapshot value " + d.Key + ":" + d.Value);
+                    }
+                    SimplePlayerStats sp = JsonUtility.FromJson<SimplePlayerStats>(playerStats.GetRawJsonValue());
+                    Debug.Log("sp data in update" + sp.SimplePlayerStatsToJson());
+
+                    sp.outdoorTotalGame += 1;
+                    sp.outdoorTotalPoints += points;
+                    sp.updatedOn = sp.GetTimeUnix();
+
+                    // Check if there is a new highscore
+                    // Update leaderboard if there is a new highscore
+                    if (points > sp.outdoorPoints)
+                    {
+                        sp.outdoorPoints = points;
+                        UpdatePlayerLeaderboardEntry(uuid, points, sp.updatedOn, Stats.OutdoorShooting);
+
+                        Debug.Log("highscore updated!");
+                    }
+
+                    //Update with entire temp sp obj
+                    //playerstats/$uuid/
+                    dbPlayerStatsReference.Child(uuid).SetRawJsonValueAsync(sp.SimplePlayerStatsToJson());
+                }
+                else
+                {
+                    Debug.Log("Let's write new entry" + uuid);
+
+                    //Create player stats if no existing data, first time player
+                    SimplePlayerStats sp = new SimplePlayerStats(displayname, points, Stats.OutdoorShooting);
+                    OutdoorLeaderboard lb = new OutdoorLeaderboard(displayname, points);
+
+                    dbPlayerStatsReference.Child(uuid).SetRawJsonValueAsync(sp.SimplePlayerStatsToJson());
+                    dbOutdoorLeaderboardReference.Child(uuid).SetRawJsonValueAsync(lb.LeaderboardToJson());
+                }
+
+            }
+        });
     }
 
-    public async Task<List<SimpleLeaderboard>> GetLeaderboard(int limit = 5)
+    // Updates the player's indoorPoints, indoorTotalGame, and indoorTotalPoints
+    public void UpdatePlayerIndoorStats(string uuid, string displayname, int points)
+    {
+        Debug.Log("Entering.. update player stats" + uuid);
+        Query playerQuery = dbPlayerStatsReference.Child(uuid);
+
+        dbPlayerStatsReference.Child(uuid).GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                Debug.LogError("Sorry, there was an error creating your entries, ERROR: " + task.Exception);
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot playerStats = task.Result;
+
+                if (playerStats.Exists) //if there has been an entry created 
+                {
+                    //Update player stats
+                    //Compare existing highscore and set new highscore
+                    //Create temp obj sp to store info from player stats
+
+                    foreach (DataSnapshot d in playerStats.Children)
+                    {
+                        Debug.Log("snapshot value " + d.Key + ":" + d.Value);
+                    }
+                    SimplePlayerStats sp = JsonUtility.FromJson<SimplePlayerStats>(playerStats.GetRawJsonValue());
+                    Debug.Log("sp data in update" + sp.SimplePlayerStatsToJson());
+
+                    sp.indoorTotalGame += 1;
+                    sp.indoorTotalPoints += points;
+                    sp.updatedOn = sp.GetTimeUnix();
+
+                    // Check if there is a new highscore
+                    // Update leaderboard if there is a new highscore
+                    if (points > sp.indoorPoints)
+                    {
+                        sp.indoorPoints = points;
+                        UpdatePlayerLeaderboardEntry(uuid, points, sp.updatedOn, Stats.IndoorShooting);
+
+                        Debug.Log("highscore updated!");
+                    }
+
+                    //Update with entire temp sp obj
+                    //playerstats/$uuid/
+                    dbPlayerStatsReference.Child(uuid).SetRawJsonValueAsync(sp.SimplePlayerStatsToJson());
+                }
+                else
+                {
+                    Debug.Log("Let's write new entry" + uuid);
+
+                    //Create player stats if no existing data, first time player
+                    SimplePlayerStats sp = new SimplePlayerStats(displayname, points, Stats.IndoorShooting);
+                    IndoorLeaderboard lb = new IndoorLeaderboard(displayname, points);
+
+                    dbPlayerStatsReference.Child(uuid).SetRawJsonValueAsync(sp.SimplePlayerStatsToJson());
+                    dbIndoorLeaderboardReference.Child(uuid).SetRawJsonValueAsync(lb.LeaderboardToJson());
+                }
+
+            }
+        });
+    }
+
+
+    // Updates the fastestTime or the points of the specific game leaderboard if they have a new highscore
+    public void UpdatePlayerLeaderboardEntry(string uuid, int score, long updatedOn, Stats statsType)
+    {
+        switch (statsType)
+        {
+            case Stats.Skiing:
+                dbSkiingLeaderboardReference.Child(uuid).Child("fastestTime").SetValueAsync(score);
+                dbSkiingLeaderboardReference.Child(uuid).Child("updatedOn").SetValueAsync(updatedOn);
+
+                break;
+
+            case Stats.IndoorShooting:
+                dbIndoorLeaderboardReference.Child(uuid).Child("indoorPoints").SetValueAsync(score);
+                dbIndoorLeaderboardReference.Child(uuid).Child("updatedOn").SetValueAsync(updatedOn);
+
+                break;
+
+            case Stats.OutdoorShooting:
+                dbOutdoorLeaderboardReference.Child(uuid).Child("outdoorPoints").SetValueAsync(score);
+                dbOutdoorLeaderboardReference.Child(uuid).Child("updatedOn").SetValueAsync(updatedOn);
+
+                break;
+        }
+    }
+
+    // Get the leaderboard data from the "leaderboard" entry in Firebase
+    public async Task<List<SkiingLeaderboard>> GetSkiiLeaderboard(int limit = 5)
     {
         Query q = dbPlayerLeaderboardReference.OrderByChild("fastestTime").LimitToLast(limit);
-        List<SimpleLeaderboard> leaderboardList = new List<SimpleLeaderboard>();
+        List<SkiingLeaderboard> leaderboardList = new List<SkiingLeaderboard>();
 
         await q.GetValueAsync().ContinueWithOnMainThread(task =>
         {
@@ -126,21 +278,106 @@ public class SimpleFirebaseManager : MonoBehaviour
                     {
                         Debug.Log("yes");
                         //Create temp obj based on results
-                        SimpleLeaderboard lb = JsonUtility.FromJson<SimpleLeaderboard>(d.GetRawJsonValue());
+                        SkiingLeaderboard lb = JsonUtility.FromJson<SkiingLeaderboard>(d.GetRawJsonValue());
 
                         //Add item to list 
                         leaderboardList.Add(lb);
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.fastestTime);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.fastestTime);
                     }
                     //For each simpleleaderboard obj inside leaderboard list
-                    foreach (SimpleLeaderboard lb in leaderboardList)
+                    foreach (SkiingLeaderboard lb in leaderboardList)
                     {
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.fastestTime);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.fastestTime);
                         rankCounter++;
                     }
                 }
             }
         });
+
+        return leaderboardList;
+    }
+
+    // Get the leaderboard data from the "outdoorLeaderboard" entry in Firebase
+    public async Task<List<OutdoorLeaderboard>> GetOutdoorLeaderboard(int limit = 5)
+    {
+        Query q = dbOutdoorLeaderboardReference.OrderByChild("outdoorPoints").LimitToLast(limit);
+        List<OutdoorLeaderboard> leaderboardList = new List<OutdoorLeaderboard>();
+
+        await q.GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCanceled || task.IsCanceled)
+            {
+                Debug.LogError("Sorry, there was an error getting leaderboard entries, : ERROR: " + task.Exception);
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot ds = task.Result;
+
+                if (ds.Exists)
+                {
+                    int rankCounter = 1;
+
+                    foreach (DataSnapshot d in ds.Children)
+                    {
+                        //Create temp obj based on results
+                        OutdoorLeaderboard lb = JsonUtility.FromJson<OutdoorLeaderboard>(d.GetRawJsonValue());
+
+                        //Add item to list 
+                        leaderboardList.Add(lb);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.outdoorPoints);
+                    }
+                    //For each simpleleaderboard obj inside leaderboard list
+                    foreach (OutdoorLeaderboard lb in leaderboardList)
+                    {
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.outdoorPoints);
+                        rankCounter++;
+                    }
+                }
+            }
+        });
+
+        return leaderboardList;
+    }
+
+    // Get the leaderboard data from the "indoorLeaderboard" entry in Firebase
+    public async Task<List<IndoorLeaderboard>> GetIndoorLeaderboard(int limit = 5)
+    {
+        Query q = dbIndoorLeaderboardReference.OrderByChild("indoorPoints").LimitToLast(limit);
+        List<IndoorLeaderboard> leaderboardList = new List<IndoorLeaderboard>();
+
+        await q.GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCanceled || task.IsCanceled)
+            {
+                Debug.LogError("Sorry, there was an error getting leaderboard entries, : ERROR: " + task.Exception);
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot ds = task.Result;
+
+                if (ds.Exists)
+                {
+                    int rankCounter = 1;
+
+                    foreach (DataSnapshot d in ds.Children)
+                    {
+                        //Create temp obj based on results
+                        IndoorLeaderboard lb = JsonUtility.FromJson<IndoorLeaderboard>(d.GetRawJsonValue());
+
+                        //Add item to list 
+                        leaderboardList.Add(lb);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.indoorPoints);
+                    }
+                    //For each simpleleaderboard obj inside leaderboard list
+                    foreach (IndoorLeaderboard lb in leaderboardList)
+                    {
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.indoorPoints);
+                        rankCounter++;
+                    }
+                }
+            }
+        });
+
         return leaderboardList;
     }
 

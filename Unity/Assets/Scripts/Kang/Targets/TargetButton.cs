@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class TargetButton : MonoBehaviour, IInteractable
 {
-    public static event Action<bool> OnClearClick;
-
     [SerializeField] private ButtonType _buttonType;
     [SerializeField] private GameObject _targetObject;
+
+    private UIManager _uiManager;
+
+    private void Start()
+    {
+        _uiManager = FindObjectOfType<UIManager>();
+    }
 
     public void TriggerInteraction()
     {
@@ -25,7 +30,7 @@ public class TargetButton : MonoBehaviour, IInteractable
                 break;
 
             case ButtonType.ClearHoleInstance:
-                OnClearClick?.Invoke( true );
+                _uiManager.PromptClearTarget(true);
 
                 break;
         }
