@@ -12,13 +12,25 @@ public class SimpleLeaderboardManager : MonoBehaviour
     [SerializeField] private GameObject _rowPrefab;
     [SerializeField] private Transform _tableContent;
 
+    private LeaderboardType _currType;
     private SimpleFirebaseManager firebaseManager;
 
     // Start is called before the first frame update
     void Start()
     {
         firebaseManager = FindObjectOfType<SimpleFirebaseManager>();
+        _currType = _leaderboardType;
+
         UpdateLeaderboardUI();
+    }
+
+    private void Update()
+    {
+        if (_currType != _leaderboardType)
+        {
+            _currType = _leaderboardType;
+            UpdateLeaderboardUI();
+        }
     }
 
     public async void UpdateLeaderboardUI()
@@ -100,23 +112,6 @@ public class SimpleLeaderboardManager : MonoBehaviour
 
                 break;
         }
-
-        //Create prefabs of rows
-        //Assign each value from list to the prefab text content
-        //foreach (SimpleLeaderboard lb in leaderboardList)
-        //{
-        //    Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.fastestTime);
-
-        //    //Create prefabs in the position of tableContents
-        //    GameObject entry = Instantiate(_rowPrefab, _tableContent);
-        //    TextMeshProUGUI[] leaderboardDetails = entry.GetComponentsInChildren<TextMeshProUGUI>();
-        //    leaderboardDetails[0].text = rankCounter.ToString();
-        //    leaderboardDetails[1].text = lb.displayname;
-        //    TimeSpan t = TimeSpan.FromSeconds(lb.fastestTime);
-        //    leaderboardDetails[2].text = t.Minutes.ToString() + ":" + t.Seconds.ToString();
-
-        //    rankCounter++;
-        //}
     }
     
     public void MainMenu()
