@@ -8,24 +8,21 @@ using System;
 
 public class SimpleLeaderboardManager : MonoBehaviour
 {
-    public SimpleFirebaseManager fbMgr;
     public GameObject rowPrefab;
     public Transform tableContents;
+
+    private SimpleFirebaseManager firebaseManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        GetLeaderboard();
-    }
-
-    public void GetLeaderboard()
-    {
+        firebaseManager = FindObjectOfType<SimpleFirebaseManager>();
         UpdateLeaderboardUI();
     }
 
     public async void UpdateLeaderboardUI()
     {
-        var leaderboardList = await fbMgr.GetLeaderboard();
+        var leaderboardList = await firebaseManager.GetLeaderboard();
         int rankCounter = 1;
 
         //Clear all leaderboard entries in UI

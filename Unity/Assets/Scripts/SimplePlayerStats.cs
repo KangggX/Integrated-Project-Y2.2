@@ -5,11 +5,23 @@ using System;
 
 public class SimplePlayerStats
 {
-
     public string displayname;
-    public int fastestTime;
-    public int totalGame;
-    public int totalTime;
+
+    // Skiing
+    public int fastestTime = 0;
+    public int totalTime = 0;
+    public int totalGame = 0;
+
+    // Outdoor Shooting
+    public int outdoorPoints = 0;
+    public int outdoorTotalPoints = 0;
+    public int outdoorTotalGame = 0;
+    
+    // Indoor Shooting
+    public int indoorPoints = 0;
+    public int indoorTotalPoints = 0;
+    public int indoorTotalGame = 0;
+
     public long updatedOn;
 
     //Constructor
@@ -18,15 +30,39 @@ public class SimplePlayerStats
 
     }
 
-    public SimplePlayerStats(string displayname, int fastestTime, int totalGame = 0, int totalTime = 0)
+    public SimplePlayerStats(string displayname, int score, Stats statsType)
     {
         this.displayname = displayname;
-        this.fastestTime = fastestTime;
-        this.totalGame = totalGame;
-        this.totalTime = totalTime;
 
         var timestamp = this.GetTimeUnix();
         this.updatedOn = timestamp;
+        
+        switch (statsType)
+        {
+            case (Stats.Skiing):
+                this.fastestTime = score;
+                this.totalTime = score;
+                this.totalGame = 1;
+                
+                break;
+
+            case (Stats.OutdoorShooting):
+                this.outdoorPoints = score;
+                this.outdoorTotalPoints = score;
+                this.outdoorTotalGame = 1;
+
+                break;
+
+            case (Stats.IndoorShooting):
+                this.indoorPoints = score;
+                this.indoorTotalPoints = score;
+                this.indoorTotalGame = 1;
+
+                break;
+        }
+        
+        //this.fastestTime = fastestTime;
+
     }
 
     public long GetTimeUnix()
