@@ -5,9 +5,15 @@ using UnityEngine;
 public class SnowIntereacted : MonoBehaviour
 {
     public GameObject player;
-    private void OnTriggerStay(Collider snow)
+    private void OnTriggerEnter(Collider snow)
     {
         print("hi");
         player.GetComponent<SwingMovement>().touchedSnow = true;
     }
+    private void OnTriggerExit(Collider snow)
+    {
+        print("hi");
+        player.GetComponent<SwingMovement>().touchedSnow = false;
+    }
+
 }
