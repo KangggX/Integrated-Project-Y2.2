@@ -140,11 +140,19 @@ function updateLeaderboard(){
                 
                 snapshot.forEach((childSnapshot) => {
                     
-                    $(".leaderboard__list").append(`<li>
-                        <div class="leaderboard__list--content leaderboard--ranking">${index}</div>
-                        <div class="leaderboard__list--content leaderboard--score">${convertHMS(childSnapshot.child("fastestTime").val())}</div>
-                        <div class="leaderboard__list--content leaderboard--username">${childSnapshot.child("displayname").val()}</div>
-                    </li>`)
+                    if (childSnapshot.child("fastestTime").val() == 0)
+                    {
+                        index --;
+                    }
+                    else 
+                    {
+                        $(".leaderboard__list").append(`<li>
+                            <div class="leaderboard__list--content leaderboard--ranking">${index}</div>
+                            <div class="leaderboard__list--content leaderboard--score">${convertHMS(childSnapshot.child("fastestTime").val())}</div>
+                            <div class="leaderboard__list--content leaderboard--username">${childSnapshot.child("displayname").val()}</div>
+                        </li>`)
+                        console.log(username);
+                    }
 
                     index++;
                 })
@@ -163,10 +171,8 @@ function updateProfilePage(username) {
     setTimeout(() => {
         get(ref(db, "playerStats/" + key)).then((snapshot) => {
             if (snapshot.exists()) {
-                $("#leaderboardPositionDetail").text(`${snapshot.child("skiingPos").val()}`);
                 $("#fastestTimeDetail").text(`${convertHMS(snapshot.child("fastestTime").val())}`);
-                $("#totalTimeDetail").text(`${snapshot.child("totalTime").val()}`);
-                $("#totalGameDetail").text(`${snapshot.child("totalGame").val()}`);
+                $("#totalTimeDetail").text(`${convertHMS(snapshot.child("totalTime").val())}`);
             }
             else {
                 
