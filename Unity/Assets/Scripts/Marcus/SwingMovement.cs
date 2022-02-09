@@ -93,7 +93,9 @@ public class SwingMovement : MonoBehaviour
         var leftHandDistance = Vector3.Distance(positionPreviousFrameLeftHand, positionThisFrameLeftHand);
         var rightHandDistance = Vector3.Distance(positionPreviousFrameRightHand, positionThisFrameRightHand);
 
-
+        Debug.Log(playerDistanceMoved);
+        Debug.Log(leftHandDistance);
+        Debug.Log(rightHandDistance);
         //get hand speed
         handSpeed = ((leftHandDistance - playerDistanceMoved) + (rightHandDistance - playerDistanceMoved));
 
