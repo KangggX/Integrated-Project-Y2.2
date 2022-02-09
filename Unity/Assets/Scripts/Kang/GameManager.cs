@@ -30,15 +30,17 @@ public class GameManager : MonoBehaviour
             weapon.ResetAmmo();
         }
 
-        _targetManager.ClearBulletHoleInstances();
-        _targetManager.ResetPoints();
+        //_targetManager.ClearBulletHoleInstances();
+        //_targetManager.ResetPoints();
+        _targetManager.ResetTarget();
     }
 
+    // Send data to FirebaseManager to update Player Stats
     private void UpdatePlayerStats()
     {
         string uuid = _authManager.auth.CurrentUser.UserId;
         string displayName = _authManager.auth.CurrentUser.DisplayName;
-        int points = _targetManager.TotalPoints;
+        int points = _targetManager.targetInUse.TotalPoints;
 
         _firebaseManager.UpdatePlayerIndoorStats(uuid, displayName, points);
     }

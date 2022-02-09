@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class OutdoorLeaderboard
 {
-    public string displayName;
+    public string displayname;
     public int outdoorPoints;
     public long updatedOn;
 
@@ -16,7 +16,7 @@ public class OutdoorLeaderboard
 
     public OutdoorLeaderboard(string displayName, int points)
     {
-        this.displayName = displayName;
+        this.displayname = displayName;
         this.outdoorPoints = points;
         this.updatedOn = GetTimeUnix();
     }

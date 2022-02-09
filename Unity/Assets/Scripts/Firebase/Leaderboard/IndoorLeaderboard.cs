@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class IndoorLeaderboard
 {
-    public string displayName;
+    public string displayname;
     public int indoorPoints;
     public long updatedOn;
 
@@ -16,7 +16,7 @@ public class IndoorLeaderboard
 
     public IndoorLeaderboard(string displayName, int points)
     {
-        this.displayName = displayName;
+        this.displayname = displayName;
         this.indoorPoints = points;
         this.updatedOn = GetTimeUnix();
     }

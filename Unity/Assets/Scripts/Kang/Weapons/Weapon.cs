@@ -91,7 +91,7 @@ public class Weapon : MonoBehaviour
 
             if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit))
             {
-                Target hitTarget = hit.collider.GetComponent<Target>(); // The Target itself
+                TargetPart hitTarget = hit.collider.GetComponent<TargetPart>(); // The Target itself
                 
                 if (hitTarget != null)
                 {
