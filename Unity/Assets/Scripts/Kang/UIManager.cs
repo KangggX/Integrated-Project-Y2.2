@@ -16,12 +16,12 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        TargetManager.OnPointsChanged += UpdatePointsText;
+        //TargetManager.OnPointsChanged += UpdatePointsText;
     }
 
     private void OnDisable()
     {
-        TargetManager.OnPointsChanged -= UpdatePointsText;
+        //TargetManager.OnPointsChanged -= UpdatePointsText;
     }
 
     public void UpdatePointsText(int points)

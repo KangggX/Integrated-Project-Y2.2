@@ -28,10 +28,14 @@ public class GameManager : MonoBehaviour
         _weaponList = FindObjectsOfType<Weapon>();
         _targetManager = FindObjectOfType<TargetManager>();
     }
+
     private void Update()
     {
         // for outdoor stuff - Dan
-        OutdoorPointsText.text = string.Format("Points : {0}",OutdoorPoints);
+        if (OutdoorPointsText != null)
+        {
+            OutdoorPointsText.text = string.Format("Points : {0}",OutdoorPoints);
+        }
         //-----------------------------
     }
 
@@ -51,8 +55,6 @@ public class GameManager : MonoBehaviour
             weapon.ResetAmmo();
         }
 
-        //_targetManager.ClearBulletHoleInstances();
-        //_targetManager.ResetPoints();
         _targetManager.ResetTarget();
     }
 

@@ -6,8 +6,8 @@ public class TargetMovement : MonoBehaviour
 {
     [SerializeField] private float _transitionSpeed;
 
-    private float _inPositionZ = -1.8f;
-    private float _outPositionZ = -17.675f;
+    private float _inPositionZ = 2f;
+    private float _outPositionZ = -12.92406f;
 
     private Vector3 _inPosition;
     private Vector3 _outPosition;
@@ -15,13 +15,10 @@ public class TargetMovement : MonoBehaviour
     [SerializeField] private bool _isOut;
     [SerializeField] private bool _canMove;
 
-    private Vector3 _basePosition;
     private float _elapsedTime;
 
     private void Start()
     {
-        _basePosition = gameObject.transform.position;
-
         _inPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, _inPositionZ);
         _outPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, _outPositionZ);
     }
@@ -37,8 +34,8 @@ public class TargetMovement : MonoBehaviour
 
             if (gameObject.transform.localPosition == _inPosition)
             {
+                CanMove = false;
                 _isOut = false;
-                _canMove = false;
                 _elapsedTime = 0;
             }
         }
@@ -51,8 +48,8 @@ public class TargetMovement : MonoBehaviour
 
             if (gameObject.transform.localPosition == _outPosition)
             {
+                CanMove = false;
                 _isOut = true;
-                _canMove = false;
                 _elapsedTime = 0;
             }
         }
@@ -62,5 +59,13 @@ public class TargetMovement : MonoBehaviour
     {
         get { return _canMove; }
         set { _canMove = value; }
+    }
+
+    public void MoveTarget()
+    {
+        if (!CanMove)
+        {
+            CanMove = true;
+        }
     }
 }

@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class TargetManager : MonoBehaviour
 {
-    public static event Action<int> OnPointsChanged;
-
     private Target[] _targetList;
     public Target targetInUse;
 
@@ -16,18 +14,18 @@ public class TargetManager : MonoBehaviour
     }
 
     // Check if there are any target in use
-    public bool AnyTargetInUse()
+    public void CheckTargetInUse()
     {
         foreach (Target target in _targetList)
         {
-            if (target.targetInUse)
+            if (target.InUse)
             {
                 targetInUse = target;
-                return true;
+                return;
             }
         }
 
-        return false;
+        return;
     }
 
     // Reset used target, then remove _targetInUse
@@ -36,6 +34,7 @@ public class TargetManager : MonoBehaviour
         targetInUse.ClearBulletHoleInstances();
         targetInUse.ResetPoints();
 
+        targetInUse.InUse = false;
         targetInUse = null;
     }
 }

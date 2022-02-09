@@ -6,15 +6,15 @@ using UnityEngine;
 public class TargetPart : MonoBehaviour
 {
     [SerializeField] private int _pointValue;
-    private Target _targetManager;
+    private Target _target;
 
     private void Start()
     {
-        _targetManager = GetComponentInParent<Target>();
+        _target = GetComponentInParent<Target>();
     }
 
     public void Hit()
     {
-        _targetManager.TotalPoints += _pointValue;
+        _target.TotalPoints += _pointValue;
     }
 }
