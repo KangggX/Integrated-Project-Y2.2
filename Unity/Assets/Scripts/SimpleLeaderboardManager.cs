@@ -46,13 +46,14 @@ public class SimpleLeaderboardManager : MonoBehaviour
 
         switch (_leaderboardType)
         {
+            // If leaderboard type is Skiing
             case LeaderboardType.Skiing:
                 {
                     var leaderboardList = await firebaseManager.GetSkiiLeaderboard();
 
                     foreach (SkiingLeaderboard lb in leaderboardList)
                     {
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.fastestTime);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.fastestTime);
 
                         //Create prefabs in the position of tableContents
                         GameObject entry = Instantiate(_rowPrefab, _tableContent);
@@ -61,7 +62,7 @@ public class SimpleLeaderboardManager : MonoBehaviour
                         TimeSpan t = TimeSpan.FromSeconds(lb.fastestTime);
 
                         leaderboardDetails[0].text = rankCounter.ToString();
-                        leaderboardDetails[1].text = lb.displayName;
+                        leaderboardDetails[1].text = lb.displayname;
                         leaderboardDetails[2].text = t.Minutes.ToString() + ":" + t.Seconds.ToString();
 
                         rankCounter++;
@@ -70,19 +71,21 @@ public class SimpleLeaderboardManager : MonoBehaviour
 
                 break;
 
+            // If leaderboard type is Outdoor Shooting
             case LeaderboardType.OutdoorShooting:
                 {
                     var leaderboardList = await firebaseManager.GetOutdoorLeaderboard();
+                    leaderboardList.Reverse();
 
                     foreach (OutdoorLeaderboard lb in leaderboardList)
                     {
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.outdoorPoints);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.outdoorPoints);
 
                         //Create prefabs in the position of tableContents
                         GameObject entry = Instantiate(_rowPrefab, _tableContent);
                         TextMeshProUGUI[] leaderboardDetails = entry.GetComponentsInChildren<TextMeshProUGUI>();
                         leaderboardDetails[0].text = rankCounter.ToString();
-                        leaderboardDetails[1].text = lb.displayName;
+                        leaderboardDetails[1].text = lb.displayname;
                         leaderboardDetails[2].text = lb.outdoorPoints.ToString();
 
                         rankCounter++;
@@ -91,19 +94,21 @@ public class SimpleLeaderboardManager : MonoBehaviour
 
                 break;
 
+            // If leaderboard type is Indoor Shooting
             case LeaderboardType.IndoorShooting:
                 {
                     var leaderboardList = await firebaseManager.GetIndoorLeaderboard();
+                    leaderboardList.Reverse();
 
                     foreach (IndoorLeaderboard lb in leaderboardList)
                     {
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.indoorPoints);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.indoorPoints);
 
                         //Create prefabs in the position of tableContents
                         GameObject entry = Instantiate(_rowPrefab, _tableContent);
                         TextMeshProUGUI[] leaderboardDetails = entry.GetComponentsInChildren<TextMeshProUGUI>();
                         leaderboardDetails[0].text = rankCounter.ToString();
-                        leaderboardDetails[1].text = lb.displayName;
+                        leaderboardDetails[1].text = lb.displayname;
                         leaderboardDetails[2].text = lb.indoorPoints.ToString();
 
                         rankCounter++;
