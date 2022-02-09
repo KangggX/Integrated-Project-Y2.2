@@ -173,6 +173,7 @@ function updateProfilePage(username) {
             if (snapshot.exists()) {
                 $("#fastestTimeDetail").text(`${convertHMS(snapshot.child("fastestTime").val())}`);
                 $("#totalTimeDetail").text(`${convertHMS(snapshot.child("totalTime").val())}`);
+                $("#totalGameDetail").text(`${(snapshot.child("totalGame").val())}`);
             }
             else {
                 
