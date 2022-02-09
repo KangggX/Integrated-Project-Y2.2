@@ -20,25 +20,42 @@ public class SwingMovement : MonoBehaviour
     private Vector3 positionThisFrameLeftHand;
     private Vector3 positionThisFrameRightHand;
 
-    //speed
-    public float speed = 70;
+    //track hand movement
     [SerializeField]
     private float handSpeed;
 
-    public float playerAcceleration;
-    public float skiVelocity;
-    public float dragForce;
+    //movement value
+    public float maxWalkSpeed;
+    public float zeroToMaxWalk = 6f;
+    public float maxToZeroWalk = 3f;
+    private float accelRateWalk;
+    private float deccelRateWalk;
 
-    //check if Skiing
-    [SerializeField]
-    private bool isSki;
+    public float maxSkiSpeed;
+    public float zeroTomaxSki = 0.5f;
+    public float maxToZeroSki = 10f;
+    private float accelRateSKi;
+    private float deccelRateSki;
+
+    private float forwardVelocity;
+
+    //check movement type
+    public bool touchedSnow;
+    public bool skiing;
 
     
 
     // Start is called before the first frame update
     void Start()
     {
-        dragForce = 1;
+        accelRateWalk = maxWalkSpeed / zeroToMaxWalk;
+        deccelRateWalk = -maxWalkSpeed / maxToZeroWalk;
+
+        accelRateSKi = maxSkiSpeed / zeroTomaxSki;
+        deccelRateSki = -maxSkiSpeed / maxToZeroSki;
+
+        forwardVelocity = 0;
+
         cController = GetComponent<CharacterController>();
 
         //set previous frame
@@ -63,6 +80,7 @@ public class SwingMovement : MonoBehaviour
     //Walk Motion
     private void PlayerPosition()
     {
+
         //Hands
         positionThisFrameLeftHand = leftHand.transform.position;
         positionThisFrameRightHand = rightHand.transform.position;
@@ -75,10 +93,9 @@ public class SwingMovement : MonoBehaviour
         var leftHandDistance = Vector3.Distance(positionPreviousFrameLeftHand, positionThisFrameLeftHand);
         var rightHandDistance = Vector3.Distance(positionPreviousFrameRightHand, positionThisFrameRightHand);
 
-        Vector3 velocity = cController.velocity;
-
-        skiVelocity = playerDistanceMoved / 1f;
-
+        Debug.Log(playerDistanceMoved);
+        Debug.Log(leftHandDistance);
+        Debug.Log(rightHandDistance);
         //get hand speed
         handSpeed = ((leftHandDistance - playerDistanceMoved) + (rightHandDistance - playerDistanceMoved));
 
@@ -86,23 +103,46 @@ public class SwingMovement : MonoBehaviour
         if (Time.timeSinceLevelLoad > 1f)
         {
             //apply movement type
-            if(isSki == true)
+            if(touchedSnow == true)
             {
-;
-                //Warning: change in framerate may cause change in speed
-                velocity += forwardDirection.transform.forward * playerAcceleration  * handSpeed;
+                if (handSpeed >= 0.01)
+                {
+                    forwardVelocity += accelRateSKi * Time.deltaTime;
+                    forwardVelocity = Mathf.Min(forwardVelocity, maxSkiSpeed);
 
-                velocity *= dragForce/2;
+                    cController.Move(forwardDirection.transform.forward * forwardVelocity);
+                }
+                else
+                {
+                    forwardVelocity += deccelRateSki * Time.deltaTime;
+                    forwardVelocity = Mathf.Max(forwardVelocity, 0);
 
-                cController.Move(velocity * 10 * Time.deltaTime);
+                    cController.Move(forwardDirection.transform.forward * forwardVelocity);
+                }
+            }
+            else if (skiing)
+            {
+                forwardVelocity += deccelRateSki * Time.deltaTime;
+                forwardVelocity = Mathf.Max(forwardVelocity, 0);
+
+                cController.Move(forwardDirection.transform.forward * forwardVelocity);
             }
             else
             {
-                velocity += forwardDirection.transform.forward * playerAcceleration * handSpeed;
+                if (handSpeed >= 0.001)
+                {
+                    forwardVelocity += accelRateWalk * Time.deltaTime;
+                    forwardVelocity = Mathf.Min(forwardVelocity, maxWalkSpeed);
 
-                velocity *= dragForce;
+                    cController.Move(forwardDirection.transform.forward * forwardVelocity);
+                }
+                else
+                {
+                    forwardVelocity += deccelRateWalk * Time.deltaTime;
+                    forwardVelocity = Mathf.Max(forwardVelocity, 0);
 
-                cController.Move(((velocity) * Time.deltaTime));
+                    cController.Move(forwardDirection.transform.forward * forwardVelocity);
+                }
             }
         }
 
@@ -113,20 +153,4 @@ public class SwingMovement : MonoBehaviour
         playerPositionPreviousFrame = playerPositionThisFrame;
     }
 
-    public void SnowIntereact()
-    {
-        RaycastHit Hit;
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Hit))
-        {
-            if (gameObject.tag == "snow")
-            {
-                isSki = true;
-            }
-        }
-    }
-
-    public void SnowRelease()
-    {
-        isSki = false;
-    }
 }

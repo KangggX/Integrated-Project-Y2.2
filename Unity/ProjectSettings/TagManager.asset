@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CinemachineTarget
   - snow
+  - leftStick
+  - rightStick
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -15,9 +18,9 @@ TagManager:
   - UI
   - Target
   - Ground
-  - Snow
-  - 
-  - 
+  - snow
+  - player
+  - ski
   - 
   - 
   - 

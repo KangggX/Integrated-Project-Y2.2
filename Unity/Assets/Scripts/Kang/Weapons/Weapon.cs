@@ -97,7 +97,7 @@ public class Weapon : MonoBehaviour
                 {
                     hitTarget.Hit();
 
-                    GameObject bulletHoleInstance = Instantiate(Resources.Load<GameObject>("Bullet Hole"), hit.point, Quaternion.identity, hitTarget.transform);
+                    GameObject bulletHoleInstance = Instantiate(Resources.Load<GameObject>("Bullet Hole"), hit.point, Quaternion.Euler(0, 180, 0), hitTarget.transform);
                     bulletHoleInstance.transform.position -= bulletHoleInstance.transform.forward / 1000;
 
                     /*Destroy(bulletHoleInstance, 2);*/ // Delete the bullet hole instance after 2s
