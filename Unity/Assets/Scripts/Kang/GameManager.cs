@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +10,12 @@ public class GameManager : MonoBehaviour
     private TargetManager _targetManager;
     private AuthManager _authManager;
     private SimpleFirebaseManager _firebaseManager;
+
+    // for outdoor scene stuff - Dan
+    private SpawnRandom SpawnRandom;
+    public int OutdoorPoints = 0;
+    public TMP_Text OutdoorPointsText;
+    //-----------------------------
 
     private void Awake()
     {
@@ -20,6 +28,19 @@ public class GameManager : MonoBehaviour
         _weaponList = FindObjectsOfType<Weapon>();
         _targetManager = FindObjectOfType<TargetManager>();
     }
+    private void Update()
+    {
+        // for outdoor stuff - Dan
+        OutdoorPointsText.text = string.Format("Points : {0}",OutdoorPoints);
+        //-----------------------------
+    }
+
+    //for outdoor stuff - Dan
+    public void stopOutdoor()
+    {
+        SpawnRandom.isGameActive = false;
+    }
+    //---------------------------
 
     public void ResetCurrentGame()
     {

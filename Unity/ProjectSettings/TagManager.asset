@@ -8,6 +8,7 @@ TagManager:
   - snow
   - leftStick
   - rightStick
+  - Bullet
   layers:
   - Default
   - TransparentFX
