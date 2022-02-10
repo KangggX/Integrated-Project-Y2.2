@@ -76,7 +76,7 @@ public class SimpleFirebaseManager : MonoBehaviour
                     if (time > sp.fastestTime)
                     {
                         sp.fastestTime = time;
-                        UpdatePlayerLeaderboardEntry(uuid, time, sp.updatedOn, Stats.Skiing);
+                        UpdateLeaderboardEntry(uuid, time, sp.updatedOn, Stats.Skiing);
 
                         Debug.Log("highscore updated!");
                     }
@@ -141,7 +141,7 @@ public class SimpleFirebaseManager : MonoBehaviour
                     if (points > sp.outdoorPoints)
                     {
                         sp.outdoorPoints = points;
-                        UpdatePlayerLeaderboardEntry(uuid, points, sp.updatedOn, Stats.OutdoorShooting);
+                        UpdateLeaderboardEntry(uuid, points, sp.updatedOn, Stats.OutdoorShooting);
 
                         Debug.Log("highscore updated!");
                     }
@@ -204,7 +204,7 @@ public class SimpleFirebaseManager : MonoBehaviour
                     if (points > sp.indoorPoints)
                     {
                         sp.indoorPoints = points;
-                        UpdatePlayerLeaderboardEntry(uuid, points, sp.updatedOn, Stats.IndoorShooting);
+                        UpdateLeaderboardEntry(uuid, points, sp.updatedOn, Stats.IndoorShooting);
 
                         Debug.Log("highscore updated!");
                     }
@@ -231,7 +231,7 @@ public class SimpleFirebaseManager : MonoBehaviour
 
 
     // Updates the fastestTime or the points of the specific game leaderboard if they have a new highscore
-    public void UpdatePlayerLeaderboardEntry(string uuid, int score, long updatedOn, Stats statsType)
+    public void UpdateLeaderboardEntry(string uuid, int score, long updatedOn, Stats statsType)
     {
         switch (statsType)
         {

@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     }
     //---------------------------
 
-    public void ResetCurrentGame()
+    public void ResetIndoorShooter()
     {
         UpdatePlayerStats();
 

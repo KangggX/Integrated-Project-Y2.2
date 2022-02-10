@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2d929cc21f7a746ae7506fa1fc2e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetInUse: 0
   _targetParts:
   - {fileID: 6016539256411184915}
   - {fileID: 7138749807181841757}
@@ -113,9 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6763d3b0b2e65a4295c7b7724dd6fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionSpeed: 0
+  _transitionSpeed: 3
   _isOut: 0
   _canMove: 0
+  isMoving: 0
 --- !u!1 &6074149760069236786
 GameObject:
   m_ObjectHideFlags: 0

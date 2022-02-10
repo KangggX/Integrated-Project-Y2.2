@@ -10,13 +10,13 @@ public class TargetButton : MonoBehaviour, IInteractable
 
     private GameManager _gameManager;
     private TargetManager _targetManager;
-    private Target target;
-    private TargetMovement targetMovement;
+    private Target _target;
+    //private TargetMovement _targetMovement;
 
     private void Awake()
     {
-        target = _targetObject.GetComponent<Target>();
-        targetMovement = _targetObject.GetComponent<TargetMovement>();
+        _target = _targetObject.GetComponent<Target>();
+        //_targetMovement = _targetObject.GetComponent<TargetMovement>();
     }
 
     private void Start()
@@ -32,11 +32,14 @@ public class TargetButton : MonoBehaviour, IInteractable
             // If no lane in use, current lane will be set to used and then move target to outer position
             // If target is at outer positon, move it back to inner position
             case ButtonType.CallbackTarget:
-                targetMovement.MoveTarget();
-
-                if (_targetManager.targetInUse == null)
+                if (!_target.IsMoving)
                 {
-                    target.InUse = true;
+                    _target.MoveTarget();
+
+                    if (_targetManager.targetInUse == null)
+                    {
+                        _target.InUse = true;
+                    }
                 }
 
                 break;
@@ -47,7 +50,13 @@ public class TargetButton : MonoBehaviour, IInteractable
             // Move target back to inner position if target is currently at outer position
             // Reset weapons to default position and ammo
             case ButtonType.ClearLane:
-                _gameManager.ResetCurrentGame();
+                if (_target.InUse)
+                {
+                    _target.hologramPrompt.SetActive(true);
+
+                    //_gameManager.ResetIndoorShooter();
+                    //_target.CheckIfTargetIsOut();
+                }
 
                 break;
         }
