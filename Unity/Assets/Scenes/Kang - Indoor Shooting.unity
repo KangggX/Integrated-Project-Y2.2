@@ -2716,18 +2716,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61d4150dc8c77734f8cbf5b7087952f1, type: 3}
---- !u!114 &272618350 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8065022843543167198, guid: 1a112aae1881e9748b72181baee634f5,
-    type: 3}
-  m_PrefabInstance: {fileID: 991983200}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 231f4fda3f64f3340ae77becf5728b27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &297216583 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8065022843543167198, guid: 1a112aae1881e9748b72181baee634f5,
@@ -3052,7 +3040,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SMG
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6694755761742603305, guid: 376a884bf43efe24fa32ea8f6cb4e707, type: 3}
+    - {fileID: 1167570902681754170, guid: 376a884bf43efe24fa32ea8f6cb4e707, type: 3}
+    - {fileID: -1441267029885195921, guid: 376a884bf43efe24fa32ea8f6cb4e707, type: 3}
+    - {fileID: 4760112586462847390, guid: 376a884bf43efe24fa32ea8f6cb4e707, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 376a884bf43efe24fa32ea8f6cb4e707, type: 3}
 --- !u!1001 &429082022
 PrefabInstance:
@@ -6248,41 +6240,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5718845471087338141, guid: 1a112aae1881e9748b72181baee634f5,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5718845471087338141, guid: 1a112aae1881e9748b72181baee634f5,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5718845471087338141, guid: 1a112aae1881e9748b72181baee634f5,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 272618350}
-    - target: {fileID: 5718845471087338141, guid: 1a112aae1881e9748b72181baee634f5,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5718845471087338141, guid: 1a112aae1881e9748b72181baee634f5,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TriggerInteraction
-      objectReference: {fileID: 0}
-    - target: {fileID: 5718845471087338141, guid: 1a112aae1881e9748b72181baee634f5,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TargetButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5718845471087338141, guid: 1a112aae1881e9748b72181baee634f5,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8065022843543167198, guid: 1a112aae1881e9748b72181baee634f5,
         type: 3}
@@ -11671,6 +11628,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 711820700, guid: b48d9b3f7c87909439b936ca92d87d40, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 305978922}
+    - target: {fileID: 1679870008, guid: b48d9b3f7c87909439b936ca92d87d40, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 305978922}
     - target: {fileID: 5387646541721675144, guid: b48d9b3f7c87909439b936ca92d87d40,
         type: 3}
       propertyPath: m_Name

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4108934208201711280}
   - component: {fileID: 1056664145700540693}
   - component: {fileID: 2976581629802161631}
+  - component: {fileID: 3270441084092396115}
   - component: {fileID: 1522468009011402196}
   - component: {fileID: 4614566382895737306}
   - component: {fileID: 1031923143827598800}
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3624849357127287818}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -84,6 +85,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &3270441084092396115
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3624849357127287818}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &1522468009011402196
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -201,3 +218,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonType: 1
   _targetObject: {fileID: 0}
+  _hologramPrompt: {fileID: 0}

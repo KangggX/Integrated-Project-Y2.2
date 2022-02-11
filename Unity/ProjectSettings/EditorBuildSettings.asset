@@ -8,18 +8,24 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NewAuthentication.unity
     guid: 6c8da31e0ba495245bee0469ed586751
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NewMainMenu.unity
     guid: 2a69316b1ec912048afa608621e794f2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NewLeaderboard.unity
     guid: 0e4326e11324a4949a5680bed6df69a7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NewPlayerProfile.unity
     guid: 8ac8733acd1b7784ba0ce2c3c2a008ab
+  - enabled: 1
+    path: Assets/Scenes/Kirdesh.unity
+    guid: 1b89db200366d224e9e8d97e58f6fbed
+  - enabled: 1
+    path: Assets/Scenes/Kang - Indoor Shooting.unity
+    guid: 844a885780eece940882048cf580b3d2
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2bdd9d5bf5966ed4f8900b50ce14ab35,
       type: 2}
