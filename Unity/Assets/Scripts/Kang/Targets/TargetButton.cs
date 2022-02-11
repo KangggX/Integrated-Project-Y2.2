@@ -32,15 +32,17 @@ public class TargetButton : MonoBehaviour, IInteractable
         {
             // If no lane in use, current lane will be set to used and then move target to outer position
             // If target is at outer positon, move it back to inner position
+            // Can only move target if it's not moving
+            // Can only move target that is in use
             case ButtonType.CallbackTarget:
-                if (!_target.IsMoving)
+                if (!_targetManager.CheckTargetInUse())
+                {
+                    _target.InUse = true;
+                }
+
+                if (_target.InUse && !_target.IsMoving)
                 {
                     _target.MoveTarget();
-
-                    if (_targetManager.targetInUse == null)
-                    {
-                        _target.InUse = true;
-                    }
                 }
 
                 break;
@@ -54,9 +56,6 @@ public class TargetButton : MonoBehaviour, IInteractable
                 if (_target.InUse && !_target.IsMoving)
                 {
                     _hologramPrompt.SetActive(true);
-
-                    //_gameManager.ResetIndoorShooter();
-                    //_target.CheckIfTargetIsOut();
                 }
 
                 break;
