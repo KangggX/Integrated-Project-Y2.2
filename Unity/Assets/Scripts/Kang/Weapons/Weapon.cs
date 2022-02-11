@@ -91,7 +91,7 @@ public class Weapon : MonoBehaviour
 
             if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit))
             {
-                Target hitTarget = hit.collider.GetComponent<Target>(); // The Target itself
+                TargetPart hitTarget = hit.collider.GetComponent<TargetPart>(); // The Target itself
                 
                 if (hitTarget != null)
                 {
@@ -99,8 +99,6 @@ public class Weapon : MonoBehaviour
 
                     GameObject bulletHoleInstance = Instantiate(Resources.Load<GameObject>("Bullet Hole"), hit.point, Quaternion.Euler(0, 180, 0), hitTarget.transform);
                     bulletHoleInstance.transform.position -= bulletHoleInstance.transform.forward / 1000;
-
-                    /*Destroy(bulletHoleInstance, 2);*/ // Delete the bullet hole instance after 2s
                 }
             }
         }

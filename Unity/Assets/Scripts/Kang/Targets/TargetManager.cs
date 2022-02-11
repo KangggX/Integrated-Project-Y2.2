@@ -5,33 +5,36 @@ using UnityEngine;
 
 public class TargetManager : MonoBehaviour
 {
-    public static event Action<int> OnPointsChanged;
+    private Target[] _targetList;
+    public Target targetInUse;
 
-    [SerializeField] private Transform[] _targetParts;
-    private int _totalPoints;
-
-    public int TotalPoints
+    private void Start()
     {
-        get { return _totalPoints; }
-        set { _totalPoints = value; OnPointsChanged?.Invoke(_totalPoints); }
+        _targetList = FindObjectsOfType<Target>();
     }
 
-    public void ClearBulletHoleInstances()
+    // Check if there are any target in use
+    public void CheckTargetInUse()
     {
-        foreach (Transform parts in _targetParts)
+        foreach (Target target in _targetList)
         {
-            if (parts.childCount > 0)
+            if (target.InUse)
             {
-                foreach (Transform holeInstance in parts)
-                {
-                    Destroy(holeInstance.gameObject);
-                }
+                targetInUse = target;
+                return;
             }
         }
+
+        return;
     }
 
-    public void ResetPoints()
+    // Reset used target, then remove _targetInUse
+    public void ResetTarget()
     {
-        TotalPoints = 0;
+        targetInUse.ClearBulletHoleInstances();
+        targetInUse.ResetPoints();
+
+        targetInUse.InUse = false;
+        targetInUse = null;
     }
 }

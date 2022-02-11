@@ -140,20 +140,33 @@ function updateLeaderboard(){
             if (snapshot.exists()) {
 
                 let index = 1;
-                
+                var displaynameArray = [];
+                var indoorPointsArray = [];
+
                 snapshot.forEach((childSnapshot) => {
-                    
-                    $(".leaderboard__list").append(`<li>
-                        <div class="leaderboard__list--content leaderboard--ranking">${index}</div>
-                        <div class="leaderboard__list--content leaderboard--score">${childSnapshot.child("indoorPoints").val()}</div>
-                        <div class="leaderboard__list--content leaderboard--username">${childSnapshot.child("displayname").val()}</div>
-                    </li>`)
-
-                    index++;
+                    displaynameArray.push(childSnapshot.child("displayname").val());                   
+                    indoorPointsArray.push(childSnapshot.child("indoorPoints").val());
                 })
-            }
-            else {
 
+                displaynameArray.reverse();
+                indoorPointsArray.reverse();
+                console.log(displaynameArray);
+                console.log(indoorPointsArray);
+                    
+                    for (const i in displaynameArray)
+                    {
+                            $(".leaderboard__list").append(`<li>
+                            <div class="leaderboard__list--content leaderboard--ranking">${index}</div>
+                            <div class="leaderboard__list--content leaderboard--score">${indoorPointsArray[i]}</div>
+                            <div class="leaderboard__list--content leaderboard--username">${displaynameArray[i]}</div>
+                            </li>`)
+
+                            console.log(index);
+                        
+                            index++;
+                        
+                    }
+                    
             }
         });
     }, 100);
@@ -166,10 +179,7 @@ function updateProfilePage(username) {
     setTimeout(() => {
         get(ref(db, "playerStats/" + key)).then((snapshot) => {
             if (snapshot.exists()) {
-                $("#leaderboardPositionDetail").text(`${snapshot.child("leaderboardPosition").val()}`);
-                $("#fastestTimeDetail").text(`${convertHMS(snapshot.child("fastestTime").val())}`);
-                $("#totalTimeDetail").text(`${snapshot.child("totalTime").val()}`);
-                $("#totalGameDetail").text(`${snapshot.child("totalGame").val()}`);
+                $("#indoorPointsDetail").text(`${snapshot.child("indoorPoints").val()}`);
             }
             else {
                 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SkiingLeaderboard
 {
-    public string displayName;
+    public string displayname;
     public int fastestTime;
     public long updatedOn;
 
@@ -16,7 +16,7 @@ public class SkiingLeaderboard
 
     public SkiingLeaderboard(string displayName, int fastestTime)
     {
-        this.displayName = displayName;
+        this.displayname = displayName;
         this.fastestTime = fastestTime;
         this.updatedOn = GetTimeUnix();
     }

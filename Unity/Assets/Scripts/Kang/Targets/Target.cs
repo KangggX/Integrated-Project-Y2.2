@@ -5,16 +5,168 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    [SerializeField] private int _pointValue;
+    // Delegate event to check if current target point is hit -> update UI text
+    public event Action<int> OnPointsChanged;
+
     private TargetManager _targetManager;
+
+    public GameObject hologramPrompt;
+
+    [Header("Target Movement")]
+    [SerializeField] private float _transitionSpeed;
+
+    [Header("Target Hit Parts")]
+    [SerializeField] private Transform[] _targetParts;
+    private BoxCollider[] _targetPartsColliders;
+
+    private int _totalPoints;
+    private bool _inUse;
+
+    private Vector3 _inPosition;
+    private Vector3 _outPosition;
+    private float _inPositionZ = 2f;
+    private float _outPositionZ = -12.92406f;
+
+    private bool _isOut;
+    private bool _canMove;
+    private bool _isMoving;
+    private bool _moveIn;
+    private bool _moveOut;
+
+    private float _elapsedTime;
+
+    private void Awake()
+    {
+        _targetPartsColliders = GetComponentsInChildren<BoxCollider>();
+    }
 
     private void Start()
     {
-        _targetManager = GetComponentInParent<TargetManager>();
+        _targetManager = FindObjectOfType<TargetManager>();
+
+        _inPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, _inPositionZ);
+        _outPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, _outPositionZ);
+
+        EnableTargetColliders(false);
     }
 
-    public void Hit()
+    private void Update()
     {
-        _targetManager.TotalPoints += _pointValue;
+        if (CanMove)
+        {
+            _elapsedTime += Time.deltaTime;
+            float percentageCompletion = _elapsedTime / _transitionSpeed;
+
+            _isMoving = true;
+
+            if (_moveIn)
+            {
+                gameObject.transform.localPosition = Vector3.Lerp(_outPosition, _inPosition, percentageCompletion);
+                IsOut = false;
+
+                if (gameObject.transform.localPosition == _inPosition)
+                {
+                    CanMove = false;
+                    IsMoving = false;
+                    _elapsedTime = 0;
+                }
+            }
+            else if (_moveOut)
+            {
+                gameObject.transform.localPosition = Vector3.Lerp(_inPosition, _outPosition, percentageCompletion);
+
+                if (gameObject.transform.localPosition == _outPosition)
+                {
+                    CanMove = false;
+                    IsMoving = false;
+                    _elapsedTime = 0;
+
+                    IsOut = true;
+                }
+            }
+        }
+    }
+
+    public bool InUse
+    {
+        get { return _inUse; }
+        set { _inUse = value; _targetManager.CheckTargetInUse(); }
+    }
+
+    public int TotalPoints
+    {
+        get { return _totalPoints; }
+        set { _totalPoints = value; OnPointsChanged?.Invoke(_totalPoints); }
+    }
+
+    public bool CanMove
+    {
+        get { return _canMove; }
+        set 
+        { 
+            _canMove = value; 
+
+            if (_canMove)
+            {
+                _moveIn = _isOut; // If target is out, _moveIn = true, vice-versa
+                _moveOut = !_isOut; // If target isn't out (aka in), _moveOut = true, vice-versa
+            }
+        }
+    }
+
+    public bool IsMoving { 
+        get { return _isMoving; } 
+        private set { _isMoving = value; } 
+    }
+
+    private bool IsOut
+    {
+        get { return _isOut; }
+        set { _isOut = value; EnableTargetColliders(_isOut); } 
+    }
+
+    public void MoveTarget()
+    {
+        if (!CanMove)
+        {
+            CanMove = true;
+        }
+    }
+
+    public void CheckIfTargetIsOut()
+    {
+        if (IsOut)
+        {
+            CanMove = true;
+        }
+    }
+
+    private void EnableTargetColliders(bool state)
+    {
+        foreach (var collider in _targetPartsColliders)
+        {
+            collider.enabled = state;
+        }
+    }
+
+    // Cleaer bullet holes in the child of the target
+    public void ClearBulletHoleInstances()
+    {
+        foreach (Transform parts in _targetParts)
+        {
+            if (parts.childCount > 0)
+            {
+                foreach (Transform holeInstance in parts)
+                {
+                    Destroy(holeInstance.gameObject);
+                }
+            }
+        }
+    }
+
+    // Reset points
+    public void ResetPoints()
+    {
+        TotalPoints = 0;
     }
 }

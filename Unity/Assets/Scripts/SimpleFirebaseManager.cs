@@ -76,7 +76,7 @@ public class SimpleFirebaseManager : MonoBehaviour
                     if (time > sp.fastestTime)
                     {
                         sp.fastestTime = time;
-                        UpdatePlayerLeaderboardEntry(uuid, time, sp.updatedOn, Stats.Skiing);
+                        UpdateLeaderboardEntry(uuid, time, sp.updatedOn, Stats.Skiing);
 
                         Debug.Log("highscore updated!");
                     }
@@ -141,7 +141,7 @@ public class SimpleFirebaseManager : MonoBehaviour
                     if (points > sp.outdoorPoints)
                     {
                         sp.outdoorPoints = points;
-                        UpdatePlayerLeaderboardEntry(uuid, points, sp.updatedOn, Stats.OutdoorShooting);
+                        UpdateLeaderboardEntry(uuid, points, sp.updatedOn, Stats.OutdoorShooting);
 
                         Debug.Log("highscore updated!");
                     }
@@ -204,7 +204,7 @@ public class SimpleFirebaseManager : MonoBehaviour
                     if (points > sp.indoorPoints)
                     {
                         sp.indoorPoints = points;
-                        UpdatePlayerLeaderboardEntry(uuid, points, sp.updatedOn, Stats.IndoorShooting);
+                        UpdateLeaderboardEntry(uuid, points, sp.updatedOn, Stats.IndoorShooting);
 
                         Debug.Log("highscore updated!");
                     }
@@ -231,7 +231,7 @@ public class SimpleFirebaseManager : MonoBehaviour
 
 
     // Updates the fastestTime or the points of the specific game leaderboard if they have a new highscore
-    public void UpdatePlayerLeaderboardEntry(string uuid, int score, long updatedOn, Stats statsType)
+    public void UpdateLeaderboardEntry(string uuid, int score, long updatedOn, Stats statsType)
     {
         switch (statsType)
         {
@@ -282,12 +282,12 @@ public class SimpleFirebaseManager : MonoBehaviour
 
                         //Add item to list 
                         leaderboardList.Add(lb);
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.fastestTime);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.fastestTime);
                     }
                     //For each simpleleaderboard obj inside leaderboard list
                     foreach (SkiingLeaderboard lb in leaderboardList)
                     {
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.fastestTime);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.fastestTime);
                         rankCounter++;
                     }
                 }
@@ -324,12 +324,12 @@ public class SimpleFirebaseManager : MonoBehaviour
 
                         //Add item to list 
                         leaderboardList.Add(lb);
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.outdoorPoints);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.outdoorPoints);
                     }
                     //For each simpleleaderboard obj inside leaderboard list
                     foreach (OutdoorLeaderboard lb in leaderboardList)
                     {
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.outdoorPoints);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.outdoorPoints);
                         rankCounter++;
                     }
                 }
@@ -366,12 +366,12 @@ public class SimpleFirebaseManager : MonoBehaviour
 
                         //Add item to list 
                         leaderboardList.Add(lb);
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.indoorPoints);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.indoorPoints);
                     }
                     //For each simpleleaderboard obj inside leaderboard list
                     foreach (IndoorLeaderboard lb in leaderboardList)
                     {
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayName, lb.indoorPoints);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.indoorPoints);
                         rankCounter++;
                     }
                 }

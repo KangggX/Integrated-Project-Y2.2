@@ -8,6 +8,8 @@ TagManager:
   - snow
   - leftStick
   - rightStick
+  - Bullet
+  - outdoorTarget
   layers:
   - Default
   - TransparentFX
