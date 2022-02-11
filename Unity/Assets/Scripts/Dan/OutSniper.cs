@@ -12,11 +12,22 @@ public class OutSniper : OutWeapon
 
     public TextMeshProUGUI DebugText;
     public GameObject magazine;
+    public int currentAmmo = 5;
     protected override void StartShooting(ActivateEventArgs interactor)
     {
-        base.StartShooting(interactor);
-        Shoot();
-        
+        if (currentAmmo > 0)
+        {
+            base.StartShooting(interactor);
+            Shoot();
+        }
+        else
+        {
+            //unloads the gun magazine
+            magazine.transform.parent = null;
+            magazine.AddComponent<Rigidbody>();
+            
+            DebugText.text = "Sniper : Magazine Not Loaded";
+        }
         
     }
     
@@ -32,9 +43,11 @@ public class OutSniper : OutWeapon
             Debug.Log("Bullet has been shot");
             DebugText.text = "Sniper : Shot";
 
+            currentAmmo -= 1;
 
-            magazine.transform.parent = null;
-            magazine.AddComponent<Rigidbody>();
+
+            
+            
         }
 
         else
