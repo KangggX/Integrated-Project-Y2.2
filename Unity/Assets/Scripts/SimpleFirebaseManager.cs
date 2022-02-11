@@ -9,29 +9,22 @@ using System.Threading.Tasks;
 
 public class SimpleFirebaseManager : MonoBehaviour
 {
-    DatabaseReference dbPlayerStatsReference;
+    private DatabaseReference dbPlayerStatsReference;
 
-    DatabaseReference dbPlayerLeaderboardReference;
-    DatabaseReference dbSkiingLeaderboardReference;
-    DatabaseReference dbIndoorLeaderboardReference;
-    DatabaseReference dbOutdoorLeaderboardReference;
-
-    AuthManager authManager;
+    //DatabaseReference dbPlayerLeaderboardReference;
+    private DatabaseReference dbSkiingLeaderboardReference;
+    private DatabaseReference dbIndoorLeaderboardReference;
+    private DatabaseReference dbOutdoorLeaderboardReference;
 
     private void Awake()
     {
         InitializeFirebase();
     }
 
-    private void Start()
-    {
-        authManager = FindObjectOfType<AuthManager>();
-    }
-
     public void InitializeFirebase()
     {
         dbPlayerStatsReference = FirebaseDatabase.DefaultInstance.GetReference("playerStats");
-        dbPlayerLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("leaderboard");
+        //dbPlayerLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("leaderboard");
 
         dbSkiingLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("leaderboard");
         dbIndoorLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("indoorLeaderboard");
@@ -258,7 +251,7 @@ public class SimpleFirebaseManager : MonoBehaviour
     // Get the leaderboard data from the "leaderboard" entry in Firebase
     public async Task<List<SkiingLeaderboard>> GetSkiiLeaderboard(int limit = 5)
     {
-        Query q = dbPlayerLeaderboardReference.OrderByChild("fastestTime").LimitToLast(limit);
+        Query q = dbSkiingLeaderboardReference.OrderByChild("fastestTime").LimitToLast(limit);
         List<SkiingLeaderboard> leaderboardList = new List<SkiingLeaderboard>();
 
         await q.GetValueAsync().ContinueWithOnMainThread(task =>
@@ -276,7 +269,6 @@ public class SimpleFirebaseManager : MonoBehaviour
                     int rankCounter = 1;
                     foreach (DataSnapshot d in ds.Children)
                     {
-                        Debug.Log("yes");
                         //Create temp obj based on results
                         SkiingLeaderboard lb = JsonUtility.FromJson<SkiingLeaderboard>(d.GetRawJsonValue());
 
@@ -381,6 +373,7 @@ public class SimpleFirebaseManager : MonoBehaviour
         return leaderboardList;
     }
 
+    // Retrieve the player's stats from the "playerStats" entry in Firebase
     public async Task<SimplePlayerStats> GetPlayerStats(string uuid)
     {
         Query q = dbPlayerStatsReference.Child(uuid);
@@ -408,10 +401,13 @@ public class SimpleFirebaseManager : MonoBehaviour
         return playerStats;
     }
 
-
+    // Delete player existence
     public void DeletePlayerStats(string uuid)
     {
         dbPlayerStatsReference.Child(uuid).RemoveValueAsync();
-        dbPlayerLeaderboardReference.Child(uuid).RemoveValueAsync();
+        //dbPlayerLeaderboardReference.Child(uuid).RemoveValueAsync();
+        dbSkiingLeaderboardReference.Child(uuid).RemoveValueAsync();
+        dbOutdoorLeaderboardReference.Child(uuid).RemoveValueAsync();
+        dbIndoorLeaderboardReference.Child(uuid).RemoveValueAsync();
     }
 }

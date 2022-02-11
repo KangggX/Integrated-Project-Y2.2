@@ -12,27 +12,16 @@ public class SimpleLeaderboardManager : MonoBehaviour
     [SerializeField] private GameObject _rowPrefab;
     [SerializeField] private Transform _tableContent;
 
-    private LeaderboardType _currType;
     private SimpleFirebaseManager firebaseManager;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         firebaseManager = FindObjectOfType<SimpleFirebaseManager>();
-        _currType = _leaderboardType;
 
         UpdateLeaderboardUI();
     }
 
-    private void Update()
-    {
-        if (_currType != _leaderboardType)
-        {
-            _currType = _leaderboardType;
-            UpdateLeaderboardUI();
-        }
-    }
-
+    // Updates the Hologram Leader UI
     public async void UpdateLeaderboardUI()
     {
         //var leaderboardList = await firebaseManager.GetLeaderboard();

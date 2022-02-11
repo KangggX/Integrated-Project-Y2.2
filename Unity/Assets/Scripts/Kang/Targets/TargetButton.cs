@@ -7,6 +7,7 @@ public class TargetButton : MonoBehaviour, IInteractable
 {
     [SerializeField] private ButtonType _buttonType;
     [SerializeField] private GameObject _targetObject;
+    [SerializeField] private GameObject _hologramPrompt;
 
     private GameManager _gameManager;
     private TargetManager _targetManager;
@@ -50,9 +51,9 @@ public class TargetButton : MonoBehaviour, IInteractable
             // Move target back to inner position if target is currently at outer position
             // Reset weapons to default position and ammo
             case ButtonType.ClearLane:
-                if (_target.InUse)
+                if (_target.InUse && !_target.IsMoving)
                 {
-                    _target.hologramPrompt.SetActive(true);
+                    _hologramPrompt.SetActive(true);
 
                     //_gameManager.ResetIndoorShooter();
                     //_target.CheckIfTargetIsOut();

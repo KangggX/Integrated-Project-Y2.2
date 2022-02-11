@@ -31,6 +31,7 @@ public class TargetManager : MonoBehaviour
     // Reset used target, then remove _targetInUse
     public void ResetTarget()
     {
+        targetInUse.CheckIfTargetIsOut();
         targetInUse.ClearBulletHoleInstances();
         targetInUse.ResetPoints();
 
