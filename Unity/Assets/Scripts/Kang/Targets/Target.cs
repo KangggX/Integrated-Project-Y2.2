@@ -10,8 +10,6 @@ public class Target : MonoBehaviour
 
     private TargetManager _targetManager;
 
-    public GameObject hologramPrompt;
-
     [Header("Target Movement")]
     [SerializeField] private float _transitionSpeed;
 
@@ -114,6 +112,7 @@ public class Target : MonoBehaviour
         }
     }
 
+    // Property used to check if target is moving or not
     public bool IsMoving { 
         get { return _isMoving; } 
         private set { _isMoving = value; } 
@@ -125,6 +124,7 @@ public class Target : MonoBehaviour
         set { _isOut = value; EnableTargetColliders(_isOut); } 
     }
 
+    // Allow target to be moved
     public void MoveTarget()
     {
         if (!CanMove)
@@ -133,6 +133,7 @@ public class Target : MonoBehaviour
         }
     }
 
+    // If target is currently in the out position, move it back in (mainly for resetting the game)
     public void CheckIfTargetIsOut()
     {
         if (IsOut)
@@ -141,6 +142,7 @@ public class Target : MonoBehaviour
         }
     }
 
+    // Enable/Disable the box colliders for each target parts based on the "state" parameter
     private void EnableTargetColliders(bool state)
     {
         foreach (var collider in _targetPartsColliders)
@@ -149,7 +151,7 @@ public class Target : MonoBehaviour
         }
     }
 
-    // Cleaer bullet holes in the child of the target
+    // Clear bullet holes in the child of the target
     public void ClearBulletHoleInstances()
     {
         foreach (Transform parts in _targetParts)

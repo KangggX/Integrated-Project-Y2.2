@@ -14,23 +14,24 @@ public class TargetManager : MonoBehaviour
     }
 
     // Check if there are any target in use
-    public void CheckTargetInUse()
+    public bool CheckTargetInUse()
     {
         foreach (Target target in _targetList)
         {
             if (target.InUse)
             {
                 targetInUse = target;
-                return;
+                return true;
             }
         }
 
-        return;
+        return false;
     }
 
     // Reset used target, then remove _targetInUse
     public void ResetTarget()
     {
+        targetInUse.CheckIfTargetIsOut();
         targetInUse.ClearBulletHoleInstances();
         targetInUse.ResetPoints();
 

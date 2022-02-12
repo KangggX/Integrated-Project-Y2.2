@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     //[SerializeField] protected GameObject _bulletHole;
     [SerializeField] protected float _fireRate;
     [SerializeField] protected int _ammo;
+    [SerializeField] protected GameObject _weaponBarrel;
     private int _initialAmmo;
     private bool _isEquipped;
     protected bool _canShoot = true;
@@ -44,12 +45,12 @@ public class Weapon : MonoBehaviour
     {
         if (IsEquipped)
         {
-            Debug.DrawRay(_mainCamera.transform.position, _mainCamera.transform.forward * 1000, Color.green);
+            //Debug.DrawRay(_mainCamera.transform.position, _mainCamera.transform.forward * 1000, Color.green);
             
-            _mainCamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(_mainCamera.GetComponent<Camera>().fieldOfView, _currFOV, Time.deltaTime * _lerpSpeed);
+            //_mainCamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(_mainCamera.GetComponent<Camera>().fieldOfView, _currFOV, Time.deltaTime * _lerpSpeed);
 
-            LeftClick();
-            RightClick();
+            //LeftClick();
+            //RightClick();
         }
     }
     public bool IsEquipped
@@ -67,12 +68,12 @@ public class Weapon : MonoBehaviour
 
     public virtual void LeftClick()
     {
-        if (Input.GetButtonDown("Fire1") && _canShoot)
-        {
-            _canShoot = false;
-            StartCoroutine(FireRoutine());
-            Shoot();
-        }
+        //if (Input.GetButtonDown("Fire1") && _canShoot)
+        //{
+        //}
+        _canShoot = false;
+        StartCoroutine(FireRoutine());
+        Shoot();
     }
 
     public virtual void RightClick()
@@ -89,7 +90,7 @@ public class Weapon : MonoBehaviour
         {
             _ammo--;
 
-            if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit))
+            if (Physics.Raycast(_weaponBarrel.transform.position, _weaponBarrel.transform.forward, out hit))
             {
                 TargetPart hitTarget = hit.collider.GetComponent<TargetPart>(); // The Target itself
                 
