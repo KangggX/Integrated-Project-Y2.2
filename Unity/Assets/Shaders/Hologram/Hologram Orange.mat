@@ -7,14 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hologram
+  m_Name: Hologram Orange
   m_Shader: {fileID: -6465566751694194690, guid: b462eb7c197a52e4c900d1fc191513e8,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2999
+  m_CustomRenderQueue: 3001
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -49,11 +49,13 @@ Material:
     - Vector1_1: 1
     - Vector1_33d1af9bd8ce4b169e357710a9962eee: 1
     - Vector1_75b3ed1462c14e4787563aea5721b360: 0.4
+    - Vector1_b1980d02a685413893e2cb1488d81a1f: 180
     - Vector1_d0cc8132242b400e9b047a10f1025d9a: 0.617
     - Vector1_fda0edcae9324a2f91827cb569712825: 0
     - _GlitchStrength: 0
     m_Colors:
-    - Color_eea70351ca9f415b89c365f69f91d9d9: {r: 0, g: 1.8699056, b: 2.0630624, a: 0}
-    - Color_fb7304f196e844f6a62c8ec5c667e597: {r: 0, g: 0.7592144, b: 2, a: 0}
+    - Color_eea70351ca9f415b89c365f69f91d9d9: {r: 8.47419, g: 4.658586, b: 0.2662049,
+        a: 0}
+    - Color_fb7304f196e844f6a62c8ec5c667e597: {r: 2.1185474, g: 0.5767773, b: 0, a: 0}
     - Vector2_923ed9b25fcc4be09b125ddd5681f251: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -63,7 +63,7 @@ public class CustomTools
     ///  Creates a new menu item 'Examples > Create Prefab' in the main menu.
     /// </summary>
     [MenuItem("Custom Tools/Convert to Prefab %#e", true)]
-    static bool ValidateCreatePrefab()
+    static bool CreatePrefabValidate()
     {
         return Selection.activeGameObject != null && !EditorUtility.IsPersistent(Selection.activeGameObject);
     }

@@ -2040,7 +2040,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240662037}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
@@ -2968,7 +2968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 371496938}
   m_Layer: 0
-  m_Name: Barrel Placeholder
+  m_Name: Barrel Raypoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4085,6 +4085,36 @@ Transform:
   m_Father: {fileID: 1764200648}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &578851974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 578851975}
+  m_Layer: 0
+  m_Name: Barrel Raypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &578851975
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578851974}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0261, z: 0.7669}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 919132148165354270}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &587950789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4654,6 +4684,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 646730635}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &654403821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 654403822}
+  m_Layer: 0
+  m_Name: Barrel Raypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &654403822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654403821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0027, y: 0.051, z: 0.0997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1868528453}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &692049333 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5387646542165412581, guid: b48d9b3f7c87909439b936ca92d87d40,
@@ -4711,7 +4771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireRate: 15
   _ammo: 100
-  _weaponBarrel: {fileID: 0}
+  _weaponBarrel: {fileID: 1927495265}
   _scopeOverlay: {fileID: 0}
   _scopeFOV: 0
   _lerpSpeed: 0
@@ -4884,6 +4944,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &734215913 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 61d4150dc8c77734f8cbf5b7087952f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 263484151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &738708301
 GameObject:
   m_ObjectHideFlags: 0
@@ -5894,22 +5960,22 @@ PrefabInstance:
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 142.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4949784868162232070, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
@@ -7858,7 +7924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1335983023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9031,7 +9097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireRate: 0.2
   _ammo: 4
-  _weaponBarrel: {fileID: 0}
+  _weaponBarrel: {fileID: 578851974}
   _scopeOverlay: {fileID: 513661653}
   _scopeFOV: 30
   _lerpSpeed: 10
@@ -9831,6 +9897,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 24437708}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1799754484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1799754485}
+  m_Layer: 0
+  m_Name: Barrel Raypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1799754485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799754484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0715, z: 0.5676}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1893045354}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1839585430
 GameObject:
   m_ObjectHideFlags: 0
@@ -10219,7 +10315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireRate: 3
   _ammo: 15
-  _weaponBarrel: {fileID: 0}
+  _weaponBarrel: {fileID: 654403821}
   _scopeOverlay: {fileID: 0}
   _scopeFOV: 0
   _lerpSpeed: 0
@@ -10392,6 +10488,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &1868528453 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f91333e6d35753045bec6852072f6c83,
+    type: 3}
+  m_PrefabInstance: {fileID: 1577998198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1876988021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10481,7 +10583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireRate: 7
   _ammo: 30
-  _weaponBarrel: {fileID: 0}
+  _weaponBarrel: {fileID: 1799754484}
   _scopeOverlay: {fileID: 0}
   _scopeFOV: 0
   _lerpSpeed: 0
@@ -10654,6 +10756,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &1893045354 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6c6df2fef68b6a743b1e8396d1e2ffbb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1626104995}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1921858265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10763,6 +10871,36 @@ PrefabInstance:
       objectReference: {fileID: 1311140921}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a112aae1881e9748b72181baee634f5, type: 3}
+--- !u!1 &1927495265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1927495266}
+  m_Layer: 0
+  m_Name: Barrel Raypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1927495266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927495265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.003, y: 0.0516, z: 0.5185}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 734215913}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1977038695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11611,6 +11749,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1292148300}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &919132148165354270 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: add321b09adf6e94c914f77424c290b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1292148300}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2511661467264020008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11716,7 +11860,7 @@ PrefabInstance:
     - target: {fileID: 5387646541721675184, guid: b48d9b3f7c87909439b936ca92d87d40,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.4
+      value: 2.47
       objectReference: {fileID: 0}
     - target: {fileID: 5387646541721675184, guid: b48d9b3f7c87909439b936ca92d87d40,
         type: 3}
@@ -11726,7 +11870,7 @@ PrefabInstance:
     - target: {fileID: 5387646541721675184, guid: b48d9b3f7c87909439b936ca92d87d40,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.178
+      value: -4.02
       objectReference: {fileID: 0}
     - target: {fileID: 5387646541721675184, guid: b48d9b3f7c87909439b936ca92d87d40,
         type: 3}
