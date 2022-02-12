@@ -5,14 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHub : MonoBehaviour
 {
-    [SerializeField] private GameObject _elevator;
+    [SerializeField] private Elevator _elevator;
     private PlayerEnterState _playerEnterState;
-    private GameObject _player;
 
     private void Start()
     {
         _playerEnterState = FindObjectOfType<PlayerEnterState>();
-        _player = GameObject.FindGameObjectWithTag("Player");
         
         PlayerEntrancePosition();
     }
@@ -38,8 +36,6 @@ public class PlayerHub : MonoBehaviour
     // Spawning the player
     private void SpawnPlayer(SpawnPosition spawnPosition)
     {
-        Animator elevatorAnimator = _elevator.GetComponent<Animator>();
-
         switch (spawnPosition)
         {
             case SpawnPosition.Entrance:
@@ -48,10 +44,11 @@ public class PlayerHub : MonoBehaviour
                 break;
 
             case SpawnPosition.Elevator:
-                _player.transform.parent = _elevator.transform;
-                _player.transform.localPosition = Vector3.zero;
+                //_player.transform.parent = _elevator.transform;
+                //_player.transform.localPosition = Vector3.zero;
 
-                elevatorAnimator.SetTrigger("Going Down");
+                //elevatorAnimator.SetTrigger("Going Down");
+                _elevator.PlayerParentThis();
 
                 break;
         }
