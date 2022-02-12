@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerEnterState : MonoBehaviour
 {
-    public bool _hasEnteredBefore = false;
+    public bool hasEnteredBefore = false;
 
     private void Awake()
     {

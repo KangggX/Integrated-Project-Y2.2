@@ -22,7 +22,7 @@ public class PlayerHub : MonoBehaviour
     // Or spawn the player in the Elevator if it isn't their first time
     private void PlayerEntrancePosition()
     {
-        if (_playerEnterState._hasEnteredBefore)
+        if (_playerEnterState.hasEnteredBefore)
         {
             Debug.Log("Player has entered hub before!");
             SpawnPlayer(SpawnPosition.Elevator);
@@ -30,7 +30,7 @@ public class PlayerHub : MonoBehaviour
         else
         {
             Debug.Log("This is the first time the player is entering the hub");
-            _playerEnterState._hasEnteredBefore = true;
+            _playerEnterState.hasEnteredBefore = true;
             SpawnPlayer(SpawnPosition.Entrance);
         }
     }
@@ -43,6 +43,7 @@ public class PlayerHub : MonoBehaviour
         switch (spawnPosition)
         {
             case SpawnPosition.Entrance:
+
 
                 break;
 

@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321e790afa72eb546abef13bf1c30d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasEnteredBefore: 1
+  hasEnteredBefore: 0
 --- !u!4 &209597645
 Transform:
   m_ObjectHideFlags: 0
@@ -432,16 +432,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin (Player)
       objectReference: {fileID: 0}
-    - target: {fileID: 5387646541721675144, guid: b48d9b3f7c87909439b936ca92d87d40,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5387646541721675144, guid: b48d9b3f7c87909439b936ca92d87d40,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 5387646541721675184, guid: b48d9b3f7c87909439b936ca92d87d40,
         type: 3}
       propertyPath: m_RootOrder
@@ -460,7 +450,7 @@ PrefabInstance:
     - target: {fileID: 5387646541721675184, guid: b48d9b3f7c87909439b936ca92d87d40,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.516
+      value: -42.521
       objectReference: {fileID: 0}
     - target: {fileID: 5387646541721675184, guid: b48d9b3f7c87909439b936ca92d87d40,
         type: 3}
@@ -1027,6 +1017,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1382310183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -562692296494212860, guid: e88a04810880f004ab4b0b4a141a6767,
+    type: 3}
+  m_PrefabInstance: {fileID: 372143175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1382310187
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382310183}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6603569228473597805, guid: e88a04810880f004ab4b0b4a141a6767, type: 3}
 --- !u!1 &1531567616 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6106978057719242302, guid: e88a04810880f004ab4b0b4a141a6767,
@@ -1113,6 +1123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XR Device Simulator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
