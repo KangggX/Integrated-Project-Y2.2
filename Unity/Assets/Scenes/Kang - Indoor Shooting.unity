@@ -2958,6 +2958,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 360079502}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &371496937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 371496938}
+  m_Layer: 0
+  m_Name: Barrel Placeholder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &371496938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371496937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0037, z: 0.2391}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 477265653}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &390608937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3450,6 +3480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireRate: 10
   _ammo: 50
+  _weaponBarrel: {fileID: 371496937}
   _scopeOverlay: {fileID: 0}
   _scopeFOV: 0
   _lerpSpeed: 0
@@ -3467,7 +3498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 305978922}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 477265651}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3525,7 +3557,19 @@ MonoBehaviour:
         m_CallState: 2
   m_Activated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 477265649}
+        m_TargetAssemblyTypeName: AR, Assembly-CSharp
+        m_MethodName: LeftClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
@@ -3622,6 +3666,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &477265653 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 376a884bf43efe24fa32ea8f6cb4e707,
+    type: 3}
+  m_PrefabInstance: {fileID: 390608937}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &484825660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4661,6 +4711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireRate: 15
   _ammo: 100
+  _weaponBarrel: {fileID: 0}
   _scopeOverlay: {fileID: 0}
   _scopeFOV: 0
   _lerpSpeed: 0
@@ -8980,6 +9031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireRate: 0.2
   _ammo: 4
+  _weaponBarrel: {fileID: 0}
   _scopeOverlay: {fileID: 513661653}
   _scopeFOV: 30
   _lerpSpeed: 10
@@ -10167,6 +10219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireRate: 3
   _ammo: 15
+  _weaponBarrel: {fileID: 0}
   _scopeOverlay: {fileID: 0}
   _scopeFOV: 0
   _lerpSpeed: 0
@@ -10428,6 +10481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireRate: 7
   _ammo: 30
+  _weaponBarrel: {fileID: 0}
   _scopeOverlay: {fileID: 0}
   _scopeFOV: 0
   _lerpSpeed: 0
@@ -11514,6 +11568,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Device Simulator
       objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
 --- !u!1 &2140543508
@@ -11628,10 +11687,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 711820698, guid: b48d9b3f7c87909439b936ca92d87d40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 711820700, guid: b48d9b3f7c87909439b936ca92d87d40, type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 305978922}
+    - target: {fileID: 1679870006, guid: b48d9b3f7c87909439b936ca92d87d40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1679870008, guid: b48d9b3f7c87909439b936ca92d87d40, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -11695,6 +11762,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387646542697547997, guid: b48d9b3f7c87909439b936ca92d87d40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387646543037777223, guid: b48d9b3f7c87909439b936ca92d87d40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b48d9b3f7c87909439b936ca92d87d40, type: 3}
