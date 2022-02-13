@@ -24,7 +24,7 @@ public class TimeManager : MonoBehaviour
 
     private string resetText = "00:00:00";
 
-    private SpawnRandom spawnRandom;
+    private ActivateTargets activateTargets;
 
     
 
@@ -52,7 +52,7 @@ public class TimeManager : MonoBehaviour
 
                 //gameManager.GameOver();
                 //stop spawning targets once game is over
-                spawnRandom.stopOutdoor();
+                activateTargets.stopOutdoor();
 
 
             }
@@ -94,7 +94,7 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         
-        spawnRandom = GameObject.Find("GameManager").GetComponent<SpawnRandom>();
+        activateTargets = GameObject.Find("GameManager").GetComponent<ActivateTargets>();
     }
 
     public void StartTimer()

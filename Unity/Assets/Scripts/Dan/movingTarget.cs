@@ -10,9 +10,12 @@ public class movingTarget : MonoBehaviour
     void Start() 
     {
         movingLeft = true;
+        
+       
     }
     void Update() 
     {
+        
         if (movingLeft == true) 
         {
             // move left

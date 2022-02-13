@@ -10,6 +10,7 @@ TagManager:
   - rightStick
   - Bullet
   - outdoorTarget
+  - outdoorMag
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,10 @@ public class OutSniper : OutWeapon
 
     public TextMeshProUGUI DebugText;
     public GameObject magazine;
+    public GameObject magazineHolder;
     public int currentAmmo = 5;
+
+     private float reloadMagTime;
     protected override void StartShooting(ActivateEventArgs interactor)
     {
         if (currentAmmo > 0)
@@ -25,7 +28,12 @@ public class OutSniper : OutWeapon
             //unloads the gun magazine
             magazine.transform.parent = null;
             magazine.AddComponent<Rigidbody>();
+
+            magazineHolder.SetActive(true);
+
             
+            
+
             DebugText.text = "Sniper : Magazine Not Loaded";
         }
         

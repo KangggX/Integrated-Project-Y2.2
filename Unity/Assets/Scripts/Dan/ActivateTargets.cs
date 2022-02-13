@@ -37,6 +37,7 @@ public class ActivateTargets : MonoBehaviour
     public void stopOutdoor()
     {
         isGameActive = false;
+        Start();
     }
 
     void SpawnTarget()
@@ -46,7 +47,7 @@ public class ActivateTargets : MonoBehaviour
         {
             for (int i = 0; i < 2; i++) 
                 {
-                    val = Random.Range(0, totalTargets);
+                    val = Random.Range(0, totalTargets - 1);
                     TargetstobeActivated[val].SetActive(true);
                     TargetstobeActivated.Remove(TargetstobeActivated[val]);
                 }
