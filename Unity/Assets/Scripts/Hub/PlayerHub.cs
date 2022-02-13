@@ -32,7 +32,7 @@ public class PlayerHub : MonoBehaviour
         }
     }
 
-    // Spawning the player
+    // Spawning the player either on the Entrance or in the Elevator
     private void SpawnPlayer(SpawnPosition spawnPosition)
     {
         switch (spawnPosition)

@@ -222,7 +222,6 @@ public class SimpleFirebaseManager : MonoBehaviour
         });
     }
 
-
     // Updates the fastestTime or the points of the specific game leaderboard if they have a new highscore
     public void UpdateLeaderboardEntry(string uuid, int score, long updatedOn, Stats statsType)
     {

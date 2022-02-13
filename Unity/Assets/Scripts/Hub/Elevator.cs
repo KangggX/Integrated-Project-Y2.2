@@ -5,11 +5,13 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     private Animator _animator;
+    private MeshCollider _meshCollider;
     private GameObject _player;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _meshCollider = GetComponent<MeshCollider>();
     }
 
     private void Start()
@@ -25,11 +27,16 @@ public class Elevator : MonoBehaviour
     //    }
     //}
 
+    // Unparent the player from the elevator
+    // Disable Mesh Collider afterwards to save some performance
     private void OnTriggerExit(Collider other)
     {
         UnparentPlayer();
+        _meshCollider.enabled = false;
     }
 
+    // Spawn player in the elevator
+    // Play the "Go Down" animation
     public void ElevatorSpawn()
     {
         ParentPlayer();
@@ -38,11 +45,14 @@ public class Elevator : MonoBehaviour
         GoDownAnim();
     }
 
+    // Parent the player to the elevator
+    // Mainly to ensure that player follows the elevator position when going down
     public void ParentPlayer()
     {
         _player.transform.parent = this.gameObject.transform;
     }
 
+    // Unparent the player from the elevator
     public void UnparentPlayer()
     {
         _player.transform.SetParent(null, true);
