@@ -17,9 +17,44 @@ public class Elevator : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public void PlayerParentThis()
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject == _test)
+    //    {
+    //        _test.transform.parent = transform;
+    //    }
+    //}
+
+    private void OnTriggerExit(Collider other)
+    {
+        UnparentPlayer();
+    }
+
+    public void ElevatorSpawn()
+    {
+        ParentPlayer();
+        _player.transform.localPosition = Vector3.zero;
+
+        GoDownAnim();
+    }
+
+    public void ParentPlayer()
     {
         _player.transform.parent = this.gameObject.transform;
-        _player.transform.localPosition = Vector3.zero;
+    }
+
+    public void UnparentPlayer()
+    {
+        _player.transform.SetParent(null, true);
+    }
+
+    private void GoDownAnim()
+    {
+        _animator.SetTrigger("Going Down");
+    }
+
+    private void GoUpAnim()
+    {
+        _animator.SetTrigger("Going Up");
     }
 }

@@ -6,12 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerHub : MonoBehaviour
 {
     [SerializeField] private Elevator _elevator;
-    private PlayerEnterState _playerEnterState;
 
     private void Start()
     {
-        _playerEnterState = FindObjectOfType<PlayerEnterState>();
-        
         PlayerEntrancePosition();
     }
 
@@ -20,15 +17,17 @@ public class PlayerHub : MonoBehaviour
     // Or spawn the player in the Elevator if it isn't their first time
     private void PlayerEntrancePosition()
     {
-        if (_playerEnterState.hasEnteredBefore)
+        if (PlayerEnterState.HasEnteredBefore)
         {
             Debug.Log("Player has entered hub before!");
+
             SpawnPlayer(SpawnPosition.Elevator);
         }
         else
         {
             Debug.Log("This is the first time the player is entering the hub");
-            _playerEnterState.hasEnteredBefore = true;
+
+            PlayerEnterState.HasEnteredBefore = true;
             SpawnPlayer(SpawnPosition.Entrance);
         }
     }
@@ -48,7 +47,7 @@ public class PlayerHub : MonoBehaviour
                 //_player.transform.localPosition = Vector3.zero;
 
                 //elevatorAnimator.SetTrigger("Going Down");
-                _elevator.PlayerParentThis();
+                _elevator.ElevatorSpawn();
 
                 break;
         }
