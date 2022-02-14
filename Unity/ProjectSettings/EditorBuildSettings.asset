@@ -21,10 +21,10 @@ EditorBuildSettings:
     path: Assets/Scenes/NewPlayerProfile.unity
     guid: 8ac8733acd1b7784ba0ce2c3c2a008ab
   - enabled: 1
-    path: Assets/Scenes/Kirdesh.unity
+    path: Assets/Scenes/Hub.unity
     guid: 1b89db200366d224e9e8d97e58f6fbed
   - enabled: 1
-    path: Assets/Scenes/Kang - Indoor Shooting.unity
+    path: Assets/Scenes/Indoor Shooting.unity
     guid: 844a885780eece940882048cf580b3d2
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2bdd9d5bf5966ed4f8900b50ce14ab35,

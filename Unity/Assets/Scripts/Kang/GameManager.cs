@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
         foreach (Weapon weapon in _weaponList)
         {
-            weapon.ResetAmmo();
+            weapon.ResetWeaponState();
         }
 
         _targetManager.ResetTarget();

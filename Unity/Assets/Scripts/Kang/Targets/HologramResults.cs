@@ -26,13 +26,14 @@ public class HologramResults : MonoBehaviour
 
         _userID = _authManager.auth.CurrentUser.UserId;
 
-        //gameObject.SetActive(true);
-        //gameObject.SetActive(false);
+        UpdateResultUI();
+        gameObject.SetActive(false);
     }
 
     private async void UpdateResultUI()
     {
-        SimplePlayerStats playerStats = await _firebaseManager.GetPlayerStats(_userID);
+        SimplePlayerStats playerStats;
+        playerStats = await _firebaseManager.GetPlayerStats(_userID);
 
         if (playerStats != null)
         {
@@ -40,5 +41,12 @@ public class HologramResults : MonoBehaviour
             _totalPointsField.text = playerStats.indoorTotalPoints.ToString();
             _totalGameField.text = playerStats.indoorTotalGame.ToString();
         }
+    }
+
+    // Coroutine to turn off the results after 8s
+    private IEnumerator AwakeTimeout()
+    {
+        yield return new WaitForSeconds(8);
+        gameObject.SetActive(false);
     }
 }
