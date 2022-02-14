@@ -26,14 +26,14 @@ public class SwingMovement : MonoBehaviour
 
     //movement value
     public float maxWalkSpeed;
-    public float zeroToMaxWalk = 6f;
-    public float maxToZeroWalk = 3f;
+    public float zeroToMaxWalk;
+    public float maxToZeroWalk;
     private float accelRateWalk;
     private float deccelRateWalk;
 
     public float maxSkiSpeed;
-    public float zeroTomaxSki = 0.5f;
-    public float maxToZeroSki = 10f;
+    public float zeroTomaxSki;
+    public float maxToZeroSki;
     private float accelRateSKi;
     private float deccelRateSki;
 
@@ -48,6 +48,9 @@ public class SwingMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        touchedSnow = false;
+        skiing = false;
+
         accelRateWalk = maxWalkSpeed / zeroToMaxWalk;
         deccelRateWalk = -maxWalkSpeed / maxToZeroWalk;
 
@@ -80,6 +83,10 @@ public class SwingMovement : MonoBehaviour
     //Walk Motion
     private void PlayerPosition()
     {
+        if(skiing != true)
+        {
+            touchedSnow = false;
+        }
 
         //Hands
         positionThisFrameLeftHand = leftHand.transform.position;
@@ -92,10 +99,6 @@ public class SwingMovement : MonoBehaviour
         var playerDistanceMoved = Vector3.Distance(playerPositionThisFrame, playerPositionPreviousFrame);
         var leftHandDistance = Vector3.Distance(positionPreviousFrameLeftHand, positionThisFrameLeftHand);
         var rightHandDistance = Vector3.Distance(positionPreviousFrameRightHand, positionThisFrameRightHand);
-
-        Debug.Log(playerDistanceMoved);
-        Debug.Log(leftHandDistance);
-        Debug.Log(rightHandDistance);
         //get hand speed
         handSpeed = ((leftHandDistance - playerDistanceMoved) + (rightHandDistance - playerDistanceMoved));
 
