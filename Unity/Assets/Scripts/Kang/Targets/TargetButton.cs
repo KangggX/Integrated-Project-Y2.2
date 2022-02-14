@@ -43,6 +43,7 @@ public class TargetButton : MonoBehaviour, IInteractable
                 if (_target.InUse && !_target.IsMoving)
                 {
                     _target.MoveTarget();
+                    _hologramPrompt.SetActive(false);
                 }
 
                 break;
