@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class IsGrounded : MonoBehaviour
 {
-    public bool isgrounded = true;
-    private void OnCollisionEnter(Collision theCollision)
+    public bool isgrounded;
+    private void Start()
     {
-        if (theCollision.gameObject.name == "Ground")
+        isgrounded = false;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "ground")
         {
             isgrounded = true;
-        }
-    }
-    private void OnCollisionExit(Collision theCollision)
-    {
-        if (theCollision.gameObject.name == "Ground")
-        {
-            isgrounded = false;
         }
     }
 }
