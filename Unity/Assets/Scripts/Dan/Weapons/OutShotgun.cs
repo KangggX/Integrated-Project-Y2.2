@@ -63,7 +63,7 @@ public class OutShotgun : OutWeapon
         if (Time.time - base.StartTime > base.shootingCooldown)
             {
                 base.canShootAmmo = true;
-                Debug.Log("Finished Cooldown");
+                //Debug.Log("Finished Cooldown");
                 DebugText.text = "Shotgun : Ready";
             }
         

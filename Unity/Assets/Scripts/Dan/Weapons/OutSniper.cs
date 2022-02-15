@@ -65,6 +65,11 @@ public class OutSniper : OutWeapon
         
     }
 
+    public void addAmmo()
+    {
+        currentAmmo += 5;
+    }
+
         
     
 
@@ -86,7 +91,7 @@ public class OutSniper : OutWeapon
         if (Time.time - base.StartTime > base.shootingCooldown)
             {
                 base.canShootAmmo = true;
-                Debug.Log("Finished Cooldown");
+                //Debug.Log("Finished Cooldown");
                 DebugText.text = "Sniper : Ready";
             }
     }
