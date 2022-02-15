@@ -9,6 +9,7 @@ using Unity.XR.CoreUtils;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 1;
+    public float initialSpeed;
     public XRNode inputSource;
     public float gravity = -9.81f;
 
@@ -22,15 +23,20 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController character;
     public Camera playerCamera;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
+    {
+        initialSpeed = speed;
+    }
+
+    private void Start()
     {
         character = GetComponent<CharacterController>();
         rig = GetComponent<XROrigin>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
         InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);

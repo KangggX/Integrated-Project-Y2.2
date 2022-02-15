@@ -9,50 +9,35 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected float _fireRate;
     [SerializeField] protected int _ammo;
     [SerializeField] protected GameObject _weaponBarrel;
-    private int _initialAmmo;
     private bool _isEquipped;
     protected bool _canShoot = true;
     private WaitForSeconds _fireCountdown;
 
-    [Header("Weapon Scope Settings")]
-    [SerializeField] protected GameObject _scopeOverlay;
-    [SerializeField] protected float _scopeFOV;
-    [SerializeField] protected float _lerpSpeed;
-    private float _initialScopeFOV;
-    private float _currFOV;
-
-    [Header("Animator Settings")]
-    [SerializeField] protected Animator _animator;
-    private bool _isScoped = false;
-
+    /// <summary>
+    /// Initial States
+    /// </summary>
+    private Vector3 _initialPosition;
+    private Quaternion _initialRotation;
+    private int _initialAmmo;
+    
+    /// <summary>
+    /// Physics Stuff
+    /// </summary>
     private RaycastHit hit;
-    private GameObject _mainCamera;
+    private Rigidbody _rb;
 
     private void Awake()
     {
+        _rb = GetComponent<Rigidbody>();
+        _rb.useGravity = false;
+
+        _initialPosition = transform.position;
+        _initialRotation = transform.rotation;
         _initialAmmo = _ammo;
+
         _fireCountdown = new WaitForSeconds(1 / _fireRate);
     }
 
-    private void Start()
-    {
-        _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        _initialScopeFOV = _mainCamera.GetComponent<Camera>().fieldOfView;
-        _currFOV = _initialScopeFOV;
-    }
-
-    public virtual void Update()
-    {
-        if (IsEquipped)
-        {
-            //Debug.DrawRay(_mainCamera.transform.position, _mainCamera.transform.forward * 1000, Color.green);
-            
-            //_mainCamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(_mainCamera.GetComponent<Camera>().fieldOfView, _currFOV, Time.deltaTime * _lerpSpeed);
-
-            //LeftClick();
-            //RightClick();
-        }
-    }
     public bool IsEquipped
     {
         get
@@ -64,7 +49,21 @@ public class Weapon : MonoBehaviour
         {
             _isEquipped = value;
         }
-    } 
+    }
+
+    // Turn off motion and rotation constraints
+    // Turn on gravity
+    public void TurnOffRigidbodyConstraints()
+    {
+        _rb.constraints = RigidbodyConstraints.None;
+        _rb.useGravity = true;
+    }
+
+    public void TurnOnRigidbodyConstraints()
+    {
+        _rb.constraints = RigidbodyConstraints.FreezeAll;
+        _rb.useGravity = false;
+    }
 
     public virtual void LeftClick()
     {
@@ -74,14 +73,6 @@ public class Weapon : MonoBehaviour
         _canShoot = false;
         StartCoroutine(FireRoutine());
         Shoot();
-    }
-
-    public virtual void RightClick()
-    {
-        if (Input.GetButtonDown("Fire2"))
-        {
-            Scope();
-        }
     }
 
     protected void Shoot()
@@ -109,81 +100,18 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public virtual void Scope()
-    {
-        _isScoped = !_isScoped;
-
-        if (_isScoped)
-        {
-            StartCoroutine(OnScope());
-        }
-        else
-        {
-            StartCoroutine(OnDescope());
-        }
-    }
-
-    private IEnumerator OnScope()
-    {
-        if (_scopeOverlay != null)
-        {
-            _animator.SetBool("isScoped", _isScoped); // Activate the gun's scoped animation
-
-            yield return new WaitForSeconds(0.25f);
-            _currFOV = _scopeFOV; // Zoom the camera in when scoped
-
-            if (transform.childCount > 0)
-            {
-                foreach (Transform parts in transform)
-                {
-                    parts.gameObject.SetActive(!_isScoped); // Disable the gun parts when scoped (to maintain immersiveness)
-                }
-            }
-
-            _scopeOverlay.SetActive(_isScoped); // Turn on the zoom overlay
-        }
-        else
-        {
-            yield return new WaitForSeconds(0.25f);
-            _currFOV = _scopeFOV; // Zoom the camera in when scoped
-        }
-    }
-
-    private IEnumerator OnDescope()
-    {
-        if (_scopeOverlay != null)
-        {
-            _animator.SetBool("isScoped", _isScoped); // Deactivate the gun's scope animation
-
-            if (transform.childCount > 0)
-            {
-                foreach (Transform parts in transform)
-                {
-                    parts.gameObject.SetActive(!_isScoped); // Enable the gun parts when descoped (to maintain immersiveness)
-                }
-            }
-
-            _scopeOverlay.SetActive(_isScoped); // Turn off the zoom overlay
-            _currFOV = _initialScopeFOV; // Reset camera zoom to OG
-
-            yield return null;
-        }
-        else
-        {
-            _currFOV = _initialScopeFOV; // Reset camera zoom to OG
-
-            yield return null;
-        }
-    }
-
     protected IEnumerator FireRoutine()
     {
         yield return _fireCountdown;
         _canShoot = true;
     }
 
-    public void ResetAmmo()
+    public void ResetWeaponState()
     {
+        TurnOnRigidbodyConstraints();
+
+        transform.position = _initialPosition;
+        transform.rotation = _initialRotation;
         _ammo = _initialAmmo;
     }
 
