@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected int _ammo;
     [SerializeField] protected GameObject _weaponBarrel;
     private bool _isEquipped;
+    private bool _triggerPulled;
     protected bool _canShoot = true;
     private WaitForSeconds _fireCountdown;
 
@@ -38,6 +39,17 @@ public class Weapon : MonoBehaviour
         _fireCountdown = new WaitForSeconds(1 / _fireRate);
     }
 
+    private void Update()
+    {
+        if (TriggerPulled && _canShoot)
+        {
+            _canShoot = false;
+            StartCoroutine(FireRoutine());
+
+            Shoot();
+        }
+    }
+
     public bool IsEquipped
     {
         get
@@ -49,6 +61,12 @@ public class Weapon : MonoBehaviour
         {
             _isEquipped = value;
         }
+    }
+
+    public bool TriggerPulled
+    {
+        get { return _triggerPulled; }
+        set { _triggerPulled = value; }
     }
 
     // Turn off motion and rotation constraints
@@ -67,9 +85,6 @@ public class Weapon : MonoBehaviour
 
     public virtual void LeftClick()
     {
-        //if (Input.GetButtonDown("Fire1") && _canShoot)
-        //{
-        //}
         _canShoot = false;
         StartCoroutine(FireRoutine());
         Shoot();

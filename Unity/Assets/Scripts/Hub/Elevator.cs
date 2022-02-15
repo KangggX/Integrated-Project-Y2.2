@@ -9,10 +9,13 @@ public class Elevator : MonoBehaviour
     private MeshCollider _meshCollider;
     private GameObject _player;
 
+    [SerializeField] private ElevatorType _elevatorType;
+    [SerializeField] private GameObject _usagePrompt;
     private string _currScene;
 
     private void Awake()
     {
+        // Get Animator component
         _animator = GetComponent<Animator>();
 
         // Assignt the Mesh Collider that is a trigger to _meshCollider
@@ -57,7 +60,6 @@ public class Elevator : MonoBehaviour
     public void ElevatorSpawn()
     {
         ParentPlayer();
-        LockPlayerMovement();
         _player.transform.localPosition = Vector3.zero;
 
         GoDownAnim();
@@ -96,13 +98,13 @@ public class Elevator : MonoBehaviour
     {
         if (_currScene != "Hub")
         {
-            if (state)
+            if (_usagePrompt != null)
             {
-                Debug.Log("Hi");
+                _usagePrompt.SetActive(state);
             }
             else
             {
-                Debug.Log("Hi2");
+                Debug.Log("No Usage Prompt found");
             }
         }
     }
@@ -110,11 +112,12 @@ public class Elevator : MonoBehaviour
     // Transition to hub scene
     private void LoadHubScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
-    private void GoDownAnim()
+    public void GoDownAnim()
     {
+        LockPlayerMovement();
         _animator.SetTrigger("Going Down");
     }
 
@@ -122,4 +125,12 @@ public class Elevator : MonoBehaviour
     {
         _animator.SetTrigger("Going Up");
     }
+}
+
+public enum ElevatorType
+{
+    Hub,
+    Skiing,
+    IndoorShooting,
+    OutdoorShooting
 }

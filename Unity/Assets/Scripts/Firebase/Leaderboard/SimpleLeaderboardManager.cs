@@ -64,7 +64,7 @@ public class SimpleLeaderboardManager : MonoBehaviour
             case LeaderboardType.OutdoorShooting:
                 {
                     var leaderboardList = await firebaseManager.GetOutdoorLeaderboard();
-                    leaderboardList.Reverse();
+                    leaderboardList.Reverse(); // Reverse list
 
                     foreach (OutdoorLeaderboard lb in leaderboardList)
                     {
@@ -87,7 +87,7 @@ public class SimpleLeaderboardManager : MonoBehaviour
             case LeaderboardType.IndoorShooting:
                 {
                     var leaderboardList = await firebaseManager.GetIndoorLeaderboard();
-                    leaderboardList.Reverse();
+                    leaderboardList.Reverse(); // Reverse list
 
                     foreach (IndoorLeaderboard lb in leaderboardList)
                     {
