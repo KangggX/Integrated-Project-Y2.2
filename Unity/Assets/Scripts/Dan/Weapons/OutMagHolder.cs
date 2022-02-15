@@ -23,6 +23,7 @@ public class OutSnipMag : MonoBehaviour
         
         if (collision.gameObject.tag == "outdoorMag")
         {
+            Debug.Log("magazine collided with holder");
             collision.gameObject.transform.parent = parentGun.transform;
             
         }

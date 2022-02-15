@@ -20,7 +20,7 @@ public class movingTarget : MonoBehaviour
         {
             // move left
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
-            if (transform.position.x <= -100) 
+            if (transform.position.x <= -10) 
             {
                 movingLeft = false;
             }
@@ -29,7 +29,7 @@ public class movingTarget : MonoBehaviour
         {
             // move right
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-            if (transform.position.x >= -80) 
+            if (transform.position.x >= 20) 
             {
                 movingLeft = true;
             }
