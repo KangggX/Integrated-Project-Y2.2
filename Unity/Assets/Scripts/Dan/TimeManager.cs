@@ -26,6 +26,7 @@ public class TimeManager : MonoBehaviour
     private string resetText = "00:00:00";
 
     private ActivateTargets activateTargets;
+    private GameManager gameManager;
 
     
 
@@ -96,15 +97,18 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         activateTargets = GameObject.Find("GameManager").GetComponent<ActivateTargets>();
     }
 
     public void StartTimer()
     {
+        if (timeRemaining == 0)
+        {
+           StopWatchReset();
+           gameManager.OutdoorPoints = 0;
+        }
         startButton.SetActive(false);
-          
-        
         StartCoroutine("StopWatch");
     }
 
@@ -117,7 +121,7 @@ public class TimeManager : MonoBehaviour
 
     public void StopWatchReset()
     {
-        timeRemaining = 0;
+        timeRemaining = 30;
         timeRemainingDisplay.text = resetText;
         timeRemainingDisplay.color = Color.white;
 
