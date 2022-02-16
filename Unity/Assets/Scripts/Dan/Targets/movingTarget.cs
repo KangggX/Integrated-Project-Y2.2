@@ -7,6 +7,9 @@ public class movingTarget : MonoBehaviour
     public float moveSpeed = 10;
     [SerializeField]
     private bool movingLeft;
+
+    public float minPos;
+    public float maxPos;
     void Start() 
     {
         movingLeft = true;
@@ -20,7 +23,7 @@ public class movingTarget : MonoBehaviour
         {
             // move left
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
-            if (transform.position.x <= -10) 
+            if (transform.position.x <= minPos) 
             {
                 movingLeft = false;
             }
@@ -29,7 +32,7 @@ public class movingTarget : MonoBehaviour
         {
             // move right
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-            if (transform.position.x >= 20) 
+            if (transform.position.x >= maxPos) 
             {
                 movingLeft = true;
             }
