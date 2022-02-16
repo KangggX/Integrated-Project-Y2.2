@@ -178,6 +178,8 @@ function updateProfilePage(username) {
         get(ref(db, "playerStats/" + key)).then((snapshot) => {
             if (snapshot.exists()) {
                 $("#outdoorPointsDetail").text(`${snapshot.child("outdoorPoints").val()}`);
+                $("#outdoorGamesDetail").text(`${snapshot.child("outdoorTotalGame").val()}`);
+                $("#totalOutdoorDetail").text(`${snapshot.child("outdoorTotalPoints").val()}`);
             }
             else {
                 
