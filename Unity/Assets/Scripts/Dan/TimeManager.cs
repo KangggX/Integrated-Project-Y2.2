@@ -10,9 +10,10 @@ public class TimeManager : MonoBehaviour
     public TMP_Text timeElapsedDisplay;
     //public TMP_Text fpsTxt;
     public TMP_Text timeRemainingDisplay;
-    public Button startButton;
+    public GameObject startButton;
     public float time;
 
+    [SerializeField]
     private float timeRemaining = 30;
     private float msec;
     private float sec;
@@ -25,6 +26,7 @@ public class TimeManager : MonoBehaviour
     private string resetText = "00:00:00";
 
     private ActivateTargets activateTargets;
+    private GameManager gameManager;
 
     
 
@@ -53,6 +55,8 @@ public class TimeManager : MonoBehaviour
                 //gameManager.GameOver();
                 //stop spawning targets once game is over
                 activateTargets.stopOutdoor();
+                StopTimer();
+                 
 
 
             }
@@ -93,26 +97,31 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         activateTargets = GameObject.Find("GameManager").GetComponent<ActivateTargets>();
     }
 
     public void StartTimer()
     {
-        startButton.enabled = false;
+        if (timeRemaining == 0)
+        {
+           StopWatchReset();
+           gameManager.OutdoorPoints = 0;
+        }
+        startButton.SetActive(false);
         StartCoroutine("StopWatch");
     }
 
 
     public void StopTimer()
     {
-        startButton.enabled = true;
+        startButton.SetActive(true);
         StopCoroutine("StopWatch");
     }
 
     public void StopWatchReset()
     {
-        timeRemaining = 0;
+        timeRemaining = 30;
         timeRemainingDisplay.text = resetText;
         timeRemainingDisplay.color = Color.white;
 

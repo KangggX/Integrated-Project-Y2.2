@@ -12,6 +12,8 @@ public class SwingMovement : MonoBehaviour
     //character controller
     private CharacterController cController;
 
+    
+
     //Vector 3
     private Vector3 positionPreviousFrameLeftHand;
     private Vector3 positionPreviousFrameRightHand;
@@ -38,6 +40,9 @@ public class SwingMovement : MonoBehaviour
     private float deccelRateSki;
 
     private float forwardVelocity;
+
+    public float rotateSmooth;
+    public float tiltAmount;
 
     //check movement type
     public bool touchedSnow;
@@ -72,6 +77,7 @@ public class SwingMovement : MonoBehaviour
     {
         CenterEye();
         PlayerPosition();
+        Rotate();
     }
 
     private void CenterEye()
@@ -155,5 +161,25 @@ public class SwingMovement : MonoBehaviour
 
         playerPositionPreviousFrame = playerPositionThisFrame;
     }
-
+    private void Rotate()
+    {
+        //detecting head tilt
+        if (GetComponent<SwingTest>().angleBetween> 4)
+        {
+            //head tilt
+            if (cameraCenter.transform.eulerAngles.z <= -30)
+            {
+                print("turned left");
+            }
+            if (cameraCenter.transform.eulerAngles.z >= 30)
+            {
+                //turn right
+                print("turned right");
+            }
+            else
+            {
+                tiltAmount = 0;
+            }
+        }
+    }
 }
