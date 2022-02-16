@@ -12,17 +12,17 @@ public class ArcadeMachine : MonoBehaviour
         switch (_machineType)
         {
             case MachineType.Skiing:
-                Debug.Log("Loading Skii Scene");
+                SceneManager.LoadScene("Marcus - Movement");
 
                 break;
 
             case MachineType.IndoorShooting:
-                Debug.Log("Loading Indoor Shooting Scene");
+                SceneManager.LoadScene("Indoor Shooting");
 
                 break;
 
             case MachineType.OutdoorShooting:
-                Debug.Log("Loading Outdoor Shooting Scene");
+                SceneManager.LoadScene("Outdoor Shooting");
 
                 break;
         }
