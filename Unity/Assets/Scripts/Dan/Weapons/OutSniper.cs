@@ -10,7 +10,7 @@ public class OutSniper : OutWeapon
     [SerializeField]
     private Projectile bulletPrefab;
 
-    public TextMeshProUGUI DebugText;
+    //public TextMeshProUGUI DebugText;
     public GameObject magazine;
     public GameObject magazineHolder;
     public int currentAmmo = 5;
@@ -34,7 +34,7 @@ public class OutSniper : OutWeapon
             
             
 
-            DebugText.text = "Sniper : Magazine Not Loaded";
+            //DebugText.text = "Sniper : Magazine Not Loaded";
         }
         
     }
@@ -49,7 +49,7 @@ public class OutSniper : OutWeapon
             projectileInstantance.Init(this);
             projectileInstantance.Launch();
             Debug.Log("Bullet has been shot");
-            DebugText.text = "Sniper : Shot";
+            //DebugText.text = "Sniper : Shot";
 
             currentAmmo -= 1;
 
@@ -60,7 +60,7 @@ public class OutSniper : OutWeapon
 
         else
         {
-            DebugText.text = "Sniper : Cooldown";
+            //DebugText.text = "Sniper : Cooldown";
         }
         
     }
@@ -92,7 +92,7 @@ public class OutSniper : OutWeapon
             {
                 base.canShootAmmo = true;
                 //Debug.Log("Finished Cooldown");
-                DebugText.text = "Sniper : Ready";
+                //DebugText.text = "Sniper : Ready";
             }
     }
 }

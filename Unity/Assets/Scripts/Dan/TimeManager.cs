@@ -10,9 +10,10 @@ public class TimeManager : MonoBehaviour
     public TMP_Text timeElapsedDisplay;
     //public TMP_Text fpsTxt;
     public TMP_Text timeRemainingDisplay;
-    public Button startButton;
+    public GameObject startButton;
     public float time;
 
+    [SerializeField]
     private float timeRemaining = 30;
     private float msec;
     private float sec;
@@ -53,6 +54,8 @@ public class TimeManager : MonoBehaviour
                 //gameManager.GameOver();
                 //stop spawning targets once game is over
                 activateTargets.stopOutdoor();
+                StopTimer();
+                 
 
 
             }
@@ -99,14 +102,16 @@ public class TimeManager : MonoBehaviour
 
     public void StartTimer()
     {
-        startButton.enabled = false;
+        startButton.SetActive(false);
+          
+        
         StartCoroutine("StopWatch");
     }
 
 
     public void StopTimer()
     {
-        startButton.enabled = true;
+        startButton.SetActive(true);
         StopCoroutine("StopWatch");
     }
 
