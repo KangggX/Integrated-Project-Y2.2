@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// A manager for the Hub
+/// Handles where to spawn the player the moment they enter the Hub or when they just completed the game
+/// 
+/// </summary>
 public class PlayerHub : MonoBehaviour
 {
     [SerializeField] private Elevator _elevator;
@@ -17,7 +22,7 @@ public class PlayerHub : MonoBehaviour
     // Or spawn the player in the Elevator if it isn't their first time
     private void PlayerEntrancePosition()
     {
-        if (PlayerEnterState.HasEnteredBefore)
+        if (PlayerGameState.HasEnteredBefore)
         {
             Debug.Log("Player has entered hub before!");
 
@@ -27,7 +32,7 @@ public class PlayerHub : MonoBehaviour
         {
             Debug.Log("This is the first time the player is entering the hub");
 
-            PlayerEnterState.HasEnteredBefore = true;
+            PlayerGameState.HasEnteredBefore = true;
             SpawnPlayer(SpawnPosition.Entrance);
         }
     }
