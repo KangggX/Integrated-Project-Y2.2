@@ -10,7 +10,7 @@ public class OutShotgun : OutWeapon
     [SerializeField]
     private Projectile bulletPrefab;
 
-    public TextMeshProUGUI DebugText;
+    //public TextMeshProUGUI DebugText;
     protected override void StartShooting(ActivateEventArgs interactor)
     {
         base.StartShooting(interactor);
@@ -32,12 +32,12 @@ public class OutShotgun : OutWeapon
                 projectileInstantance.Launch();
             }
             Debug.Log("Bullet has been shot");
-            DebugText.text = "Shotgun : Shot";
+            //DebugText.text = "Shotgun : Shot";
         }
 
         else
         {
-            DebugText.text = "Shotgun : Cooldown";
+            //DebugText.text = "Shotgun : Cooldown";
         }
         
     }
@@ -64,7 +64,7 @@ public class OutShotgun : OutWeapon
             {
                 base.canShootAmmo = true;
                 //Debug.Log("Finished Cooldown");
-                DebugText.text = "Shotgun : Ready";
+                //DebugText.text = "Shotgun : Ready";
             }
         
     }
