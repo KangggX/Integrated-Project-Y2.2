@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
 using TMPro;
-
-public class OutSMG : OutWeapon
+public class OutRPG : OutWeapon
 {
     [SerializeField]
     private Projectile bulletPrefab;
@@ -13,11 +12,12 @@ public class OutSMG : OutWeapon
     //public TextMeshProUGUI DebugText;
     public GameObject magazine;
     public GameObject magazineHolder;
-    public int currentAmmo = 25;
+    public int currentAmmo = 1;
     public bool gunTrigger;
-    private int i;
+    
+    public GameObject rocket;
 
-     private float reloadMagTime;
+    
     protected override void StartShooting(ActivateEventArgs interactor)
     {
         
@@ -29,16 +29,7 @@ public class OutSMG : OutWeapon
         }
         else
         {
-            //unloads the gun magazine
-            magazine.transform.parent = null;
-            magazine.AddComponent<Rigidbody>();
-
-            magazineHolder.SetActive(true);
-
             
-            
-
-            //DebugText.text = "Sniper : Magazine Not Loaded";
         }
         
             
@@ -75,10 +66,7 @@ public class OutSMG : OutWeapon
         
     }
 
-    public void addAmmo()
-    {
-        currentAmmo += 25;
-    }
+   
 
         
     
@@ -111,4 +99,5 @@ public class OutSMG : OutWeapon
 
             
     }
+
 }
