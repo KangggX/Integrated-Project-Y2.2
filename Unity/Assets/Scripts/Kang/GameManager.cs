@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Manages the game basically
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     private Weapon[] _weaponList;
@@ -42,6 +45,8 @@ public class GameManager : MonoBehaviour
     //for outdoor stuff - Dan
     public void stopOutdoor()
     {
+        UpdatePlayerOutdoorStats();
+
         SpawnRandom.isGameActive = false;
     }
     //---------------------------
@@ -59,17 +64,16 @@ public class GameManager : MonoBehaviour
     }
 
     // Send data to FirebaseManager to update Player Stats (Indoor)
-    private void UpdatePlayerSkiiStats()
+    public void UpdatePlayerSkiiStats(int time)
     {
         string uuid = _authManager.auth.CurrentUser.UserId;
         string displayName = _authManager.auth.CurrentUser.DisplayName;
-        int points = _targetManager.targetInUse.TotalPoints;
 
-        _firebaseManager.UpdatePlayerSkiiStats(uuid, displayName, points);
+        _firebaseManager.UpdatePlayerSkiiStats(uuid, displayName, time);
     }
 
     // Send data to FirebaseManager to update Player Stats (Indoor)
-    private void UpdatePlayerIndoorStats()
+    public void UpdatePlayerIndoorStats()
     {
         string uuid = _authManager.auth.CurrentUser.UserId;
         string displayName = _authManager.auth.CurrentUser.DisplayName;
@@ -79,11 +83,11 @@ public class GameManager : MonoBehaviour
     }
 
     // Send data to FirebaseManager to update Player Stats (Indoor)
-    private void UpdatePlayerOutdoorStats()
+    public void UpdatePlayerOutdoorStats()
     {
         string uuid = _authManager.auth.CurrentUser.UserId;
         string displayName = _authManager.auth.CurrentUser.DisplayName;
-        int points = _targetManager.targetInUse.TotalPoints;
+        int points = OutdoorPoints;
 
         _firebaseManager.UpdatePlayerOutdoorStats(uuid, displayName, points);
     }
