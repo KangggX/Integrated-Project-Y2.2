@@ -8,9 +8,13 @@ using Firebase.Extensions;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Script to handle the Main Menu itself (only)
+/// </summary>
 public class MenuManager : MonoBehaviour
 {
-    public AuthManager authMgr;
+    private AuthManager _authManager;
+
     public TMP_Text displayName;
 
     //Check for transitions
@@ -18,10 +22,11 @@ public class MenuManager : MonoBehaviour
     public static bool leaderboardTransition = false;
     public static bool playTransition = false;
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Start()
     {
-        displayName.text = authMgr.GetCurrentUserDisplayName();
+        _authManager = FindObjectOfType<AuthManager>();
+
+        displayName.text = "Welcome " + _authManager.GetCurrentUserDisplayName();
     }
 
     public void Tutorial()

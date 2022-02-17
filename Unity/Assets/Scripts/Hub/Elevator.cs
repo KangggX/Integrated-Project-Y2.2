@@ -94,6 +94,7 @@ public class Elevator : MonoBehaviour
         playerMovement.speed = playerMovement.initialSpeed; 
     }
 
+    // Show prompt to use elevator
     private void EnableUsagePrompt(bool state)
     {
         if (_currScene != "Hub")
@@ -107,6 +108,18 @@ public class Elevator : MonoBehaviour
                 Debug.Log("No Usage Prompt found");
             }
         }
+    }
+
+    // Enable PlayerGameState for Skii
+    private void EnableSkiiState()
+    {
+        PlayerGameState.CanPlaySkiing = true;
+    }
+
+    // Enable PlayerGameState for Outdoor Shooting
+    private void EnableOutdoorShootingState()
+    {
+        PlayerGameState.CanPlayOutdoorShooting = true;
     }
 
     // Transition to hub scene
