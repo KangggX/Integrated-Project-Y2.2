@@ -111,17 +111,20 @@ public class SwingMovement : MonoBehaviour
         if (Time.timeSinceLevelLoad > 1f)
         {
             //apply movement type
-            if(touchedSnow == true)
+            if (skiing)
             {
-                if (handSpeed >= 0.01)
+                if (touchedSnow == true)
                 {
-                    forwardVelocity += accelRateSKi * Time.deltaTime;
-                    forwardVelocity = Mathf.Min(forwardVelocity, maxSkiSpeed);
-
-                    cController.Move(forwardDirection.transform.forward * forwardVelocity);
-                    if (canvas.activeInHierarchy)
+                    if (handSpeed >= 0.01)
                     {
-                        canvas.GetComponent<SkiAnimation>().ActivateThirdAction();
+                        forwardVelocity += accelRateSKi * Time.deltaTime;
+                        forwardVelocity = Mathf.Min(forwardVelocity, maxSkiSpeed);
+
+                        cController.Move(forwardDirection.transform.forward * forwardVelocity);
+                        if (canvas.activeInHierarchy)
+                        {
+                            canvas.GetComponent<SkiAnimation>().ActivateThirdAction();
+                        }
                     }
                 }
                 else
@@ -130,14 +133,17 @@ public class SwingMovement : MonoBehaviour
                     forwardVelocity = Mathf.Max(forwardVelocity, 0);
 
                     cController.Move(forwardDirection.transform.forward * forwardVelocity);
+                    if (GetComponent<Timer>().timeActive)
+                    {
+                        maxToZeroSki = 1f;
+                        deccelRateSki = -maxSkiSpeed / maxToZeroSki;
+                    }
+                    else
+                    {
+                        maxToZeroSki = 5f;
+                        deccelRateSki = -maxSkiSpeed / maxToZeroSki;
+                    }
                 }
-            }
-            else if (skiing)
-            {
-                forwardVelocity += deccelRateSki * Time.deltaTime;
-                forwardVelocity = Mathf.Max(forwardVelocity, 0);
-
-                cController.Move(forwardDirection.transform.forward * forwardVelocity);
             }
             else
             {

@@ -52,9 +52,8 @@ public class Timer : MonoBehaviour
     public void GameEnd()
     {
         timeActive = false;
-
+        
         _gameManager.UpdatePlayerSkiiStats((int)currentTime);
-        _swingMovement.maxToZeroSki = 1;
     }
 
     /*public void UpdatePlayerStats(int time)
