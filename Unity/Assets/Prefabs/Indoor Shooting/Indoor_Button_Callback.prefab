@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3624849357127287818}
-  m_Mesh: {fileID: -6444881103987376617, guid: 9bbcf83e9a26aee4897f6198e652109a, type: 3}
+  m_Mesh: {fileID: -1485426053105598609, guid: eaf6e87598afc2d4f93ca363fc8a3b60, type: 3}
 --- !u!23 &2976581629802161631
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: 9bbcf83e9a26aee4897f6198e652109a, type: 3}
+  - {fileID: 2100000, guid: b91492344fa93a6479e788bb5b0f5528, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,19 +170,7 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8065022843543167198}
-        m_TargetAssemblyTypeName: TargetButton, Assembly-CSharp
-        m_MethodName: TriggerInteraction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_Activated:
     m_PersistentCalls:
       m_Calls: []

@@ -10,9 +10,9 @@ FBXHeaderExtension:  {
 		Month: 2
 		Day: 17
 		Hour: 18
-		Minute: 21
-		Second: 50
-		Millisecond: 961
+		Minute: 22
+		Second: 31
+		Millisecond: 593
 	}
 	Creator: "FBX SDK/FBX Plugins version 2020.2.3"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -28,19 +28,19 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "D:\Git Repositories\Y2S2IP\Unity\Assets\Meshes\Indoor\Indoor_Button.fbx"
-			P: "SrcDocumentUrl", "KString", "Url", "", "D:\Git Repositories\Y2S2IP\Unity\Assets\Meshes\Indoor\Indoor_Button.fbx"
+			P: "DocumentUrl", "KString", "Url", "", "D:\Git Repositories\Y2S2IP\Unity\Assets\Meshes\Indoor\Indoor_Button_Red.fbx"
+			P: "SrcDocumentUrl", "KString", "Url", "", "D:\Git Repositories\Y2S2IP\Unity\Assets\Meshes\Indoor\Indoor_Button_Red.fbx"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "Maya"
 			P: "Original|ApplicationVersion", "KString", "", "", "2022"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "17/02/2022 10:21:50.941"
-			P: "Original|FileName", "KString", "", "", "D:\Git Repositories\Y2S2IP\Unity\Assets\Meshes\Indoor\Indoor_Button.fbx"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "17/02/2022 10:22:31.591"
+			P: "Original|FileName", "KString", "", "", "D:\Git Repositories\Y2S2IP\Unity\Assets\Meshes\Indoor\Indoor_Button_Red.fbx"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "Maya"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2022"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "17/02/2022 10:21:50.941"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "17/02/2022 10:22:31.591"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "D:\Git Repositories\Y2S2IP\Unity\Assets\Meshes\Final Assets\Models"
 			P: "Original|ApplicationNativeFile", "KString", "", "", "C:\Users\kx123\Desktop\Indoor Scene.ma"
 		}
@@ -77,7 +77,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2065366287472, "", "Scene" {
+	Document: 2064726412752, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", "Take 001"
@@ -222,7 +222,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2066470823408, "Geometry::", "Mesh" {
+	Geometry: 2066470825648, "Geometry::", "Mesh" {
 		Vertices: *156 {
 			a: 548.794860839844,96.4927825927734,-254.550247192383,567.283508300781,96.4927825927734,-254.550247192383,548.794860839844,100.125968933105,-254.550247192383,567.283508300781,100.125968933105,-254.550247192383,548.794860839844,100.125968933105,-273.038848876953,567.283508300781,100.125968933105,-273.038848876953,548.794860839844,96.4927825927734,-273.038848876953,567.283508300781,96.4927825927734,-273.038848876953,551.933776855469,100.125968933105,-257.689147949219,551.150512695313,100.125968933105,-259.580047607422,549.8134765625,100.125968933105,-255.568878173828,553.824645996094,100.125968933105,-256.905944824219,551.933776855469,103.163269042969,-259.580047607422,551.150512695313,101.272392272949,-259.580047607422,551.933776855469,101.272392272949,-257.689147949219,553.824645996094,101.272392272949,-256.905944824219,553.824645996094,103.163269042969,-257.689147949219,553.824645996094,103.946495056152,-259.580047607422,564.14453125,100.125968933105,-257.689147949219,562.253662109375,100.125968933105,-256.905944824219,566.264831542969,100.125968933105,-255.568878173828,564.927795410156,100.125968933105,-259.580047607422,564.14453125,103.163269042969,-259.580047607422,562.253662109375,103.946495056152,-259.580047607422,562.253662109375,103.163269042969,-257.689147949219,562.253662109375,101.272392272949,-256.905944824219,564.14453125,101.272392272949,-257.689147949219,564.927795410156,101.272392272949,-259.580047607422,564.14453125,100.125968933105,-269.899932861328,564.927795410156,100.125968933105,-268.009033203125,566.264831542969,100.125968933105,-272.020202636719,562.253662109375,100.125968933105,-270.683166503906,562.253662109375,103.163269042969,-269.899932861328,562.253662109375,103.946495056152,-268.009033203125,564.14453125,103.163269042969,-268.009033203125,564.927795410156,101.272392272949,-268.009033203125,564.14453125,101.272392272949,-269.899932861328,562.253662109375,101.272392272949,-270.683166503906,551.933776855469,100.125968933105,-269.899932861328,553.824645996094,100.125968933105,-270.683166503906,
 549.8134765625,100.125968933105,-272.020202636719,551.150512695313,100.125968933105,-268.009033203125,551.933776855469,103.163269042969,-268.009033203125,553.824645996094,103.946495056152,-268.009033203125,553.824645996094,103.163269042969,-269.899932861328,553.824645996094,101.272392272949,-270.683166503906,551.933776855469,101.272392272949,-269.899932861328,551.150512695313,101.272392272949,-268.009033203125,552.281311035156,102.81575012207,-258.036682128906,563.797058105469,102.81575012207,-258.036682128906,563.797058105469,102.81575012207,-269.552429199219,552.281311035156,102.81575012207,-269.552429199219
@@ -341,7 +341,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2066335392512, "Model::Indoor_Button", "Mesh" {
+	Model: 2066335392512, "Model::Indoor_Button_Red", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "RotationPivot", "Vector3D", "Vector", "",558.039184570313,96.4927825927734,-263.794548034668
@@ -356,7 +356,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2066466880960, "Material::lambert1", "" {
+	Material: 2066466874960, "Material::lambert1", "" {
 		Version: 102
 		ShadingModel: "lambert"
 		MultiLayer: 0
@@ -378,12 +378,12 @@ Objects:  {
 
 Connections:  {
 	
-	;Model::Indoor_Button, Model::RootNode
+	;Model::Indoor_Button_Red, Model::RootNode
 	C: "OO",2066335392512,0
 	
-	;Geometry::, Model::Indoor_Button
-	C: "OO",2066470823408,2066335392512
+	;Geometry::, Model::Indoor_Button_Red
+	C: "OO",2066470825648,2066335392512
 	
-	;Material::lambert1, Model::Indoor_Button
-	C: "OO",2066466880960,2066335392512
+	;Material::lambert1, Model::Indoor_Button_Red
+	C: "OO",2066466874960,2066335392512
 }

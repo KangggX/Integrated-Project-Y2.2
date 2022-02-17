@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Weapon : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Weapon : MonoBehaviour
     //[SerializeField] protected GameObject _bulletHole;
     [SerializeField] protected float _fireRate;
     [SerializeField] protected int _ammo;
+    [SerializeField] protected TextMeshProUGUI _ammoText;
     [SerializeField] protected GameObject _weaponBarrel;
     private bool _isEquipped;
     private bool _triggerPulled;
@@ -39,6 +41,13 @@ public class Weapon : MonoBehaviour
         _fireCountdown = new WaitForSeconds(1 / _fireRate);
     }
 
+    private void Start()
+    {
+        TurnOnRigidbodyConstraints();
+
+        _ammoText.gameObject.SetActive(false);
+    }
+
     private void Update()
     {
         if (TriggerPulled && _canShoot)
@@ -47,6 +56,13 @@ public class Weapon : MonoBehaviour
             StartCoroutine(FireRoutine());
 
             Shoot();
+        }
+
+        if (IsEquipped)
+        {
+            _ammoText.gameObject.SetActive(true);
+
+            _ammoText.text = _ammo.ToString();
         }
     }
 
