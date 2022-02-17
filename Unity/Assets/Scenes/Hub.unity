@@ -958,6 +958,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4949784867318219752, guid: 70a87f97537f4f84a901562d95af11d8,
+        type: 3}
+      propertyPath: m_Name
+      value: Points
+      objectReference: {fileID: 0}
     - target: {fileID: 4949784867318219755, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -967,6 +972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949784867318219757, guid: 70a87f97537f4f84a901562d95af11d8,
+        type: 3}
+      propertyPath: m_text
+      value: Points
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867593758949, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
@@ -1981,22 +1991,22 @@ PrefabInstance:
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 142.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4949784868122965974, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
@@ -2229,7 +2239,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986074752}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -5053,7 +5063,7 @@ PrefabInstance:
     - target: {fileID: 4949784867318219752, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_Name
-      value: Points
+      value: Timing
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867318219755, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
@@ -5068,7 +5078,7 @@ PrefabInstance:
     - target: {fileID: 4949784867318219757, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_text
-      value: Points
+      value: Timing
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867593758949, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
