@@ -29,35 +29,14 @@ public class MenuManager : MonoBehaviour
         displayName.text = "Welcome " + _authManager.GetCurrentUserDisplayName();
     }
 
-    public void Tutorial()
+    public void StartGame()
     {
-        playTransition = true;
-        AudioClipManager.PlaySound("button");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Hub");
     }
-    public void SpeedRun()
-    {
-        playTransition = true;
-        AudioClipManager.PlaySound("button");
-        SceneManager.LoadScene("SpeedRun");
-    }
+
     public void QuitGame()
     {
         AudioClipManager.PlaySound("button");
         Application.Quit();
-    }
-
-    public void PlayerStats()
-    {
-        ppTransition = true;
-        //AudioClipManager.PlaySound("button");
-        SceneManager.LoadScene(3);
-    }
-
-    public void Leaderboard()
-    {
-        leaderboardTransition = true;
-        AudioClipManager.PlaySound("button");
-        SceneManager.LoadScene(2);
     }
 }

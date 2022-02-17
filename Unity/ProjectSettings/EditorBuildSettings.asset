@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/NewAuthentication.unity
     guid: 6c8da31e0ba495245bee0469ed586751
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/NewMainMenu.unity
     guid: 2a69316b1ec912048afa608621e794f2
   - enabled: 0
@@ -30,8 +30,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Outdoor Shooting.unity
     guid: c8b7848559e401748be166055ee59ad2
   - enabled: 1
-    path: Assets/Scenes/Marcus - Movement.unity
-    guid: 85fed0a266fdf674a9fd6272774d5f55
+    path: Assets/Scenes/Skiing.unity
+    guid: 735f16bd74de3694e80fdd62352c1365
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2bdd9d5bf5966ed4f8900b50ce14ab35,
       type: 2}

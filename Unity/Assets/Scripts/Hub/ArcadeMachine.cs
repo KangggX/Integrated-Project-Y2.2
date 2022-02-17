@@ -12,12 +12,13 @@ public class ArcadeMachine : MonoBehaviour
         switch (_machineType)
         {
             case MachineType.Skiing:
-                SceneManager.LoadScene("Marcus - Movement");
+                SceneManager.LoadScene("Skiing");
 
                 break;
 
             case MachineType.IndoorShooting:
                 SceneManager.LoadScene("Indoor Shooting");
+                PlayerGameState.HasEnteredBefore = true;
 
                 break;
 

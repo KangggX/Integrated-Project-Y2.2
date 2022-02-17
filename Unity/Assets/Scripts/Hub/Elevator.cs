@@ -125,7 +125,7 @@ public class Elevator : MonoBehaviour
     // Transition to hub scene
     private void LoadHubScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Hub");
     }
 
     public void GoDownAnim()

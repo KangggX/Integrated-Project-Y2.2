@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerGameState : MonoBehaviour
 {
-    public static bool HasEnteredBefore = true;
+    public static bool HasEnteredBefore = false;
 
-    public static bool CanPlaySkiing = false;
+    public static bool CanPlaySkiing = true;
     public static bool CanPlayIndoorShooting = true;
-    public static bool CanPlayOutdoorShooting = false;
+    public static bool CanPlayOutdoorShooting = true;
 
     private void Awake()
     {
