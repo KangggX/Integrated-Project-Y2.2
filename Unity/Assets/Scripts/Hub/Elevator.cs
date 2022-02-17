@@ -133,11 +133,6 @@ public class Elevator : MonoBehaviour
         LockPlayerMovement();
         _animator.SetTrigger("Going Down");
     }
-
-    private void GoUpAnim()
-    {
-        _animator.SetTrigger("Going Up");
-    }
 }
 
 public enum ElevatorType

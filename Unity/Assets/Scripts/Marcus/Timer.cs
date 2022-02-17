@@ -9,6 +9,8 @@ public class Timer : MonoBehaviour
     private GameManager _gameManager;
     private SwingMovement _swingMovement;
 
+    [SerializeField] private GameObject _restartPrompt;
+
     public bool timeActive = false;
     public float currentTime;
     public TMP_Text currentTimeText;
@@ -18,6 +20,8 @@ public class Timer : MonoBehaviour
     {
         _gameManager = FindObjectOfType<GameManager>();
         _swingMovement = GetComponent<SwingMovement>();
+
+        _restartPrompt.SetActive(false);
 
         timeActive = false;
         currentTime = 0;
@@ -32,6 +36,7 @@ public class Timer : MonoBehaviour
         if(time.tag == "end")
         {
             GameEnd();
+            _restartPrompt.SetActive(true);
         }
     }
 
