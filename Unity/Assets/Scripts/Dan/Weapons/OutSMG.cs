@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
 using TMPro;
 
+// refer to OutSniper script
 public class OutSMG : OutWeapon
 {
     [SerializeField]

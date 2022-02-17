@@ -16,12 +16,14 @@ public class PhysicsProjectile : Projectile
     public override void Init(OutWeapon outweapon)
     {
         base.Init(outweapon);
+        //destroys the bullet after a certain amount of time has passed
         Destroy(gameObject, lifeTime);
     }
     
     public override void Launch()
     {
         base.Launch();
+        //adds a forward force to push the bullet
         rigidBody.AddRelativeForce(Vector3.forward * outweapon.GetShootingForce(), ForceMode.Impulse);
     }
 

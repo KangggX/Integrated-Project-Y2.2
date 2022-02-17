@@ -18,11 +18,13 @@ public class OutSniper : OutWeapon
      private float reloadMagTime;
     protected override void StartShooting(ActivateEventArgs interactor)
     {
+        // if the gun still has ammo
         if (currentAmmo > 0)
         {
             base.StartShooting(interactor);
             Shoot();
         }
+        // no more ammo
         else
         {
             //unloads the gun magazine
@@ -42,9 +44,11 @@ public class OutSniper : OutWeapon
 
     protected override void Shoot()
     {
+        // has ammo and can shoot
         if(base.canShootAmmo == true)
         {
             base.Shoot();
+            // creates a projectile at the bullet spawn
             Projectile projectileInstantance = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
             projectileInstantance.Init(this);
             projectileInstantance.Launch();
@@ -64,7 +68,7 @@ public class OutSniper : OutWeapon
         }
         
     }
-
+    // adding ammo via magazines
     public void addAmmo()
     {
         currentAmmo += 5;
@@ -88,6 +92,7 @@ public class OutSniper : OutWeapon
     // Update is called once per frame
     void Update()
     {
+        // gun cooldown checks if enough time has passed between shots fired
         if (Time.time - base.StartTime > base.shootingCooldown)
             {
                 base.canShootAmmo = true;

@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//not used in final product
+
+
 public class PickUpController : MonoBehaviour
 {
+
     public GunShooting gunScript;
     public Rigidbody rb;
     public BoxCollider coll;

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using TMPro;
 public class OutRPG : OutWeapon
 {
+
+    // refer to OutSniper script
     [SerializeField]
     private Projectile bulletPrefab;
 

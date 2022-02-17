@@ -7,7 +7,7 @@ public class OutTarget : MonoBehaviour
     private GameManager gameManager;
     private void OnCollisionEnter(Collision collision)
     {
-        
+        //if target gets hit by a bullet, destroy the target and add a point
         if (collision.gameObject.tag == "Bullet")
         {
             Destroy(this.gameObject);
