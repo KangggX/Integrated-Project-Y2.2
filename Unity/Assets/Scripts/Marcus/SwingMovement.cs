@@ -176,10 +176,6 @@ public class SwingMovement : MonoBehaviour
                 //turn right
                 print("turned right");
             }
-            else
-            {
-                tiltAmount = 0;
-            }
         }
     }
 }
