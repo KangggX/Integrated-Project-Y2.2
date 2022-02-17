@@ -60,9 +60,13 @@ public class Weapon : MonoBehaviour
 
         if (IsEquipped)
         {
-            _ammoText.gameObject.SetActive(true);
+            _ammoText.gameObject.SetActive(IsEquipped);
 
             _ammoText.text = _ammo.ToString();
+        }
+        else
+        {
+            _ammoText.gameObject.SetActive(IsEquipped);
         }
     }
 
