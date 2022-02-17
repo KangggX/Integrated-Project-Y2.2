@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: ef9ab35324f018c46aabd683ab917e06
+guid: d0e8e608cfad06d46821266749451d16
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OUT_01
+    second: {fileID: 2100000, guid: 71dc21ca65c1eb045a0918e94aec314f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trim1
+    second: {fileID: 2100000, guid: b91492344fa93a6479e788bb5b0f5528, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aiStandardSurface1
+    second: {fileID: 2100000, guid: f69c700320038204fbf4f89a94d458bf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

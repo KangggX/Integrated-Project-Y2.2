@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: 8bfec6b921b62be44842a1302e63583b
+guid: 7195d989fae62d045bb3a7aac9c43dd8
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SKI_01
+    second: {fileID: 2100000, guid: fd976c502a97a924698aed46a13eaa21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SKI_02
+    second: {fileID: 2100000, guid: c600f2da4a44e434fb8125de5f6047cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert4
+    second: {fileID: 2100000, guid: 33356bef36a2e574eabb2437b1bf248e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
