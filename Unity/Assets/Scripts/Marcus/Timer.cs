@@ -6,22 +6,22 @@ using System;
 using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
+    private GameManager _gameManager;
+    private SwingMovement _swingMovement;
 
     public bool timeActive = false;
     public float currentTime;
     public TMP_Text currentTimeText;
+    public bool isUpdated = false;
 
     private void Start()
     {
+        _gameManager = FindObjectOfType<GameManager>();
+        _swingMovement = GetComponent<SwingMovement>();
+
         timeActive = false;
         currentTime = 0;
     }
-    public bool isUpdated = false;
-
-    //Firebase
-    //public AuthManager authMgr;
-    //public SimpleFirebaseManager fbMgr;
-
 
     private void OnTriggerEnter(Collider time)
     {
@@ -52,12 +52,9 @@ public class Timer : MonoBehaviour
     public void GameEnd()
     {
         timeActive = false;
-        if (isUpdated == false)
-        {
-            //UpdatePlayerStats((int)currentTime);
-            isUpdated = true;
-            //SceneManager.LoadScene("Main Menu");
-        }
+
+        _gameManager.UpdatePlayerSkiiStats((int)currentTime);
+        _swingMovement.maxToZeroSki = 1;
     }
 
     /*public void UpdatePlayerStats(int time)

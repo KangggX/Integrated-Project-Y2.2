@@ -77,7 +77,6 @@ public class SwingMovement : MonoBehaviour
     {
         CenterEye();
         PlayerPosition();
-        Rotate();
     }
 
     private void CenterEye()
@@ -164,22 +163,5 @@ public class SwingMovement : MonoBehaviour
         positionPreviousFrameRightHand = positionThisFrameRightHand;
 
         playerPositionPreviousFrame = playerPositionThisFrame;
-    }
-    private void Rotate()
-    {
-        //detecting head tilt
-        if (GetComponent<SwingTest>().angleBetween> 4)
-        {
-            //head tilt
-            if (cameraCenter.transform.eulerAngles.z <= -30)
-            {
-                print("turned left");
-            }
-            if (cameraCenter.transform.eulerAngles.z >= 30)
-            {
-                //turn right
-                print("turned right");
-            }
-        }
     }
 }
