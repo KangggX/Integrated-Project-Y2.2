@@ -6,9 +6,9 @@ public class PlayerGameState : MonoBehaviour
 {
     public static bool HasEnteredBefore = false;
 
-    public static bool CanPlaySkiing = true;
+    public static bool CanPlaySkiing = false;
     public static bool CanPlayIndoorShooting = true;
-    public static bool CanPlayOutdoorShooting = true;
+    public static bool CanPlayOutdoorShooting = false;
 
     private void Awake()
     {

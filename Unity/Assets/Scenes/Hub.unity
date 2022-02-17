@@ -323,7 +323,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 7.37
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &188623566
 PrefabInstance:
@@ -1991,22 +1991,22 @@ PrefabInstance:
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 142.5
       objectReference: {fileID: 0}
     - target: {fileID: 4949784867871293432, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4949784868122965974, guid: 70a87f97537f4f84a901562d95af11d8,
         type: 3}
@@ -3320,7 +3320,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 6.23
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1368953584
 PrefabInstance:
@@ -4322,7 +4322,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 8.13
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1848126532 stripped
 GameObject:
@@ -4678,7 +4678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916390023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.33, y: 6.37, z: -2.9}
+  m_LocalPosition: {x: -0.83, y: 6.37, z: -38.708}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 648453932}
@@ -4791,7 +4791,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 7.37
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1933812621
 GameObject:
@@ -4900,7 +4900,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 6.23
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2008883999
 GameObject:
