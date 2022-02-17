@@ -45,8 +45,6 @@ public class GameManager : MonoBehaviour
     //for outdoor stuff - Dan
     public void stopOutdoor()
     {
-        UpdatePlayerOutdoorStats();
-
         SpawnRandom.isGameActive = false;
     }
     //---------------------------

@@ -12,7 +12,7 @@ public class SwingMovement : MonoBehaviour
     //character controller
     private CharacterController cController;
     public GameObject canvas;
-    
+
 
     //Vector 3
     private Vector3 positionPreviousFrameLeftHand;
@@ -37,6 +37,7 @@ public class SwingMovement : MonoBehaviour
     public float zeroTomaxSki;
     public float maxToZeroSki;
     private float accelRateSKi;
+    [ SerializeField ]
     private float deccelRateSki;
 
     private float forwardVelocity;
@@ -135,12 +136,12 @@ public class SwingMovement : MonoBehaviour
                     cController.Move(forwardDirection.transform.forward * forwardVelocity);
                     if (GetComponent<Timer>().timeActive)
                     {
-                        maxToZeroSki = 1f;
+                        maxToZeroSki = 5f;
                         deccelRateSki = -maxSkiSpeed / maxToZeroSki;
                     }
                     else
                     {
-                        maxToZeroSki = 5f;
+                        maxToZeroSki = 1f;
                         deccelRateSki = -maxSkiSpeed / maxToZeroSki;
                     }
                 }

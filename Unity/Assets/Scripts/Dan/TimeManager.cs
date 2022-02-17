@@ -30,6 +30,12 @@ public class TimeManager : MonoBehaviour
 
     
 
+    // Start is called before the first frame update
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        activateTargets = FindObjectOfType<ActivateTargets>();
+    }
 
     
 
@@ -55,6 +61,7 @@ public class TimeManager : MonoBehaviour
                 //gameManager.GameOver();
                 //stop spawning targets once game is over
                 activateTargets.stopOutdoor();
+                gameManager.UpdatePlayerOutdoorStats();
                 StopTimer();
                 // can store the points to firebase here once the game finishes
                  
@@ -95,12 +102,6 @@ public class TimeManager : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        activateTargets = GameObject.Find("GameManager").GetComponent<ActivateTargets>();
-    }
 
     public void StartTimer()
     {
