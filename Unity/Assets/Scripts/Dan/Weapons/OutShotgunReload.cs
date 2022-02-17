@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OutSniperReload : MonoBehaviour
+public class OutShotgunReload : MonoBehaviour
 {
     public GameObject parentGun;
     private GameObject childMag;
-    private OutSniper outSniperGun;
+    private OutShotgun outShotGun;
     // Start is called before the first frame update
     void Start()
     {
-        outSniperGun = GameObject.Find("Sniper").GetComponent<OutSniper>();
+        outShotGun = GameObject.Find("Shotgun").GetComponent<OutShotgun>();
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class OutSniperReload : MonoBehaviour
         
         if (collision.gameObject.tag == "outdoorMag")
         {
-            if (collision.gameObject.name == "snipMag")
+            if (collision.gameObject.name == "shotgunMag")
             {
                 collision.rigidbody.useGravity = false;
                 collision.collider.enabled = false;
@@ -33,14 +33,14 @@ public class OutSniperReload : MonoBehaviour
                 
                 if (collision.gameObject.transform.parent = parentGun.transform)
                 {
-                    collision.transform.localPosition =  new Vector3(0f, -0.06f, -0.24f);
+                    collision.transform.localPosition =  new Vector3(0.02f, 0.09f, -0.05f);
                 }
 
-                outSniperGun.addAmmo();
+                outShotGun.addAmmo();
 
                 Debug.LogFormat("{0}",collision.transform.localPosition);
                             
-                
+
             }
         }
 

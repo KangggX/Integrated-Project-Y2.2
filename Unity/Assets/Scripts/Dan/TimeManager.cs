@@ -14,7 +14,7 @@ public class TimeManager : MonoBehaviour
     public float time;
 
     [SerializeField]
-    private float timeRemaining = 30;
+    private float timeRemaining = 45;
     private float msec;
     private float sec;
     private float min;
@@ -56,6 +56,7 @@ public class TimeManager : MonoBehaviour
                 //stop spawning targets once game is over
                 activateTargets.stopOutdoor();
                 StopTimer();
+                // can store the points to firebase here once the game finishes
                  
 
 

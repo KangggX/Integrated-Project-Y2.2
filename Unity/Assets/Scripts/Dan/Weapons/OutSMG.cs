@@ -5,18 +5,43 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
 using TMPro;
 
-public class OutShotgun : OutWeapon
+public class OutSMG : OutWeapon
 {
     [SerializeField]
     private Projectile bulletPrefab;
 
     //public TextMeshProUGUI DebugText;
-    public int currentAmmo;
+    public GameObject magazine;
+    public GameObject magazineHolder;
+    public int currentAmmo = 25;
+    public bool gunTrigger;
+    private int i;
+
+     private float reloadMagTime;
     protected override void StartShooting(ActivateEventArgs interactor)
     {
-        base.StartShooting(interactor);
-        Shoot();
         
+        if (currentAmmo > 0)
+        {
+                Debug.Log("Shooting");
+                base.StartShooting(interactor);
+                Shoot();
+        }
+        else
+        {
+            //unloads the gun magazine
+            magazine.transform.parent = null;
+            magazine.AddComponent<Rigidbody>();
+
+            magazineHolder.SetActive(true);
+
+            
+            
+
+            //DebugText.text = "Sniper : Magazine Not Loaded";
+        }
+        
+            
         
     }
     
@@ -25,22 +50,34 @@ public class OutShotgun : OutWeapon
     {
         if(base.canShootAmmo == true)
         {
-            base.Shoot();
-            for (int i = 0; i < 5; i++) 
-            {
+            
+            
+                base.Shoot();
                 Projectile projectileInstantance = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
                 projectileInstantance.Init(this);
                 projectileInstantance.Launch();
-            }
-            Debug.Log("Bullet has been shot");
-            //DebugText.text = "Shotgun : Shot";
+                Debug.Log("Bullet has been shot");
+                //DebugText.text = "Sniper : Shot";
+
+                currentAmmo -= 1;
+
+            
+
+
+            
+            
         }
 
         else
         {
-            //DebugText.text = "Shotgun : Cooldown";
+            //DebugText.text = "Sniper : Cooldown";
         }
         
+    }
+
+    public void addAmmo()
+    {
+        currentAmmo += 5;
     }
 
         
@@ -61,16 +98,17 @@ public class OutShotgun : OutWeapon
     // Update is called once per frame
     void Update()
     {
+       
         if (Time.time - base.StartTime > base.shootingCooldown)
             {
                 base.canShootAmmo = true;
                 //Debug.Log("Finished Cooldown");
-                //DebugText.text = "Shotgun : Ready";
+                //DebugText.text = "Sniper : Ready";
             }
+
         
-    }
-    public void addAmmo()
-    {
-        currentAmmo += 3;
+
+
+            
     }
 }
