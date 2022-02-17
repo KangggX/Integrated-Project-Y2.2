@@ -12,6 +12,8 @@ TagManager:
   - outdoorTarget
   - outdoorMag
   - ground
+  - start
+  - end
   layers:
   - Default
   - TransparentFX

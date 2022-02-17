@@ -11,7 +11,7 @@ public class SwingMovement : MonoBehaviour
 
     //character controller
     private CharacterController cController;
-
+    public GameObject canvas;
     
 
     //Vector 3
@@ -120,6 +120,10 @@ public class SwingMovement : MonoBehaviour
                     forwardVelocity = Mathf.Min(forwardVelocity, maxSkiSpeed);
 
                     cController.Move(forwardDirection.transform.forward * forwardVelocity);
+                    if (canvas.activeInHierarchy)
+                    {
+                        canvas.GetComponent<SkiAnimation>().ActivateThirdAction();
+                    }
                 }
                 else
                 {
