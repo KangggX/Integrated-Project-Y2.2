@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Author: Dan
+
+Name of Class: Outweapon Reload
+
+Description of Class: Reload mechanics for the SMG
+
+Date Created: 3 / 02 / 2022
+*/
 public class OutSMGReload : MonoBehaviour
 {
     public GameObject parentGun;

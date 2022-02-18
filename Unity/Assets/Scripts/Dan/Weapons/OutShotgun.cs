@@ -5,6 +5,16 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
 using TMPro;
 
+/*
+Author: Dan
+
+Name of Class: Outweapon
+
+Description of Class: Gun mechanics for the Shotgun
+
+Date Created: 3 / 02 / 2022
+*/
+
 // refer to outsniper script
 public class OutShotgun : OutWeapon
 {

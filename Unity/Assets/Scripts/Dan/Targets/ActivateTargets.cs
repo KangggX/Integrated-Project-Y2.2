@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/*
+Author: Dan
+
+Name of Class: Activate Targets
+
+Description of Class: Contains script for the target game mechanics
+
+Date Created: 3 / 02 / 2022
+*/
 public class ActivateTargets : MonoBehaviour
 {
     public float SpawnCoolDown = 3.0f;
@@ -63,6 +72,7 @@ public class ActivateTargets : MonoBehaviour
         }
         else
         {
+            // when theres not enough targets to spawn
             Debug.Log("No more Targets to spawn");
         }
     }
@@ -91,7 +101,6 @@ public class ActivateTargets : MonoBehaviour
             StartTime = Time.time;
             CanSpawnTarget = false;
         }
-
         else{
             if (isGameActive == true)
             {

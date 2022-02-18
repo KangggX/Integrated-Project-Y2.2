@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Author: Dan
+
+Name of Class: Projectile
+
+Description of Class: Base Projectile
+
+Date Created: 3 / 02 / 2022
+*/
 public class Projectile : MonoBehaviour
 {
     protected OutWeapon outweapon;

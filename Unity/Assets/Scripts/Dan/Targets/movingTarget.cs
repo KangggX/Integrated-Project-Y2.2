@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Author: Dan
+
+Name of Class: MovingTarget
+
+Description of Class: Target simple movement script
+
+Date Created: 3 / 02 / 2022
+*/
 public class movingTarget : MonoBehaviour
 {
     public float moveSpeed = 10;
