@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Author: Dan
+
+Name of Class: Physics Projectile
+
+Description of Class: Base Physics and Mechanics of Projectile
+
+Date Created: 3 / 02 / 2022
+*/
+
 [RequireComponent(typeof(Rigidbody))]
 public class PhysicsProjectile : Projectile
 {

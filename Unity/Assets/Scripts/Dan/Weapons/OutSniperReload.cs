@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Author: Dan
+
+Name of Class: Outweapon Reload
+
+Description of Class: Reload mechanics for the sniper
+
+Date Created: 3 / 02 / 2022
+*/
 public class OutSniperReload : MonoBehaviour
 {
     public GameObject parentGun;

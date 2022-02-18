@@ -4,6 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/*
+Author: Dan
+
+Name of Class: TimeManager
+
+Description of Class: Basic Timer for the outdoor shooting
+
+Date Created: 3 / 02 / 2022
+*/
 public class TimeManager : MonoBehaviour
 {
 

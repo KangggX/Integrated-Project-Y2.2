@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Author: Dan
+
+Name of Class: OutTarget
+
+Description of Class: Script for when the target gets hit by a bullet
+
+Date Created: 3 / 02 / 2022
+*/
 public class OutTarget : MonoBehaviour
 {
     private GameManager gameManager;

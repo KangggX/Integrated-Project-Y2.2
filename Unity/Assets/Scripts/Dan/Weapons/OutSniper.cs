@@ -5,17 +5,25 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
 using TMPro;
 
+/*
+Author: Dan
+
+Name of Class: Outweapon
+
+Description of Class: Gun mechanics for the sniper
+
+Date Created: 10 / 02 / 2022
+*/
 public class OutSniper : OutWeapon
 {
     [SerializeField]
     private Projectile bulletPrefab;
-
     //public TextMeshProUGUI DebugText;
     public GameObject magazine;
     public GameObject magazineHolder;
     public int currentAmmo = 5;
+    private float reloadMagTime;
 
-     private float reloadMagTime;
     protected override void StartShooting(ActivateEventArgs interactor)
     {
         // if the gun still has ammo
@@ -30,17 +38,9 @@ public class OutSniper : OutWeapon
             //unloads the gun magazine
             magazine.transform.parent = null;
             magazine.AddComponent<Rigidbody>();
-
             magazineHolder.SetActive(true);
-
-            
-            
-
-            //DebugText.text = "Sniper : Magazine Not Loaded";
         }
-        
     }
-    
 
     protected override void Shoot()
     {
@@ -52,30 +52,18 @@ public class OutSniper : OutWeapon
             Projectile projectileInstantance = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
             projectileInstantance.Init(this);
             projectileInstantance.Launch();
-            Debug.Log("Bullet has been shot");
-            //DebugText.text = "Sniper : Shot";
-
             currentAmmo -= 1;
-
-
-            
-            
         }
-
         else
         {
             //DebugText.text = "Sniper : Cooldown";
         }
-        
     }
     // adding ammo via magazines
     public void addAmmo()
     {
         currentAmmo += 5;
     }
-
-        
-    
 
     protected override void StopShooting(DeactivateEventArgs interactor)
     {
@@ -96,7 +84,6 @@ public class OutSniper : OutWeapon
         if (Time.time - base.StartTime > base.shootingCooldown)
             {
                 base.canShootAmmo = true;
-                //Debug.Log("Finished Cooldown");
                 //DebugText.text = "Sniper : Ready";
             }
     }
