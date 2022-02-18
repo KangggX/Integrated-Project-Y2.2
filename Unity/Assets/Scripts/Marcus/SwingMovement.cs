@@ -1,3 +1,12 @@
+/*
+Author: Lee Ka Meng Marcus
+
+Name of Class: Player
+
+Description of Class: Movement for hand swing motion
+
+Date Created: 10 / 02 / 2022
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,6 +66,7 @@ public class SwingMovement : MonoBehaviour
         touchedSnow = false;
         skiing = false;
 
+        //set formula for player physics
         accelRateWalk = maxWalkSpeed / zeroToMaxWalk;
         deccelRateWalk = -maxWalkSpeed / maxToZeroWalk;
 
@@ -65,6 +75,7 @@ public class SwingMovement : MonoBehaviour
 
         forwardVelocity = 0;
 
+        //get controller
         cController = GetComponent<CharacterController>();
 
         //set previous frame
@@ -80,6 +91,7 @@ public class SwingMovement : MonoBehaviour
         PlayerPosition();
     }
 
+    //get camera facing direction
     private void CenterEye()
     {
         float yRotation = cameraCenter.transform.eulerAngles.y;
