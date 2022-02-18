@@ -27,6 +27,8 @@ public class ActivateTargets : MonoBehaviour
 
     private int val;
 
+
+    //start game function, sets the starttime to the current time in the game and lets the script spawn targets
     public void startGame()
     {
         StartTime = Time.time;
@@ -34,19 +36,24 @@ public class ActivateTargets : MonoBehaviour
         isGameActive = true;
     }
 
+    //stop game function, called when the timer reaches 0, sets all targets to false again
     public void stopOutdoor()
     {
         isGameActive = false;
         Start();
     }
 
+    // spawn target void
     void SpawnTarget()
     {
+        //gets the total number of targets existing in the scene
         var totalTargets = TargetstobeActivated.Count();
         if (totalTargets > 2)
         {
+            //spawns 2 targets per instance
             for (int i = 0; i < 2; i++) 
                 {
+                    //activates a random target in the array and removes them from the array afterwards
                     val = Random.Range(0, totalTargets - 1);
                     TargetstobeActivated[val].SetActive(true);
                     TargetstobeActivated.Remove(TargetstobeActivated[val]);
@@ -64,6 +71,7 @@ public class ActivateTargets : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //finds all targets in the scene
         TargetstobeActivated = new List<GameObject>(GameObject.FindGameObjectsWithTag("outdoorTarget"));
         foreach (GameObject r in TargetstobeActivated)
             {

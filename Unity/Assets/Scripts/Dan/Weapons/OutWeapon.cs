@@ -34,6 +34,7 @@ public class OutWeapon : MonoBehaviour
 
     private void SetupInteractableWeaponEvents()
     {
+        //Event Listeners
         InteractableWeapon.selectEntered.AddListener(PickUpWeapon);
         InteractableWeapon.selectExited.AddListener(DropWeapon);
         InteractableWeapon.activated.AddListener(StartShooting);
@@ -64,12 +65,14 @@ public class OutWeapon : MonoBehaviour
     {
 
         ApplyRecoil();
+        //resets gun cooldown
         canShootAmmo = false;
         StartTime = Time.time;
     }
 
     private void ApplyRecoil()
     {
+        // adds a force backwords on the gun
         rigidBody.AddRelativeForce(Vector3.back * recoilForce, ForceMode.Impulse);
     }
 

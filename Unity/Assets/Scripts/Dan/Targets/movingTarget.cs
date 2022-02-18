@@ -12,6 +12,7 @@ public class movingTarget : MonoBehaviour
     public float maxPos;
     void Start() 
     {
+        //gets the target moving to the left when it has been activated
         movingLeft = true;
         
        
@@ -23,6 +24,7 @@ public class movingTarget : MonoBehaviour
         {
             // move left
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            //checks if it moves out of its range, then switches direction
             if (transform.position.x <= minPos) 
             {
                 movingLeft = false;
@@ -32,6 +34,7 @@ public class movingTarget : MonoBehaviour
         {
             // move right
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            //checks if it moves out of its range, then switches direction            
             if (transform.position.x >= maxPos) 
             {
                 movingLeft = true;

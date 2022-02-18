@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
 using TMPro;
 
+// refer to outsniper script
 public class OutShotgun : OutWeapon
 {
     [SerializeField]
@@ -26,6 +27,7 @@ public class OutShotgun : OutWeapon
         if(base.canShootAmmo == true)
         {
             base.Shoot();
+            //shoots 5 bullets in 1 instance
             for (int i = 0; i < 5; i++) 
             {
                 Projectile projectileInstantance = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);

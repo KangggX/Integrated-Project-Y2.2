@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//not used in final product
 
 public class OutSnipMag : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class OutSnipMag : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        
+        //when gun collides with a magazine
         if (collision.gameObject.tag == "outdoorMag")
         {
             Debug.Log("magazine collided with holder");
