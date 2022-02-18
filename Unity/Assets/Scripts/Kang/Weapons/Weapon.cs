@@ -8,7 +8,7 @@ Author: Kang Xuan
 
 Name of Class: Weapon
 
-Description of Class: 
+Description of Class: Main script where all weapons in Indoor Shooting derives from
 
 Date Created: 18/02/2022
 **/
@@ -105,19 +105,15 @@ public class Weapon : MonoBehaviour
         _rb.useGravity = true;
     }
 
+    // Turn on motion and rotation constraints
+    // Turn off gravity
     public void TurnOnRigidbodyConstraints()
     {
         _rb.constraints = RigidbodyConstraints.FreezeAll;
         _rb.useGravity = false;
     }
 
-    public virtual void LeftClick()
-    {
-        _canShoot = false;
-        StartCoroutine(FireRoutine());
-        Shoot();
-    }
-
+    // Function to shoot
     protected void Shoot()
     {
         if (_ammo > 0)
@@ -139,12 +135,14 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    // Coroutine that enabled _canShoot based on _fireCountdown seconds
     protected IEnumerator FireRoutine()
     {
         yield return _fireCountdown;
         _canShoot = true;
     }
 
+    // Reset weapon to original position and ammo amount
     public void ResetWeaponState()
     {
         TurnOnRigidbodyConstraints();

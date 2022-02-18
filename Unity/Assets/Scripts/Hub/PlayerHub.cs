@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// A manager for the Hub
-/// Handles where to spawn the player the moment they enter the Hub or when they just completed the game
-/// 
-/// </summary>
+/**
+Author: Kang Xuan
+
+Name of Class: PlayerHub
+
+Description of Class: A manager for the Hub that handles where to spawn the player the moment they enter the Hub or when they just completed the game
+
+Date Created: 18/02/2022
+**/
 public class PlayerHub : MonoBehaviour
 {
     [SerializeField] private Elevator _elevator;

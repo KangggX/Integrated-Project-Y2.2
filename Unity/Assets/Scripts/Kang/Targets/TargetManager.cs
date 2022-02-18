@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+Author: Kang Xuan
+
+Name of Class: TargetManager
+
+Description of Class: Manages all the Indoor Shooting targets
+
+Date Created: 18/02/2022
+**/
 public class TargetManager : MonoBehaviour
 {
     private Target[] _targetList;

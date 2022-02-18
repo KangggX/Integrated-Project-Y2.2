@@ -9287,15 +9287,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6aabbc1c0189ac4cbf7fe8931015c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skiingFastestTimeText: {fileID: 1356180929}
-  _skiingTotalTimeText: {fileID: 968690426}
-  _skiingTotalGameText: {fileID: 76401599}
-  _indoorHighestPointsText: {fileID: 828256387}
-  _indoorTotalPointsText: {fileID: 1127986478}
-  _indoorTotalGameText: {fileID: 1691812009}
-  _outdoorHighestPointsText: {fileID: 159388404}
-  _outdoorTotalPointsText: {fileID: 1891669658}
-  _outdoorTotalGameText: {fileID: 1756458217}
+  skiingFastestTimeText: {fileID: 1356180929}
+  skiingTotalTimeText: {fileID: 968690426}
+  skiingTotalGameText: {fileID: 76401599}
+  indoorHighestPointsText: {fileID: 828256387}
+  indoorTotalPointsText: {fileID: 1127986478}
+  indoorTotalGameText: {fileID: 1691812009}
+  outdoorHighestPointsText: {fileID: 159388404}
+  outdoorTotalPointsText: {fileID: 1891669658}
+  outdoorTotalGameText: {fileID: 1756458217}
 --- !u!1 &2088931778
 GameObject:
   m_ObjectHideFlags: 0

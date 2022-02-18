@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+Author: Kang Xuan
+
+Name of Class: IntroPanelDetector
+
+Description of Class: Handles the intro panel at the start of the game
+
+Date Created: 18/02/2022
+**/
 public class IntroPanelDetector : MonoBehaviour
 {
     [SerializeField] private GameObject _frontPanel;

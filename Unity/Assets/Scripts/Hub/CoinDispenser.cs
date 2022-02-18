@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Script to dispense coin for players to use to play each game
-/// </summary>
+/**
+Author: Kang Xuan
+
+Name of Class: CoinDispenser
+
+Description of Class: Script to dispense coin for players to use to play each game
+
+Date Created: 18/02/2022
+**/
 public class CoinDispenser : MonoBehaviour
 {
     [SerializeField] private MachineType _machineType;
@@ -73,6 +79,7 @@ public class CoinDispenser : MonoBehaviour
         return false;
     }
 
+    // Check if the machine still have any coin. Returns a boolean
     private bool StillHaveCoin()
     {
         foreach (GameObject go in _coinChild)

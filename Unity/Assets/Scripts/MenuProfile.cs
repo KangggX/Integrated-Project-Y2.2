@@ -3,37 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-/// <summary>
-/// Script to display profile text in the Profile Menu
-/// </summary>
+/**
+Author: Kirdesh
+
+Name of Class: MenuProfile
+
+Description of Class: Handles the Profile page in the Main Menu
+
+Date Created: 18/02/2022
+**/
 public class MenuProfile : MonoBehaviour
 {
     [Header("Skiing Text")]
-    [SerializeField] private TextMeshProUGUI _skiingFastestTimeText;
-    [SerializeField] private TextMeshProUGUI _skiingTotalTimeText;
-    [SerializeField] private TextMeshProUGUI _skiingTotalGameText;
+    [SerializeField] private TextMeshProUGUI skiingFastestTimeText;
+    [SerializeField] private TextMeshProUGUI skiingTotalTimeText;
+    [SerializeField] private TextMeshProUGUI skiingTotalGameText;
 
     [Header("Indoor Shooting Text")]
-    [SerializeField] private TextMeshProUGUI _indoorHighestPointsText;
-    [SerializeField] private TextMeshProUGUI _indoorTotalPointsText;
-    [SerializeField] private TextMeshProUGUI _indoorTotalGameText;
+    [SerializeField] private TextMeshProUGUI indoorHighestPointsText;
+    [SerializeField] private TextMeshProUGUI indoorTotalPointsText;
+    [SerializeField] private TextMeshProUGUI indoorTotalGameText;
 
     [Header("Outdoor Shooting Text")]
-    [SerializeField] private TextMeshProUGUI _outdoorHighestPointsText;
-    [SerializeField] private TextMeshProUGUI _outdoorTotalPointsText;
-    [SerializeField] private TextMeshProUGUI _outdoorTotalGameText;
+    [SerializeField] private TextMeshProUGUI outdoorHighestPointsText;
+    [SerializeField] private TextMeshProUGUI outdoorTotalPointsText;
+    [SerializeField] private TextMeshProUGUI outdoorTotalGameText;
 
     [Header("Managers")]
-    private string _userID;
-    private AuthManager _authManager;
-    private SimpleFirebaseManager _firebaseManager;
+    private string userID;
+    private AuthManager authManager;
+    private SimpleFirebaseManager firebaseManager;
 
     private void Start()
     {
-        _authManager = FindObjectOfType<AuthManager>();
-        _firebaseManager = FindObjectOfType<SimpleFirebaseManager>();
+        authManager = FindObjectOfType<AuthManager>();
+        firebaseManager = FindObjectOfType<SimpleFirebaseManager>();
 
-        _userID = _authManager.auth.CurrentUser.UserId;
+        userID = authManager.auth.CurrentUser.UserId;
 
         UpdateProfileInfo();
     }
@@ -41,22 +47,22 @@ public class MenuProfile : MonoBehaviour
     // Update profile info to the UI
     private async void UpdateProfileInfo()
     {
-        SimplePlayerStats stats = await _firebaseManager.GetPlayerStats(_userID);
+        SimplePlayerStats stats = await firebaseManager.GetPlayerStats(userID);
         Debug.Log(stats.fastestTime);
 
         // Updating stats for Skii UI
-        _skiingFastestTimeText.text = stats.fastestTime.ToString();
-        _skiingTotalTimeText.text = stats.totalTime.ToString();
-        _skiingTotalGameText.text = stats.totalGame.ToString();
+        skiingFastestTimeText.text = stats.fastestTime.ToString();
+        skiingTotalTimeText.text = stats.totalTime.ToString();
+        skiingTotalGameText.text = stats.totalGame.ToString();
 
         // Updating stats for Indoor Shooting UI
-        _indoorHighestPointsText.text = stats.indoorPoints.ToString();
-        _indoorTotalPointsText.text = stats.indoorTotalPoints.ToString();
-        _indoorTotalGameText.text = stats.indoorTotalGame.ToString();
+        indoorHighestPointsText.text = stats.indoorPoints.ToString();
+        indoorTotalPointsText.text = stats.indoorTotalPoints.ToString();
+        indoorTotalGameText.text = stats.indoorTotalGame.ToString();
 
         // Updating stats for Outdoor Shooting UI
-        _outdoorHighestPointsText.text = stats.outdoorPoints.ToString();
-        _outdoorTotalPointsText.text = stats.outdoorTotalPoints.ToString();
-        _outdoorTotalGameText.text = stats.outdoorTotalGame.ToString();
+        outdoorHighestPointsText.text = stats.outdoorPoints.ToString();
+        outdoorTotalPointsText.text = stats.outdoorTotalPoints.ToString();
+        outdoorTotalGameText.text = stats.outdoorTotalGame.ToString();
     }
 }

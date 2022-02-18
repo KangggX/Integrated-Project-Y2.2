@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+/**
+Author: Aaron
+
+Name of Class: SimpleGamePlayer
+
+Description of Class: Object for creating user that is then sent to Firebase Database
+
+Date Created: 18/02/2022
+**/
 public class SimpleGamePlayer
 {
     public string username;

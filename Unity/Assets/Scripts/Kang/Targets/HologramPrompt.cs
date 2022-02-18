@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+Author: Kirdesh
+
+Name of Class: HologramPrompt
+
+Description of Class: Class to trigger the hologram prompt 
+
+Date Created: 18/02/2022
+**/
 public class HologramPrompt : MonoBehaviour
 {
     private void OnEnable()

@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/**
+Author: Kang Xuan
+
+Name of Class: Elevator
+
+Description of Class: Handles the elevator animation and usage
+
+Date Created: 18/02/2022
+**/
 public class Elevator : MonoBehaviour
 {
     private Animator _animator;
@@ -128,6 +137,7 @@ public class Elevator : MonoBehaviour
         SceneManager.LoadScene("Hub");
     }
 
+    // Trigger the Going Down animation
     public void GoDownAnim()
     {
         LockPlayerMovement();

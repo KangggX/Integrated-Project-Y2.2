@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/**
+Author: Kang Xuan
+
+Name of Class: HologramResults
+
+Description of Class: Displays the results onto a hologram
+
+Date Created: 18/02/2022
+**/
 public class HologramResults : MonoBehaviour
 {
     private AuthManager _authManager;
@@ -30,6 +39,7 @@ public class HologramResults : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    // Update UI on Canvas
     private async void UpdateResultUI()
     {
         SimplePlayerStats playerStats;

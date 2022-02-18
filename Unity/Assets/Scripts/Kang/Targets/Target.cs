@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+Author: Kang Xuan
+
+Name of Class: Target
+
+Description of Class: The main script that is behind every target in Indoor Shooting. Handles the movement and the collider.
+
+Date Created: 18/02/2022
+**/
 public class Target : MonoBehaviour
 {
     // Delegate event to check if current target point is hit -> update UI text
