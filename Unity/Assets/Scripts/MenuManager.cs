@@ -8,9 +8,15 @@ using Firebase.Extensions;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Script to handle the Main Menu itself (only)
-/// </summary>
+/**
+Author: Kang
+
+Name of Class: MenuManager
+
+Description of Class: This class manages the Main Menu
+
+Date Created: 18/02/2022
+**/
 public class MenuManager : MonoBehaviour
 {
     private AuthManager _authManager;
@@ -32,6 +38,11 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Hub");
+    }
+
+    public void BackToAuth()
+    {
+        SceneManager.LoadScene("Auth");
     }
 
     public void QuitGame()

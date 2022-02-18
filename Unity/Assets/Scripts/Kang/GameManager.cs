@@ -4,9 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// <summary>
-/// Manages the game basically
-/// </summary>
+/**
+Author: Kang Xuan, Dan, Marcus
+
+Name of Class: GameManager
+
+Description of Class: Manages the game itself such as ensure data is sent to the FirebaseManager
+
+Date Created: 18/02/2022
+**/
 public class GameManager : MonoBehaviour
 {
     private Weapon[] _weaponList;
@@ -49,6 +55,7 @@ public class GameManager : MonoBehaviour
     }
     //---------------------------
 
+    // Reset Indoor Shooting game
     public void ResetIndoorShooter()
     {
         UpdatePlayerIndoorStats();

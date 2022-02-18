@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/**
+Author: Kang Xuan
+
+Name of Class: Weapon
+
+Description of Class: 
+
+Date Created: 18/02/2022
+**/
 public class Weapon : MonoBehaviour
 {
     [Header("Weapon Settings")]
-    //[SerializeField] protected GameObject _bulletHole;
     [SerializeField] protected float _fireRate;
     [SerializeField] protected int _ammo;
     [SerializeField] protected TextMeshProUGUI _ammoText;
@@ -129,10 +137,6 @@ public class Weapon : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            RanOutOfEmmo();
-        }
     }
 
     protected IEnumerator FireRoutine()
@@ -148,10 +152,5 @@ public class Weapon : MonoBehaviour
         transform.position = _initialPosition;
         transform.rotation = _initialRotation;
         _ammo = _initialAmmo;
-    }
-
-    private void RanOutOfEmmo() 
-    {
-        UIManager.DisplayMagazineError();
     }
 }
