@@ -3,7 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetButton : MonoBehaviour, IInteractable
+/**
+Author: Kang Xuan
+
+Name of Class: TargetButton
+
+Description of Class: Script that is assigned to the Green and Red button of each lane
+
+Date Created: 18/02/2022
+**/
+public class TargetButton : MonoBehaviour
 {
     [SerializeField] private ButtonType _buttonType;
     [SerializeField] private GameObject _targetObject;
@@ -26,6 +35,7 @@ public class TargetButton : MonoBehaviour, IInteractable
         _targetManager = FindObjectOfType<TargetManager>();
     }
 
+    // Public function that is called by the SimpleInteractable Select event
     public void TriggerInteraction()
     {
         switch( _buttonType )
@@ -64,4 +74,5 @@ public class TargetButton : MonoBehaviour, IInteractable
     }
 }
 
+// Enum for the current ButtonType
 public enum ButtonType { CallbackTarget, ClearLane };

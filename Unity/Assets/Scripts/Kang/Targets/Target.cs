@@ -52,12 +52,13 @@ public class Target : MonoBehaviour
     {
         if (CanMove)
         {
+            // Elapsed time for the movement based on _elapsedTime variable
             _elapsedTime += Time.deltaTime;
             float percentageCompletion = _elapsedTime / _transitionSpeed;
 
             _isMoving = true;
-
-            if (_moveIn)
+            
+            if (_moveIn) // If target should be moving in
             {
                 gameObject.transform.localPosition = Vector3.Lerp(_outPosition, _inPosition, percentageCompletion);
                 IsOut = false;
@@ -69,7 +70,7 @@ public class Target : MonoBehaviour
                     _elapsedTime = 0;
                 }
             }
-            else if (_moveOut)
+            else if (_moveOut) // If target should be moving out
             {
                 gameObject.transform.localPosition = Vector3.Lerp(_inPosition, _outPosition, percentageCompletion);
 
@@ -79,7 +80,7 @@ public class Target : MonoBehaviour
                     IsMoving = false;
                     _elapsedTime = 0;
 
-                    IsOut = true;
+                    IsOut = true; // Target colliders enabled
                 }
             }
         }
